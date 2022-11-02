@@ -1,0 +1,6 @@
+[submodule "CLIP"]
+	path = CLIP
+	url = https://github.com/openai/CLIP.git
+[submodule "ieat"]
+	path = ieat
+	url = https://github.com/ryansteed/ieat
