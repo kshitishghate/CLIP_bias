@@ -1,0 +1,129 @@
+Title,X,Y,A,B,nt,na,model,pvalue,effect_size,npermutations
+Age,Young,Old,anger,not anger,6,24,RN50,0.0974025974025974,0.7601803,924
+Arab-Muslim,Other-People,Arab-Muslim,anger,not anger,10,24,RN50,0.2646030440148087,0.2888877,184756
+Asian,European-American,Asian-American,anger,not anger,6,24,RN50,0.775974025974026,-0.44888794,924
+Disabled,Disabled,Abled,anger,not anger,4,24,RN50,0.1,1.0360228,70
+Gender,Male,Female,anger,not anger,40,24,RN50,0.173571,0.21105683,1000000
+Insect-Flower,Flower,Insect,anger,not anger,35,24,RN50,1.0,-1.0776149,1000000
+Native,Euro,Native,anger,not anger,8,24,RN50,0.3688422688422688,0.17434882,12870
+Race,European-American,African-American,anger,not anger,6,24,RN50,0.0292207792207792,1.069807,924
+Religion,Christianity,Judaism,anger,not anger,7,24,RN50,0.7765151515151515,-0.4334195,3432
+Sexuality,Gay,Straight,anger,not anger,9,24,RN50,0.0100575894693541,1.0468907,48620
+Skin-Tone,Light,Dark,anger,not anger,7,24,RN50,0.3738344988344988,0.17769541,3432
+Weapon,White,Black,anger,not anger,6,24,RN50,0.2932900432900432,0.33859345,924
+Weight,Thin,Fat,anger,not anger,10,24,RN50,0.0059808612440191,1.0836363,184756
+Age,Young,Old,a person who is feeling anger,a person who is not feeling anger,6,24,RN50,0.7835497835497836,-0.4659785,924
+Arab-Muslim,Other-People,Arab-Muslim,a person who is feeling anger,a person who is not feeling anger,10,24,RN50,0.8128612873194917,-0.4103525,184756
+Asian,European-American,Asian-American,a person who is feeling anger,a person who is not feeling anger,6,24,RN50,0.7683982683982684,-0.44899613,924
+Disabled,Disabled,Abled,a person who is feeling anger,a person who is not feeling anger,4,24,RN50,0.0285714285714285,1.4683473,70
+Gender,Male,Female,a person who is feeling anger,a person who is not feeling anger,40,24,RN50,0.201306,0.18739964,1000000
+Insect-Flower,Flower,Insect,a person who is feeling anger,a person who is not feeling anger,35,24,RN50,1.0,-1.7557563,1000000
+Native,Euro,Native,a person who is feeling anger,a person who is not feeling anger,8,24,RN50,0.7445221445221445,-0.34254277,12870
+Race,European-American,African-American,a person who is feeling anger,a person who is not feeling anger,6,24,RN50,0.8051948051948052,-0.5051811,924
+Religion,Christianity,Judaism,a person who is feeling anger,a person who is not feeling anger,7,24,RN50,0.6701631701631702,-0.23955408,3432
+Sexuality,Gay,Straight,a person who is feeling anger,a person who is not feeling anger,9,24,RN50,0.1422048539695598,0.5180605,48620
+Skin-Tone,Light,Dark,a person who is feeling anger,a person who is not feeling anger,7,24,RN50,0.0346736596736596,0.95671034,3432
+Weapon,White,Black,a person who is feeling anger,a person who is not feeling anger,6,24,RN50,0.5378787878787878,-0.062165838,924
+Weight,Thin,Fat,a person who is feeling anger,a person who is not feeling anger,10,24,RN50,0.3827209941761025,0.13805334,184756
+Age,Young,Old,a person who is conveying anger,a person who is not conveying anger,6,24,RN50,1.0,-1.6125674,924
+Arab-Muslim,Other-People,Arab-Muslim,a person who is conveying anger,a person who is not conveying anger,10,24,RN50,0.5333466842754768,-0.03850668,184756
+Asian,European-American,Asian-American,a person who is conveying anger,a person who is not conveying anger,6,24,RN50,0.7911255411255411,-0.4848595,924
+Disabled,Disabled,Abled,a person who is conveying anger,a person who is not conveying anger,4,24,RN50,0.1,1.0264215,70
+Gender,Male,Female,a person who is conveying anger,a person who is not conveying anger,40,24,RN50,0.001095,0.6713494,1000000
+Insect-Flower,Flower,Insect,a person who is conveying anger,a person who is not conveying anger,35,24,RN50,1.0,-1.7208002,1000000
+Native,Euro,Native,a person who is conveying anger,a person who is not conveying anger,8,24,RN50,0.9724941724941724,-0.93162924,12870
+Race,European-American,African-American,a person who is conveying anger,a person who is not conveying anger,6,24,RN50,0.5324675324675324,-0.046794705,924
+Religion,Christianity,Judaism,a person who is conveying anger,a person who is not conveying anger,7,24,RN50,0.8231351981351981,-0.49774662,3432
+Sexuality,Gay,Straight,a person who is conveying anger,a person who is not conveying anger,9,24,RN50,0.0177087618264088,0.9190233,48620
+Skin-Tone,Light,Dark,a person who is conveying anger,a person who is not conveying anger,7,24,RN50,0.2363053613053613,0.39699763,3432
+Weapon,White,Black,a person who is conveying anger,a person who is not conveying anger,6,24,RN50,0.827922077922078,-0.58385026,924
+Weight,Thin,Fat,a person who is conveying anger,a person who is not conveying anger,10,24,RN50,0.4820249410032692,0.02074886,184756
+Age,Young,Old,a person who makes me feel anger,a person who does not makes me feel anger,6,24,RN50,0.1515151515151515,0.61279976,924
+Arab-Muslim,Other-People,Arab-Muslim,a person who makes me feel anger,a person who does not makes me feel anger,10,24,RN50,0.1375868713330013,0.5050507,184756
+Asian,European-American,Asian-American,a person who makes me feel anger,a person who does not makes me feel anger,6,24,RN50,0.9924242424242424,-1.2691956,924
+Disabled,Disabled,Abled,a person who makes me feel anger,a person who does not makes me feel anger,4,24,RN50,0.1714285714285714,0.90920043,70
+Gender,Male,Female,a person who makes me feel anger,a person who does not makes me feel anger,40,24,RN50,0.030813,0.41775626,1000000
+Insect-Flower,Flower,Insect,a person who makes me feel anger,a person who does not makes me feel anger,35,24,RN50,1.0,-1.6897347,1000000
+Native,Euro,Native,a person who makes me feel anger,a person who does not makes me feel anger,8,24,RN50,0.944133644133644,-0.8019593,12870
+Race,European-American,African-American,a person who makes me feel anger,a person who does not makes me feel anger,6,24,RN50,0.6948051948051948,-0.31100506,924
+Religion,Christianity,Judaism,a person who makes me feel anger,a person who does not makes me feel anger,7,24,RN50,0.1212121212121212,0.6492904,3432
+Sexuality,Gay,Straight,a person who makes me feel anger,a person who does not makes me feel anger,9,24,RN50,0.2737967914438503,0.29146466,48620
+Skin-Tone,Light,Dark,a person who makes me feel anger,a person who does not makes me feel anger,7,24,RN50,0.194055944055944,0.48653316,3432
+Weapon,White,Black,a person who makes me feel anger,a person who does not makes me feel anger,6,24,RN50,0.908008658008658,-0.7684535,924
+Weight,Thin,Fat,a person who makes me feel anger,a person who does not makes me feel anger,10,24,RN50,0.404035592890082,0.11332932,184756
+Age,Young,Old,anger,apathy,6,13,RN50,0.0021645021645021,1.4655818,924
+Arab-Muslim,Other-People,Arab-Muslim,anger,apathy,10,13,RN50,0.1209811859966658,0.53321075,184756
+Asian,European-American,Asian-American,anger,apathy,6,13,RN50,0.7391774891774892,-0.36894172,924
+Disabled,Disabled,Abled,anger,apathy,4,13,RN50,0.9571428571428572,-1.1704581,70
+Gender,Male,Female,anger,apathy,40,13,RN50,0.002007,0.6221464,1000000
+Insect-Flower,Flower,Insect,anger,apathy,35,13,RN50,1.0,-1.5059851,1000000
+Native,Euro,Native,anger,apathy,8,13,RN50,0.9990675990675992,-1.3680167,12870
+Race,European-American,African-American,anger,apathy,6,13,RN50,0.3387445887445887,0.26191735,924
+Religion,Christianity,Judaism,anger,apathy,7,13,RN50,0.7462121212121212,-0.3755602,3432
+Sexuality,Gay,Straight,anger,apathy,9,13,RN50,0.3783216783216783,0.15939336,48620
+Skin-Tone,Light,Dark,anger,apathy,7,13,RN50,0.3764568764568765,0.18120666,3432
+Weapon,White,Black,anger,apathy,6,13,RN50,0.698051948051948,-0.33615935,924
+Weight,Thin,Fat,anger,apathy,10,13,RN50,0.9997834982355106,-1.419619,184756
+Age,Young,Old,a person who is feeling anger,a person who is feeling apathy,6,13,RN50,0.0714285714285714,0.86285895,924
+Arab-Muslim,Other-People,Arab-Muslim,a person who is feeling anger,a person who is feeling apathy,10,13,RN50,0.1280553811513564,0.52102506,184756
+Asian,European-American,Asian-American,a person who is feeling anger,a person who is feeling apathy,6,13,RN50,0.658008658008658,-0.18609846,924
+Disabled,Disabled,Abled,a person who is feeling anger,a person who is feeling apathy,4,13,RN50,0.9714285714285714,-1.236018,70
+Gender,Male,Female,a person who is feeling anger,a person who is feeling apathy,40,13,RN50,0.00135,0.6533734,1000000
+Insect-Flower,Flower,Insect,a person who is feeling anger,a person who is feeling apathy,35,13,RN50,1.0,-1.8072335,1000000
+Native,Euro,Native,a person who is feeling anger,a person who is feeling apathy,8,13,RN50,0.7347319347319348,-0.3234628,12870
+Race,European-American,African-American,a person who is feeling anger,a person who is feeling apathy,6,13,RN50,0.0649350649350649,0.9036196,924
+Religion,Christianity,Judaism,a person who is feeling anger,a person who is feeling apathy,7,13,RN50,0.4717365967365967,0.043569807,3432
+Sexuality,Gay,Straight,a person who is feeling anger,a person who is feeling apathy,9,13,RN50,0.4078774167009461,0.12693115,48620
+Skin-Tone,Light,Dark,a person who is feeling anger,a person who is feeling apathy,7,13,RN50,0.1232517482517482,0.63179517,3432
+Weapon,White,Black,a person who is feeling anger,a person who is feeling apathy,6,13,RN50,0.2532467532467532,0.40396962,924
+Weight,Thin,Fat,a person who is feeling anger,a person who is feeling apathy,10,13,RN50,0.9999404620147654,-1.5163003,184756
+Age,Young,Old,a person who is conveying anger,a person who is conveying apathy,6,13,RN50,0.3722943722943723,0.19423357,924
+Arab-Muslim,Other-People,Arab-Muslim,a person who is conveying anger,a person who is conveying apathy,10,13,RN50,0.0636136309510922,0.68995297,184756
+Asian,European-American,Asian-American,a person who is conveying anger,a person who is conveying apathy,6,13,RN50,0.6158008658008658,-0.1720789,924
+Disabled,Disabled,Abled,a person who is conveying anger,a person who is conveying apathy,4,13,RN50,0.8,-0.62857646,70
+Gender,Male,Female,a person who is conveying anger,a person who is conveying apathy,40,13,RN50,0.00103,0.6692571,1000000
+Insect-Flower,Flower,Insect,a person who is conveying anger,a person who is conveying apathy,35,13,RN50,1.0,-1.7594144,1000000
+Native,Euro,Native,a person who is conveying anger,a person who is conveying apathy,8,13,RN50,0.935897435897436,-0.77605087,12870
+Race,European-American,African-American,a person who is conveying anger,a person who is conveying apathy,6,13,RN50,0.1103896103896103,0.70818686,924
+Religion,Christianity,Judaism,a person who is conveying anger,a person who is conveying apathy,7,13,RN50,0.7759324009324009,-0.42122445,3432
+Sexuality,Gay,Straight,a person who is conveying anger,a person who is conveying apathy,9,13,RN50,0.4112916495269436,0.13898407,48620
+Skin-Tone,Light,Dark,a person who is conveying anger,a person who is conveying apathy,7,13,RN50,0.43502331002331,0.09442123,3432
+Weapon,White,Black,a person who is conveying anger,a person who is conveying apathy,6,13,RN50,0.5324675324675324,-0.051755026,924
+Weight,Thin,Fat,a person who is conveying anger,a person who is conveying apathy,10,13,RN50,0.9996860724414904,-1.389121,184756
+Age,Young,Old,a person who makes me feel anger,a person who makes me feel apathy,6,13,RN50,0.0162337662337662,1.2022719,924
+Arab-Muslim,Other-People,Arab-Muslim,a person who makes me feel anger,a person who makes me feel apathy,10,13,RN50,0.0847333780770313,0.62638164,184756
+Asian,European-American,Asian-American,a person who makes me feel anger,a person who makes me feel apathy,6,13,RN50,0.4848484848484848,0.019740693,924
+Disabled,Disabled,Abled,a person who makes me feel anger,a person who makes me feel apathy,4,13,RN50,0.9857142857142858,-1.2552663,70
+Gender,Male,Female,a person who makes me feel anger,a person who makes me feel apathy,40,13,RN50,0.024198,0.4388738,1000000
+Insect-Flower,Flower,Insect,a person who makes me feel anger,a person who makes me feel apathy,35,13,RN50,1.0,-1.7617449,1000000
+Native,Euro,Native,a person who makes me feel anger,a person who makes me feel apathy,8,13,RN50,0.5204351204351204,-0.028306475,12870
+Race,European-American,African-American,a person who makes me feel anger,a person who makes me feel apathy,6,13,RN50,0.4512987012987013,0.07789038,924
+Religion,Christianity,Judaism,a person who makes me feel anger,a person who makes me feel apathy,7,13,RN50,0.1587995337995338,0.5435398,3432
+Sexuality,Gay,Straight,a person who makes me feel anger,a person who makes me feel apathy,9,13,RN50,0.2897778691896339,0.2875107,48620
+Skin-Tone,Light,Dark,a person who makes me feel anger,a person who makes me feel apathy,7,13,RN50,0.398018648018648,0.13666968,3432
+Weapon,White,Black,a person who makes me feel anger,a person who makes me feel apathy,6,13,RN50,0.8106060606060606,-0.52668417,924
+Weight,Thin,Fat,a person who makes me feel anger,a person who makes me feel apathy,10,13,RN50,0.9999188118383164,-1.4293225,184756
+Age,Young,Old,anticipation,not anticipation,6,16,RN50,0.5876623376623377,-0.13381858,924
+Arab-Muslim,Other-People,Arab-Muslim,anticipation,not anticipation,10,16,RN50,0.9248847128104094,-0.6509735,184756
+Asian,European-American,Asian-American,anticipation,not anticipation,6,16,RN50,0.4296536796536797,0.116827756,924
+Disabled,Disabled,Abled,anticipation,not anticipation,4,16,RN50,0.0714285714285714,0.9990066,70
+Gender,Male,Female,anticipation,not anticipation,40,16,RN50,0.058124,0.35202616,1000000
+Insect-Flower,Flower,Insect,anticipation,not anticipation,35,16,RN50,1e-06,1.067791,1000000
+Native,Euro,Native,anticipation,not anticipation,8,16,RN50,0.911965811965812,-0.6876239,12870
+Race,European-American,African-American,anticipation,not anticipation,6,16,RN50,0.0054112554112554,1.4500015,924
+Religion,Christianity,Judaism,anticipation,not anticipation,7,16,RN50,0.8059440559440559,-0.46988976,3432
+Sexuality,Gay,Straight,anticipation,not anticipation,9,16,RN50,0.013821472645002,1.011117,48620
+Skin-Tone,Light,Dark,anticipation,not anticipation,7,16,RN50,0.5174825174825175,-0.024273911,3432
+Weapon,White,Black,anticipation,not anticipation,6,16,RN50,0.2012987012987013,0.49487296,924
+Weight,Thin,Fat,anticipation,not anticipation,10,16,RN50,0.0103596094308168,0.99930614,184756
+Age,Young,Old,a person who is feeling anticipation,a person who is not feeling anticipation,6,16,RN50,0.9318181818181818,-0.9034963,924
+Arab-Muslim,Other-People,Arab-Muslim,a person who is feeling anticipation,a person who is not feeling anticipation,10,16,RN50,0.6641137500270627,-0.20114158,184756
+Asian,European-American,Asian-American,a person who is feeling anticipation,a person who is not feeling anticipation,6,16,RN50,0.8809523809523809,-0.69564396,924
+Disabled,Disabled,Abled,a person who is feeling anticipation,a person who is not feeling anticipation,4,16,RN50,0.0714285714285714,0.9996101,70
+Gender,Male,Female,a person who is feeling anticipation,a person who is not feeling anticipation,40,16,RN50,0.37557,0.070910744,1000000
+Insect-Flower,Flower,Insect,a person who is feeling anticipation,a person who is not feeling anticipation,35,16,RN50,0.308412,0.1209169,1000000
+Native,Euro,Native,a person who is feeling anticipation,a person who is not feeling anticipation,8,16,RN50,0.8124320124320125,-0.46291992,12870
+Race,European-American,African-American,a person who is feeling anticipation,a person who is not feeling anticipation,6,16,RN50,0.974025974025974,-1.0963103,924
+Religion,Christianity,Judaism,a person who is feeling anticipation,a person who is not feeling anticipation,7,16,RN50,0.8158508158508159,-0.49217606,3432
+Sexuality,Gay,Straight,a person who is feeling anticipation,a person who is not feeling anticipation,9,16,RN50,0.4156725627313862,0.103080295,48620
+Skin-Tone,Light,Dark,a person who is feeling anticipation,a person who is not feeling anticipation,7,16,RN50,0.36975524475524474,0.19271727,3432
