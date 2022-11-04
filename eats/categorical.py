@@ -8,9 +8,9 @@ from scipy.special import comb
 from CLIP import clip
 from tqdm import tqdm
 
-from extract_clip import load_images, extract_images, extract_text
+from eats.extract_clip import load_images, extract_images, extract_text
 from ieat.weat.weat.test import Test
-from result_saving import test_already_run, save_test_results
+from eats.result_saving import test_already_run, save_test_results
 
 def perform_test(hold_out_pos_negative = True):
     nrc = pd.read_csv(os.path.join('data','NRC-Emotion-Lexicon', 'NRC-Emotion-Lexicon-Wordlevel-v0.92.txt'),
