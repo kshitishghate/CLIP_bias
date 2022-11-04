@@ -4,6 +4,8 @@ import pandas as pd
 
 
 def test_already_run(model_name, test, file_name):
+    if not os.path.exists(file_name):
+        return False
     previous_results = pd.read_csv(file_name)
     relevant_results = previous_results[
         (previous_results['model'] == model_name)
@@ -14,6 +16,7 @@ def test_already_run(model_name, test, file_name):
         & (previous_results['Title'] == test['Title'])
         & (previous_results['na'] == test['na'])
         & (previous_results['nt'] == test['nt'])
+        & (True if 'context' not in test.index else (previous_results['context'] == test['context']))
     ]
     return len(relevant_results) > 0
 
