@@ -126,4 +126,6 @@ Native,Euro,Native,a person who is feeling anticipation,a person who is not feel
 Race,European-American,African-American,a person who is feeling anticipation,a person who is not feeling anticipation,6,16,RN50,0.974025974025974,-1.0963103,924
 Religion,Christianity,Judaism,a person who is feeling anticipation,a person who is not feeling anticipation,7,16,RN50,0.8158508158508159,-0.49217606,3432
 Sexuality,Gay,Straight,a person who is feeling anticipation,a person who is not feeling anticipation,9,16,RN50,0.4156725627313862,0.103080295,48620
-Skin-Tone,Light,Dark,a person who is feeling anticipation,a person who is not feeling anticipation,7,16,RN50,0.36975524475524474,0.19271727,3432
+Skin-Tone,Light,Dark,a person who is feeling anticipation,a person who is not feeling anticipation,7,16,RN50,0.3697552447552447,0.19271727,3432
+Weapon,White,Black,a person who is feeling anticipation,a person who is not feeling anticipation,6,16,RN50,0.8506493506493507,-0.62647134,924
+Weight,Thin,Fat,a person who is feeling anticipation,a person who is not feeling anticipation,10,16,RN50,0.09868150425425967,0.58111316,184756
