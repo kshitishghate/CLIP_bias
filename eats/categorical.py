@@ -55,7 +55,8 @@ def perform_test(hold_out_pos_negative = True):
 
     with tqdm(total=remaining) as pbar:
         for model_name in clip.available_models():
-            device = "cuda" if torch.cuda.is_available() else "cpu"
+            # device = "cuda" if torch.cuda.is_available() else "cpu"
+            device='cpu'
             model, preprocess = clip.load(model_name, device)
 
             for emotion in single_emotion_words.columns[:-1]:
@@ -110,4 +111,4 @@ def perform_test(hold_out_pos_negative = True):
 
 
 if __name__ == '__main__':
-    perform_test(True)
+    perform_test(False)
