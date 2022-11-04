@@ -124,4 +124,5 @@
 /data/NRC-Emotion-Lexicon/Paper-Practical-Ethical-Considerations-Lexicons.pdf filter=lfs diff=lfs merge=lfs -text
 /data/NRC-Emotion-Lexicon/Paper1_NRC_Emotion_Lexicon.pdf filter=lfs diff=lfs merge=lfs -text
 /results/data/categorical_results.csv filter=lfs diff=lfs merge=lfs -text
+/results/data/categorical_synonyms_results.csv filter=lfs diff=lfs merge=lfs -text
 --above=100Kb !text !filter !merge !diff
