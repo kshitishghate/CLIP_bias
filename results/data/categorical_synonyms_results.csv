@@ -4163,3 +4163,4 @@ Age,Young,Old,a person who is feeling surprise,a person who is not feeling surpr
 Arab-Muslim,Other-People,Arab-Muslim,a person who is feeling surprise,a person who is not feeling surprise,10,13,RN50x64,0.7499458745588776,-0.3138682,184756
 Asian,European-American,Asian-American,a person who is feeling surprise,a person who is not feeling surprise,6,13,RN50x64,0.5324675324675324,-0.046664704,924
 Disabled,Disabled,Abled,a person who is feeling surprise,a person who is not feeling surprise,4,13,RN50x64,0.5428571428571428,-0.107772596,70
+Gender,Male,Female,a person who is feeling surprise,a person who is not feeling surprise,40,13,RN50x64,0.991176,-0.5256081,1000000
