@@ -16,6 +16,7 @@ dependencies:
   - certifi=2022.6.15
   - cffi=1.15.1
   - charset-normalizer=2.0.4
+  - click=8.0.4
   - colorama=0.4.6
   - cryptography=38.0.1
   - cycler=0.11.0
@@ -64,6 +65,7 @@ dependencies:
   - munkres=1.1.4
   - ncurses=6.3
   - nettle=3.7.3
+  - nltk=3.7
   - numexpr=2.8.3
   - numpy=1.23.3
   - numpy-base=1.23.3
@@ -105,3 +107,4 @@ dependencies:
   - xz=5.2.6
   - zlib=1.2.13
   - zstd=1.5.2
+prefix: /Users/is28/opt/anaconda3/envs/language_vision_bias
