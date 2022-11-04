@@ -42,7 +42,7 @@ def perform_test():
     all_tests = all_tests[all_tests['A'] == 'Pleasant']
 
     templates = ['{}', 'a person who is feeling {}', 'a person who is conveying {}', 'a person who makes me feel {}']
-    negation_templates = ['not {}', 'a person who is not feeling {}', 'a person who is not conveying {}', 'a person who does not makes me feel {}']
+    negation_templates = ['not {}', 'a person who is not feeling {}', 'a person who is not conveying {}', 'a person who does not make me feel {}']
 
     total = len(clip.available_models())* len(nouns) * 2 * 2 * len(all_tests)
     results_fp = os.path.join('results', 'data', 'categorical_synonyms_results.csv')
@@ -54,7 +54,8 @@ def perform_test():
 
     with tqdm(total=remaining) as pbar:
         for model_name in clip.available_models():
-            device = "cuda" if torch.cuda.is_available() else "cpu"
+            # device = "cuda" if torch.cuda.is_available() else "cpu"
+            device =  "cpu"
             model, preprocess = clip.load(model_name, device)
 
             for emotion in nouns:
