@@ -83,10 +83,10 @@ def perform_test(hold_out_pos_negative = True):
                         }
 
                         embeddings = {
-                            'X': extract_images(model, preprocess, stimuli['X'], device),
-                            'Y': extract_images(model, preprocess, stimuli['Y'], device),
-                            emotion: extract_text(model, preprocess, stimuli[emotion], device),
-                            'no_emotion': extract_text(model, preprocess, stimuli['no_emotion'], device)
+                            'X': extract_images(model, preprocess, stimuli['X'], device, model_name),
+                            'Y': extract_images(model, preprocess, stimuli['Y'], device, model_name),
+                            emotion: extract_text(model, preprocess, stimuli[emotion], device, model_name),
+                            'no_emotion': extract_text(model, preprocess, stimuli['no_emotion'], device, model_name)
                         }
 
                         npermutations = min(
