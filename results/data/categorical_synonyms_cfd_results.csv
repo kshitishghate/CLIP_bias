@@ -588,3 +588,4 @@ Asian,European-American,Asian-American,a person who makes me feel anger,a person
 Gender,Male,Female,a person who makes me feel anger,a person who does not make me feel anger,208,24,RN50x16,1e-06,0.77567816,1000000
 Race,European-American,African-American,a person who makes me feel anger,a person who does not make me feel anger,180,24,RN50x16,0.013861,0.23127127,1000000
 Asian,European-American,Asian-American,anger,apathy,104,13,RN50x16,0.999972,-0.5478414,1000000
+Gender,Male,Female,anger,apathy,208,13,RN50x16,1e-06,0.48651516,1000000
