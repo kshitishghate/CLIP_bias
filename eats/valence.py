@@ -36,10 +36,10 @@ if __name__ == '__main__':
                     }
 
                     embeddings = {
-                        'X': extract_images(model, preprocess, stimuli['X'], device),
-                        'Y': extract_images(model, preprocess, stimuli['Y'], device),
-                        'A': extract_text(model, preprocess, stimuli['A'], device),
-                        'B': extract_text(model, preprocess, stimuli['B'], device)
+                        'X': extract_images(model, preprocess, stimuli['X'], device, model_name),
+                        'Y': extract_images(model, preprocess, stimuli['Y'], device, model_name),
+                        'A': extract_text(model, preprocess, stimuli['A'], device, model_name),
+                        'B': extract_text(model, preprocess, stimuli['B'], device, model_name)
                     }
 
                     npermutations = min(

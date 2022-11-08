@@ -1,4 +1,5 @@
 import os
+import numpy as np
 
 import pandas as pd
 import torch
@@ -6,6 +7,10 @@ from PIL import Image
 
 from CLIP import clip
 
+global image_embedding_dict
+image_embedding_dict = {}
+global text_embedding_dict
+text_embedding_dict = {}
 
 def load_words(test, category, nwords=None):
     if category == 'Pleasant':
@@ -17,13 +22,47 @@ def load_words(test, category, nwords=None):
     return words
 
 
-def load_images(test, category):
-    image_dir = os.path.join('ieat', 'data', 'experiments', test.lower(), category.lower())
-    image_paths = [os.path.join(image_dir, n) for n in os.listdir(image_dir)]
+def load_images(test, category, dataset='ieat'):
+    if dataset == 'ieat':
+        image_dir = os.path.join('ieat', 'data', 'experiments', test.lower(), category.lower())
+        image_paths = [os.path.join(image_dir, n) for n in os.listdir(image_dir)]
+    elif dataset=='cfd':
+        codebook = pd.read_excel(os.path.join('data','CFD Version 3.0','CFD 3.0 Norming Data and Codebook.xlsx'),
+                                 sheet_name = 'CFD U.S. Norming Data',
+                                 header=7,
+                                 engine='openpyxl')
+
+
+        if test == 'Gender':
+            sample_size = codebook.groupby(['EthnicitySelf','GenderSelf'])['Model'].count().min()
+            relevant_models = codebook.groupby(['EthnicitySelf','GenderSelf']).sample(sample_size)
+            gender_map = {'Male':'M','Female':'F'}
+            relevant_models = relevant_models[relevant_models['GenderSelf'] == gender_map[category]]['Model'].tolist()
+
+        elif test in ['Asian','Race']:
+            ethnicity_map = {'European-American': 'W', 'African-American': 'B', 'Asian-American': 'A'}
+            both_ethnicities_map = {'Asian': ['W', 'A'],'Race':['B','W']}
+
+            both_ethnicities = codebook[codebook['EthnicitySelf'].isin(both_ethnicities_map[test])]
+            sample_size = both_ethnicities.groupby(['EthnicitySelf','GenderSelf'])['Model'].count().min()
+
+            relevant_models = codebook[codebook['EthnicitySelf'] == ethnicity_map[category]]
+            np.random.seed(6471043)
+            relevant_models = relevant_models.groupby('GenderSelf').sample(sample_size)['Model'].tolist()
+
+        image_dirs = [os.path.join('data','CFD Version 3.0','Images','CFD', m) for m in relevant_models]
+        image_paths = []
+        for dir in image_dirs:
+            # Only get neutral images
+            possible_images = [p for p in os.listdir(dir)if p.replace('.jpg','').split('-')[-1] == 'N']
+            if len(possible_images) != 1:
+                raise ValueError
+            image_paths.append(os.path.join(dir,possible_images[0]))
+
     return image_paths
 
 
-def extract_images(model, preprocess, image_paths, device):
+def extract_images(model, preprocess, image_paths, device, model_name):
     image_features = []
     for i in image_paths:
         image = preprocess(Image.open(i)).unsqueeze(0).to(device)
@@ -33,7 +72,7 @@ def extract_images(model, preprocess, image_paths, device):
     return image_features
 
 
-def extract_text(model, preprocess, text, device):
+def extract_text(model, preprocess, text, device, model_name):
     processed_text = clip.tokenize(text).to(device)
     with torch.no_grad():
         text_features = model.encode_text(processed_text).cpu().detach().numpy()

@@ -40,12 +40,16 @@ def perform_test():
 
     all_tests = pd.read_csv(os.path.join('data', 'tests.csv'))
     all_tests = all_tests[all_tests['A'] == 'Pleasant']
+    all_tests = all_tests[~all_tests['Title'].isin(['Disabled','Insect-Flower','Religion',
+                                                    'Sexuality','Skin-Tone','Weapon','Weight','Age','Arab-Muslim',
+                                                    'Native'])].reset_index(drop=True)
+
 
     templates = ['{}', 'a person who is feeling {}', 'a person who is conveying {}', 'a person who makes me feel {}']
     negation_templates = ['not {}', 'a person who is not feeling {}', 'a person who is not conveying {}', 'a person who does not make me feel {}']
 
     total = len(clip.available_models())* len(nouns) * 2 * 2 * len(all_tests)
-    results_fp = os.path.join('results', 'data', 'categorical_synonyms_results.csv')
+    results_fp = os.path.join('results', 'data', 'categorical_synonyms_cfd_results.csv')
     if os.path.exists(results_fp):
         completed = len(pd.read_csv(results_fp))
     else:
@@ -76,14 +80,15 @@ def perform_test():
                             test['A'] = context.format(emotion)
                             test['B'] = opposite_context.format(emotion) if comparison_name == 'negation' else context.format('apathy')
                             test['na'] = len(phrases)
+                            test['nt'] = len(load_images(test['Title'], test['X'], 'cfd'))
                             test.name = None
 
                             if not test_already_run(model_name, test, results_fp):
                                 np.random.seed(82804230)
 
                                 stimuli = {
-                                    'X': load_images(test['Title'], test['X']),
-                                    'Y': load_images(test['Title'], test['Y']),
+                                    'X': load_images(test['Title'], test['X'], 'cfd'),
+                                    'Y': load_images(test['Title'], test['Y'], 'cfd'),
                                     emotion: phrases,
                                     comparison_name: opposite_phrases
                                 }
@@ -114,4 +119,4 @@ def perform_test():
                                 pbar.update()
 
 if __name__ == '__main__':
-    get_word_list('trust', 'n')
+    perform_test()
