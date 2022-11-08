@@ -36,7 +36,8 @@ def get_word_list(word, pos):
 
 
 def perform_test():
-    nouns = ['anger', 'anticipation', 'disgust', 'fear', 'joy', 'sadness', 'surprise', 'trust']
+    nouns = ['anger', 'anticipation', 'disgust', 'fear']
+    # nouns = ['joy', 'sadness', 'surprise', 'trust']
 
     all_tests = pd.read_csv(os.path.join('data', 'tests.csv'))
     all_tests = all_tests[all_tests['A'] == 'Pleasant']
@@ -51,7 +52,9 @@ def perform_test():
     total = len(clip.available_models())* len(nouns) * 2 * 2 * len(all_tests)
     results_fp = os.path.join('results', 'data', 'categorical_synonyms_cfd_results.csv')
     if os.path.exists(results_fp):
-        completed = len(pd.read_csv(results_fp))
+        completed = pd.read_csv(results_fp)
+        completed = [completed['A'].str.contains(a) for a in nouns]
+        completed = pd.concat(completed, axis=1).any(axis=1).sum()
     else:
         completed = 0
     remaining = total - completed
