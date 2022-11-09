@@ -856,6 +856,14 @@ Race,European-American,African-American,a person who makes me feel trust,a perso
 Asian,European-American,Asian-American,trust,apathy,104,13,RN50x64,0.999595,-0.45849553,1000000
 Gender,Male,Female,trust,apathy,208,13,RN50x64,0.006849,0.24165136,1000000
 Race,European-American,African-American,trust,apathy,180,13,RN50x64,0.999979,-0.4267037,1000000
+Asian,European-American,Asian-American,a person who is feeling trust,a person who is feeling apathy,104,13,RN50x64,0.885866,-0.16771483,1000000
+Gender,Male,Female,a person who is feeling trust,a person who is feeling apathy,208,13,RN50x64,1e-06,0.83547205,1000000
+Race,European-American,African-American,a person who is feeling trust,a person who is feeling apathy,180,13,RN50x64,0.999978,-0.43261072,1000000
+Asian,European-American,Asian-American,a person who is conveying trust,a person who is conveying apathy,104,13,RN50x64,0.491807,0.002660842,1000000
+Gender,Male,Female,a person who is conveying trust,a person who is conveying apathy,208,13,RN50x64,4.7e-05,0.38094902,1000000
+Race,European-American,African-American,a person who is conveying trust,a person who is conveying apathy,180,13,RN50x64,0.999557,-0.3491486,1000000
+Asian,European-American,Asian-American,a person who makes me feel trust,a person who makes me feel apathy,104,13,RN50x64,1.0,-0.67506045,1000000
+Gender,Male,Female,a person who makes me feel trust,a person who makes me feel apathy,208,13,RN50x64,0.164931,0.095750466,1000000
 Race,European-American,African-American,anger,not anger,180,24,RN50x64,0.027751,0.20162147,1000000
 Asian,European-American,Asian-American,a person who is feeling anger,a person who is not feeling anger,104,24,RN50x64,1e-06,0.70013547,1000000
 Gender,Male,Female,a person who is feeling anger,a person who is not feeling anger,208,24,RN50x64,1e-06,0.4860004,1000000
