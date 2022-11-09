@@ -125,4 +125,6 @@
 /data/NRC-Emotion-Lexicon/Paper1_NRC_Emotion_Lexicon.pdf filter=lfs diff=lfs merge=lfs -text
 /results/data/categorical_results.csv filter=lfs diff=lfs merge=lfs -text
 /results/data/categorical_synonyms_results.csv filter=lfs diff=lfs merge=lfs -text
+/data/fairface_label_train.csv filter=lfs diff=lfs merge=lfs -text
+/data/fairface-img-margin025-trainval/fairface_label_train.csv filter=lfs diff=lfs merge=lfs -text
 --above=100Kb !text !filter !merge !diff
