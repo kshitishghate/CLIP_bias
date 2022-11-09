@@ -49,7 +49,7 @@ def perform_test():
     templates = ['{}', 'a person who is feeling {}', 'a person who is conveying {}', 'a person who makes me feel {}']
     negation_templates = ['not {}', 'a person who is not feeling {}', 'a person who is not conveying {}', 'a person who does not make me feel {}']
 
-    total = len(clip.available_models())* len(nouns) * 2 * 2 * len(all_tests)
+    total = len(clip.available_models()) * len(nouns) * 2 * len(templates) * len(all_tests)
     results_fp = os.path.join('results', 'data', 'categorical_synonyms_cfd_results.csv')
     if os.path.exists(results_fp):
         completed = pd.read_csv(results_fp)
