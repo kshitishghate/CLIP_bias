@@ -62,7 +62,7 @@ def perform_test():
     with tqdm(total=remaining) as pbar:
         for model_name in clip.available_models():
             # device = "cuda" if torch.cuda.is_available() else "cpu"
-            device =  "cpu"
+            device = "cpu"
             model, preprocess = clip.load(model_name, device)
 
             for emotion in nouns:

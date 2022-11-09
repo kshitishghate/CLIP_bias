@@ -12,6 +12,12 @@ image_embedding_dict = {}
 global text_embedding_dict
 text_embedding_dict = {}
 
+
+def clear_dict(model_name):
+    keys = list(image_embedding_dict.keys())
+    for k in keys:
+        if k[0] != model_name:
+            del image_embedding_dict[k]
 def load_words(test, category, nwords=None):
     if category == 'Pleasant':
         all_words = pd.read_csv(os.path.join('ieat', 'data', 'bgb_pleasant-words.csv'))
@@ -41,7 +47,7 @@ def load_images(test, category, dataset='ieat'):
 
         elif test in ['Asian','Race']:
             ethnicity_map = {'European-American': 'W', 'African-American': 'B', 'Asian-American': 'A'}
-            both_ethnicities_map = {'Asian': ['W', 'A'],'Race':['B','W']}
+            both_ethnicities_map = {'Asian': ['W', 'A'], 'Race': ['B','W']}
 
             both_ethnicities = codebook[codebook['EthnicitySelf'].isin(both_ethnicities_map[test])]
             sample_size = both_ethnicities.groupby(['EthnicitySelf','GenderSelf'])['Model'].count().min()
@@ -64,11 +70,16 @@ def load_images(test, category, dataset='ieat'):
 
 def extract_images(model, preprocess, image_paths, device, model_name):
     image_features = []
-    for i in image_paths:
-        image = preprocess(Image.open(i)).unsqueeze(0).to(device)
-        with torch.no_grad():
-            image_features.append(model.encode_image(image))
-    image_features = torch.stack(image_features).squeeze().cpu().detach().numpy()
+    if (model_name, tuple(image_paths)) not in image_embedding_dict.keys():
+        for i in image_paths:
+            image = preprocess(Image.open(i)).unsqueeze(0).to(device)
+            with torch.no_grad():
+                image_features.append(model.encode_image(image))
+        image_features = torch.stack(image_features).squeeze().cpu().detach().numpy()
+        image_embedding_dict[(model_name, tuple(image_paths))] = image_features
+        clear_dict(model_name)
+    else:
+        image_features = image_embedding_dict[(model_name, tuple(image_paths))]
     return image_features
 
 
