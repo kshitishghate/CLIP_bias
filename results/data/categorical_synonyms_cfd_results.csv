@@ -847,8 +847,89 @@ Asian,European-American,Asian-American,a person who is conveying trust,a person 
 Gender,Male,Female,a person who is conveying trust,a person who is not conveying trust,208,33,RN50x64,6.7e-05,0.3770684,1000000
 Race,European-American,African-American,a person who is conveying trust,a person who is not conveying trust,180,33,RN50x64,1.0,-0.6106443,1000000
 Asian,European-American,Asian-American,a person who makes me feel trust,a person who does not make me feel trust,104,33,RN50x64,1.0,-0.8537561,1000000
+Gender,Male,Female,a person who makes me feel fear,a person who makes me feel apathy,208,13,RN50x16,0.480195,0.0049889665,1000000
+Race,European-American,African-American,a person who makes me feel fear,a person who makes me feel apathy,180,13,RN50x16,1.0,-0.77210325,1000000
+Asian,European-American,Asian-American,anger,not anger,104,24,RN50x64,1e-06,1.2250967,1000000
+Gender,Male,Female,anger,not anger,208,24,RN50x64,0.541827,-0.010193965,1000000
 Gender,Male,Female,a person who makes me feel trust,a person who does not make me feel trust,208,33,RN50x64,0.792373,-0.07991456,1000000
 Race,European-American,African-American,a person who makes me feel trust,a person who does not make me feel trust,180,33,RN50x64,1.0,-0.78127867,1000000
 Asian,European-American,Asian-American,trust,apathy,104,13,RN50x64,0.999595,-0.45849553,1000000
 Gender,Male,Female,trust,apathy,208,13,RN50x64,0.006849,0.24165136,1000000
 Race,European-American,African-American,trust,apathy,180,13,RN50x64,0.999979,-0.4267037,1000000
+Race,European-American,African-American,anger,not anger,180,24,RN50x64,0.027751,0.20162147,1000000
+Asian,European-American,Asian-American,a person who is feeling anger,a person who is not feeling anger,104,24,RN50x64,1e-06,0.70013547,1000000
+Gender,Male,Female,a person who is feeling anger,a person who is not feeling anger,208,24,RN50x64,1e-06,0.4860004,1000000
+Race,European-American,African-American,a person who is feeling anger,a person who is not feeling anger,180,24,RN50x64,0.316003,0.050720155,1000000
+Asian,European-American,Asian-American,a person who is conveying anger,a person who is not conveying anger,104,24,RN50x64,0.073295,0.20153996,1000000
+Gender,Male,Female,a person who is conveying anger,a person who is not conveying anger,208,24,RN50x64,0.001005,0.3017746,1000000
+Race,European-American,African-American,a person who is conveying anger,a person who is not conveying anger,180,24,RN50x64,1.0,-0.7173781,1000000
+Asian,European-American,Asian-American,a person who makes me feel anger,a person who does not make me feel anger,104,24,RN50x64,0.995286,-0.35881263,1000000
+Gender,Male,Female,a person who makes me feel anger,a person who does not make me feel anger,208,24,RN50x64,0.806289,-0.08469261,1000000
+Race,European-American,African-American,a person who makes me feel anger,a person who does not make me feel anger,180,24,RN50x64,1.0,-0.7910242,1000000
+Asian,European-American,Asian-American,anger,apathy,104,13,RN50x64,0.238169,0.0991499,1000000
+Gender,Male,Female,anger,apathy,208,13,RN50x64,1e-06,0.9519627,1000000
+Race,European-American,African-American,anger,apathy,180,13,RN50x64,0.640974,-0.0381534,1000000
+Asian,European-American,Asian-American,a person who is feeling anger,a person who is feeling apathy,104,13,RN50x64,0.998057,-0.3973561,1000000
+Gender,Male,Female,a person who is feeling anger,a person who is feeling apathy,208,13,RN50x64,0.000424,0.32552004,1000000
+Race,European-American,African-American,a person who is feeling anger,a person who is feeling apathy,180,13,RN50x64,0.63568,-0.036555372,1000000
+Asian,European-American,Asian-American,a person who is conveying anger,a person who is conveying apathy,104,13,RN50x64,0.991553,-0.33049512,1000000
+Gender,Male,Female,a person who is conveying anger,a person who is conveying apathy,208,13,RN50x64,1.4e-05,0.40652463,1000000
+Race,European-American,African-American,a person who is conveying anger,a person who is conveying apathy,180,13,RN50x64,0.998497,-0.31289062,1000000
+Asian,European-American,Asian-American,a person who makes me feel anger,a person who makes me feel apathy,104,13,RN50x64,0.99982,-0.49168816,1000000
+Gender,Male,Female,a person who makes me feel anger,a person who makes me feel apathy,208,13,RN50x64,1.0,-0.82887304,1000000
+Race,European-American,African-American,a person who makes me feel anger,a person who makes me feel apathy,180,13,RN50x64,0.975966,-0.20794994,1000000
+Asian,European-American,Asian-American,anticipation,not anticipation,104,16,RN50x64,1e-06,1.0287843,1000000
+Gender,Male,Female,anticipation,not anticipation,208,16,RN50x64,1e-06,0.56510186,1000000
+Race,European-American,African-American,anticipation,not anticipation,180,16,RN50x64,0.007754,0.2546114,1000000
+Asian,European-American,Asian-American,a person who is feeling anticipation,a person who is not feeling anticipation,104,16,RN50x64,1e-05,0.5868096,1000000
+Gender,Male,Female,a person who is feeling anticipation,a person who is not feeling anticipation,208,16,RN50x64,1e-06,0.79410446,1000000
+Race,European-American,African-American,a person who is feeling anticipation,a person who is not feeling anticipation,180,16,RN50x64,0.073342,0.1533069,1000000
+Asian,European-American,Asian-American,a person who is conveying anticipation,a person who is not conveying anticipation,104,16,RN50x64,0.939242,-0.21479255,1000000
+Gender,Male,Female,a person who is conveying anticipation,a person who is not conveying anticipation,208,16,RN50x64,1e-06,0.6115891,1000000
+Race,European-American,African-American,a person who is conveying anticipation,a person who is not conveying anticipation,180,16,RN50x64,1.0,-0.92535734,1000000
+Asian,European-American,Asian-American,a person who makes me feel anticipation,a person who does not make me feel anticipation,104,16,RN50x64,1.0,-0.7466249,1000000
+Gender,Male,Female,a person who makes me feel anticipation,a person who does not make me feel anticipation,208,16,RN50x64,0.001581,0.2886186,1000000
+Race,European-American,African-American,a person who makes me feel anticipation,a person who does not make me feel anticipation,180,16,RN50x64,1.0,-0.8732215,1000000
+Asian,European-American,Asian-American,anticipation,apathy,104,13,RN50x64,0.933849,-0.20959668,1000000
+Gender,Male,Female,anticipation,apathy,208,13,RN50x64,1e-06,0.91993576,1000000
+Race,European-American,African-American,anticipation,apathy,180,13,RN50x64,0.938051,-0.16270716,1000000
+Asian,European-American,Asian-American,a person who is feeling anticipation,a person who is feeling apathy,104,13,RN50x64,0.99957,-0.45877433,1000000
+Gender,Male,Female,a person who is feeling anticipation,a person who is feeling apathy,208,13,RN50x64,1e-06,0.949896,1000000
+Race,European-American,African-American,a person who is feeling anticipation,a person who is feeling apathy,180,13,RN50x64,0.982268,-0.22187212,1000000
+Asian,European-American,Asian-American,a person who is conveying anticipation,a person who is conveying apathy,104,13,RN50x64,0.999467,-0.4488704,1000000
+Gender,Male,Female,a person who is conveying anticipation,a person who is conveying apathy,208,13,RN50x64,1e-06,0.75929785,1000000
+Race,European-American,African-American,a person who is conveying anticipation,a person who is conveying apathy,180,13,RN50x64,0.99988,-0.3855587,1000000
+Asian,European-American,Asian-American,a person who makes me feel anticipation,a person who makes me feel apathy,104,13,RN50x64,1.0,-0.8954943,1000000
+Gender,Male,Female,a person who makes me feel anticipation,a person who makes me feel apathy,208,13,RN50x64,0.004019,0.25983754,1000000
+Race,European-American,African-American,a person who makes me feel anticipation,a person who makes me feel apathy,180,13,RN50x64,1.0,-0.6221129,1000000
+Asian,European-American,Asian-American,disgust,not disgust,104,12,RN50x64,0.039055,0.24430151,1000000
+Gender,Male,Female,disgust,not disgust,208,12,RN50x64,0.421637,0.019651502,1000000
+Race,European-American,African-American,disgust,not disgust,180,12,RN50x64,1.0,-0.57333213,1000000
+Asian,European-American,Asian-American,a person who is feeling disgust,a person who is not feeling disgust,104,12,RN50x64,1e-05,0.58605105,1000000
+Gender,Male,Female,a person who is feeling disgust,a person who is not feeling disgust,208,12,RN50x64,0.033647,0.17955187,1000000
+Race,European-American,African-American,a person who is feeling disgust,a person who is not feeling disgust,180,12,RN50x64,0.373045,0.034136403,1000000
+Asian,European-American,Asian-American,a person who is conveying disgust,a person who is not conveying disgust,104,12,RN50x64,0.130798,0.15582223,1000000
+Gender,Male,Female,a person who is conveying disgust,a person who is not conveying disgust,208,12,RN50x64,1e-06,0.78452784,1000000
+Race,European-American,African-American,a person who is conveying disgust,a person who is not conveying disgust,180,12,RN50x64,1.0,-0.675741,1000000
+Asian,European-American,Asian-American,a person who makes me feel disgust,a person who does not make me feel disgust,104,12,RN50x64,0.927997,-0.20306328,1000000
+Gender,Male,Female,a person who makes me feel disgust,a person who does not make me feel disgust,208,12,RN50x64,0.088637,0.1325507,1000000
+Race,European-American,African-American,a person who makes me feel disgust,a person who does not make me feel disgust,180,12,RN50x64,0.002767,0.29199603,1000000
+Asian,European-American,Asian-American,disgust,apathy,104,12,RN50x64,0.973853,-0.2693474,1000000
+Gender,Male,Female,disgust,apathy,208,12,RN50x64,0.811843,-0.086877696,1000000
+Race,European-American,African-American,disgust,apathy,180,12,RN50x64,0.007401,0.25697047,1000000
+Asian,European-American,Asian-American,a person who is feeling disgust,a person who is feeling apathy,104,12,RN50x64,0.264518,0.08770589,1000000
+Gender,Male,Female,a person who is feeling disgust,a person who is feeling apathy,208,12,RN50x64,0.680408,-0.046318747,1000000
+Race,European-American,African-American,a person who is feeling disgust,a person who is feeling apathy,180,12,RN50x64,6.6e-05,0.4056511,1000000
+Asian,European-American,Asian-American,a person who is conveying disgust,a person who is conveying apathy,104,12,RN50x64,0.084206,0.19139168,1000000
+Gender,Male,Female,a person who is conveying disgust,a person who is conveying apathy,208,12,RN50x64,0.882527,-0.11668194,1000000
+Race,European-American,African-American,a person who is conveying disgust,a person who is conveying apathy,180,12,RN50x64,0.322728,0.048520822,1000000
+Asian,European-American,Asian-American,a person who makes me feel disgust,a person who makes me feel apathy,104,12,RN50x64,0.018523,0.28918108,1000000
+Gender,Male,Female,a person who makes me feel disgust,a person who makes me feel apathy,208,12,RN50x64,0.997028,-0.26977697,1000000
+Race,European-American,African-American,a person who makes me feel disgust,a person who makes me feel apathy,180,12,RN50x64,1e-06,1.000241,1000000
+Asian,European-American,Asian-American,fear,not fear,104,34,RN50x64,1e-06,0.63674307,1000000
+Gender,Male,Female,fear,not fear,208,34,RN50x64,0.244729,0.06802732,1000000
+Race,European-American,African-American,fear,not fear,180,34,RN50x64,0.269746,0.06501981,1000000
+Asian,European-American,Asian-American,a person who is feeling fear,a person who is not feeling fear,104,34,RN50x64,1e-06,0.6996032,1000000
+Gender,Male,Female,a person who is feeling fear,a person who is not feeling fear,208,34,RN50x64,1.8e-05,0.3966595,1000000
+Race,European-American,African-American,a person who is feeling fear,a person who is not feeling fear,180,34,RN50x64,0.000285,0.36070728,1000000
+Asian,European-American,Asian-American,a person who is conveying fear,a person who is not conveying fear,104,34,RN50x64,0.019138,0.2870367,1000000
