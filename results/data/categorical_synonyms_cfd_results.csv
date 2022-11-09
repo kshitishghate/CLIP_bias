@@ -847,3 +847,8 @@ Asian,European-American,Asian-American,a person who is conveying trust,a person 
 Gender,Male,Female,a person who is conveying trust,a person who is not conveying trust,208,33,RN50x64,6.7e-05,0.3770684,1000000
 Race,European-American,African-American,a person who is conveying trust,a person who is not conveying trust,180,33,RN50x64,1.0,-0.6106443,1000000
 Asian,European-American,Asian-American,a person who makes me feel trust,a person who does not make me feel trust,104,33,RN50x64,1.0,-0.8537561,1000000
+Gender,Male,Female,a person who makes me feel trust,a person who does not make me feel trust,208,33,RN50x64,0.792373,-0.07991456,1000000
+Race,European-American,African-American,a person who makes me feel trust,a person who does not make me feel trust,180,33,RN50x64,1.0,-0.78127867,1000000
+Asian,European-American,Asian-American,trust,apathy,104,13,RN50x64,0.999595,-0.45849553,1000000
+Gender,Male,Female,trust,apathy,208,13,RN50x64,0.006849,0.24165136,1000000
+Race,European-American,African-American,trust,apathy,180,13,RN50x64,0.999979,-0.4267037,1000000
