@@ -84,6 +84,7 @@ def extract_images(model, preprocess, image_paths, device, model_name):
 
 
 def extract_text(model, preprocess, text, device, model_name):
+    text = np.sort(text)
     if (model_name, tuple(text)) not in text_embedding_dict.keys():
         processed_text = clip.tokenize(text).to(device)
         with torch.no_grad():
@@ -91,5 +92,5 @@ def extract_text(model, preprocess, text, device, model_name):
         text_embedding_dict[(model_name, tuple(text))] = text_features
         clear_dict(text_embedding_dict, model_name)
     else:
-        text_features = image_embedding_dict[(model_name, tuple(text))]
+        text_features = text_embedding_dict[(model_name, tuple(text))]
     return text_features
