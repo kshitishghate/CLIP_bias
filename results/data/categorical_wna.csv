@@ -1,0 +1,217 @@
+Title,X,Y,A,B,nt,na,model,pvalue,effect_size,npermutations
+Asian,European-American,Asian-American,anger,not anger,104,126,ViT-L/14@336px,0.462171,0.013389211,1000000
+Gender,Male,Female,anger,not anger,208,126,ViT-L/14@336px,0.977256,-0.19611776,1000000
+Race,European-American,African-American,anger,not anger,180,126,ViT-L/14@336px,0.399277,0.02709377,1000000
+Asian,European-American,Asian-American,anger,apathy,104,28,ViT-L/14@336px,0.999944,-0.5301425,1000000
+Gender,Male,Female,anger,apathy,208,28,ViT-L/14@336px,1.0,-0.6981614,1000000
+Race,European-American,African-American,anger,apathy,180,28,ViT-L/14@336px,0.999999,-0.48550522,1000000
+Asian,European-American,Asian-American,disgust,not disgust,104,28,ViT-L/14@336px,0.00419,0.36381614,1000000
+Gender,Male,Female,disgust,not disgust,208,28,ViT-L/14@336px,0.003176,0.26696774,1000000
+Race,European-American,African-American,disgust,not disgust,180,28,ViT-L/14@336px,0.043413,0.18070276,1000000
+Asian,European-American,Asian-American,disgust,apathy,104,28,ViT-L/14@336px,0.010714,0.31806988,1000000
+Gender,Male,Female,disgust,apathy,208,28,ViT-L/14@336px,1.0,-0.5839214,1000000
+Race,European-American,African-American,disgust,apathy,180,28,ViT-L/14@336px,0.000142,0.38226467,1000000
+Asian,European-American,Asian-American,fear,not fear,104,140,ViT-L/14@336px,0.001099,0.42363226,1000000
+Gender,Male,Female,fear,not fear,208,140,ViT-L/14@336px,0.015912,0.21030024,1000000
+Race,European-American,African-American,fear,not fear,180,140,ViT-L/14@336px,1e-06,0.9253623,1000000
+Asian,European-American,Asian-American,fear,apathy,104,28,ViT-L/14@336px,0.060633,0.21513078,1000000
+Gender,Male,Female,fear,apathy,208,28,ViT-L/14@336px,0.883293,-0.11663459,1000000
+Race,European-American,African-American,fear,apathy,180,28,ViT-L/14@336px,1.0,-0.8265071,1000000
+Asian,European-American,Asian-American,joy,not joy,104,196,ViT-L/14@336px,0.443122,0.01978782,1000000
+Gender,Male,Female,joy,not joy,208,196,ViT-L/14@336px,1e-06,0.7250454,1000000
+Race,European-American,African-American,joy,not joy,180,196,ViT-L/14@336px,1.0,-0.5531925,1000000
+Asian,European-American,Asian-American,joy,apathy,104,28,ViT-L/14@336px,0.883746,-0.16592273,1000000
+Gender,Male,Female,joy,apathy,208,28,ViT-L/14@336px,0.991699,-0.23456417,1000000
+Race,European-American,African-American,joy,apathy,180,28,ViT-L/14@336px,1.0,-0.5711097,1000000
+Asian,European-American,Asian-American,anger,not anger,104,126,ViT-L/14,0.487081,0.004605637,1000000
+Gender,Male,Female,anger,not anger,208,126,ViT-L/14,0.961926,-0.17375088,1000000
+Race,European-American,African-American,anger,not anger,180,126,ViT-L/14,0.015352,0.2275397,1000000
+Asian,European-American,Asian-American,anger,apathy,104,28,ViT-L/14,0.111668,0.16928947,1000000
+Gender,Male,Female,anger,apathy,208,28,ViT-L/14,0.999957,-0.38367933,1000000
+Race,European-American,African-American,anger,apathy,180,28,ViT-L/14,0.999448,-0.34201443,1000000
+Asian,European-American,Asian-American,disgust,not disgust,104,28,ViT-L/14,0.00021,0.48066607,1000000
+Gender,Male,Female,disgust,not disgust,208,28,ViT-L/14,0.000993,0.30182835,1000000
+Race,European-American,African-American,disgust,not disgust,180,28,ViT-L/14,0.000945,0.32659268,1000000
+Asian,European-American,Asian-American,disgust,apathy,104,28,ViT-L/14,0.001346,0.41289237,1000000
+Gender,Male,Female,disgust,apathy,208,28,ViT-L/14,1.0,-0.5873825,1000000
+Race,European-American,African-American,disgust,apathy,180,28,ViT-L/14,3e-06,0.49245155,1000000
+Asian,European-American,Asian-American,fear,not fear,104,140,ViT-L/14,0.001,0.4259216,1000000
+Gender,Male,Female,fear,not fear,208,140,ViT-L/14,0.006467,0.24324079,1000000
+Race,European-American,African-American,fear,not fear,180,140,ViT-L/14,1e-06,0.99959654,1000000
+Asian,European-American,Asian-American,fear,apathy,104,28,ViT-L/14,5.2e-05,0.52830076,1000000
+Gender,Male,Female,fear,apathy,208,28,ViT-L/14,0.991139,-0.23149243,1000000
+Race,European-American,African-American,fear,apathy,180,28,ViT-L/14,0.049461,0.17413655,1000000
+Asian,European-American,Asian-American,joy,not joy,104,196,ViT-L/14,0.917288,-0.1928223,1000000
+Gender,Male,Female,joy,not joy,208,196,ViT-L/14,1e-06,0.8013483,1000000
+Race,European-American,African-American,joy,not joy,180,196,ViT-L/14,0.999947,-0.40844253,1000000
+Asian,European-American,Asian-American,joy,apathy,104,28,ViT-L/14,0.476306,0.008189325,1000000
+Gender,Male,Female,joy,apathy,208,28,ViT-L/14,0.853431,-0.10359841,1000000
+Race,European-American,African-American,joy,apathy,180,28,ViT-L/14,0.999938,-0.39703727,1000000
+Asian,European-American,Asian-American,anger,not anger,104,126,ViT-B/16,0.491182,0.0028533335,1000000
+Gender,Male,Female,anger,not anger,208,126,ViT-B/16,1e-06,1.0518881,1000000
+Race,European-American,African-American,anger,not anger,180,126,ViT-B/16,0.999773,-0.36783874,1000000
+Asian,European-American,Asian-American,anger,apathy,104,28,ViT-B/16,0.998624,-0.41280726,1000000
+Gender,Male,Female,anger,apathy,208,28,ViT-B/16,1.0,-0.5574454,1000000
+Race,European-American,African-American,anger,apathy,180,28,ViT-B/16,1.0,-0.83537185,1000000
+Asian,European-American,Asian-American,disgust,not disgust,104,28,ViT-B/16,0.296906,0.07396557,1000000
+Gender,Male,Female,disgust,not disgust,208,28,ViT-B/16,1e-06,1.093176,1000000
+Race,European-American,African-American,disgust,not disgust,180,28,ViT-B/16,1.0,-0.49852815,1000000
+Asian,European-American,Asian-American,disgust,apathy,104,28,ViT-B/16,1e-06,0.7184452,1000000
+Gender,Male,Female,disgust,apathy,208,28,ViT-B/16,0.763449,-0.07054465,1000000
+Race,European-American,African-American,disgust,apathy,180,28,ViT-B/16,0.62385,-0.033421,1000000
+Asian,European-American,Asian-American,fear,not fear,104,140,ViT-B/16,0.3377,0.058177076,1000000
+Gender,Male,Female,fear,not fear,208,140,ViT-B/16,1e-06,1.0916172,1000000
+Race,European-American,African-American,fear,not fear,180,140,ViT-B/16,1e-06,0.62147117,1000000
+Asian,European-American,Asian-American,fear,apathy,104,28,ViT-B/16,0.002272,0.3896477,1000000
+Gender,Male,Female,fear,apathy,208,28,ViT-B/16,1e-06,0.82717896,1000000
+Race,European-American,African-American,fear,apathy,180,28,ViT-B/16,1.0,-0.5252369,1000000
+Asian,European-American,Asian-American,joy,not joy,104,196,ViT-B/16,0.292016,0.07590921,1000000
+Gender,Male,Female,joy,not joy,208,196,ViT-B/16,1e-06,0.95196295,1000000
+Race,European-American,African-American,joy,not joy,180,196,ViT-B/16,1.0,-0.5459348,1000000
+Asian,European-American,Asian-American,joy,apathy,104,28,ViT-B/16,0.000186,0.48899165,1000000
+Gender,Male,Female,joy,apathy,208,28,ViT-B/16,7.3e-05,0.37086424,1000000
+Race,European-American,African-American,joy,apathy,180,28,ViT-B/16,1.0,-1.0000217,1000000
+Asian,European-American,Asian-American,anger,not anger,104,126,ViT-B/32,0.983768,-0.29676312,1000000
+Gender,Male,Female,anger,not anger,208,126,ViT-B/32,1e-06,1.2333945,1000000
+Race,European-American,African-American,anger,not anger,180,126,ViT-B/32,0.843549,-0.10658066,1000000
+Asian,European-American,Asian-American,anger,apathy,104,28,ViT-B/32,1.0,-1.0078723,1000000
+Gender,Male,Female,anger,apathy,208,28,ViT-B/32,3.4e-05,0.38507357,1000000
+Race,European-American,African-American,anger,apathy,180,28,ViT-B/32,1.0,-0.978803,1000000
+Asian,European-American,Asian-American,disgust,not disgust,104,28,ViT-B/32,0.960657,-0.243853,1000000
+Gender,Male,Female,disgust,not disgust,208,28,ViT-B/32,1e-06,1.4269857,1000000
+Race,European-American,African-American,disgust,not disgust,180,28,ViT-B/32,0.079938,0.14786066,1000000
+Asian,European-American,Asian-American,disgust,apathy,104,28,ViT-B/32,0.177125,0.12888427,1000000
+Gender,Male,Female,disgust,apathy,208,28,ViT-B/32,1.0,-1.0405409,1000000
+Race,European-American,African-American,disgust,apathy,180,28,ViT-B/32,0.735677,-0.06662374,1000000
+Asian,European-American,Asian-American,fear,not fear,104,140,ViT-B/32,0.992424,-0.33586618,1000000
+Gender,Male,Female,fear,not fear,208,140,ViT-B/32,1e-06,1.3191575,1000000
+Race,European-American,African-American,fear,not fear,180,140,ViT-B/32,1e-05,0.44558737,1000000
+Asian,European-American,Asian-American,fear,apathy,104,28,ViT-B/32,1e-06,0.68331474,1000000
+Gender,Male,Female,fear,apathy,208,28,ViT-B/32,2e-06,0.44123915,1000000
+Race,European-American,African-American,fear,apathy,180,28,ViT-B/32,1e-06,0.52076954,1000000
+Asian,European-American,Asian-American,joy,not joy,104,196,ViT-B/32,0.999967,-0.5459967,1000000
+Gender,Male,Female,joy,not joy,208,196,ViT-B/32,1e-06,1.2778227,1000000
+Race,European-American,African-American,joy,not joy,180,196,ViT-B/32,1.0,-0.5810513,1000000
+Asian,European-American,Asian-American,joy,apathy,104,28,ViT-B/32,1.0,-1.2372552,1000000
+Gender,Male,Female,joy,apathy,208,28,ViT-B/32,1e-06,0.564022,1000000
+Race,European-American,African-American,joy,apathy,180,28,ViT-B/32,0.999985,-0.4359329,1000000
+Asian,European-American,Asian-American,anger,not anger,104,126,RN50x64,4e-06,0.6074707,1000000
+Gender,Male,Female,anger,not anger,208,126,RN50x64,7e-06,0.41334897,1000000
+Race,European-American,African-American,anger,not anger,180,126,RN50x64,0.999723,-0.36104003,1000000
+Asian,European-American,Asian-American,anger,apathy,104,28,RN50x64,0.903677,-0.18103379,1000000
+Gender,Male,Female,anger,apathy,208,28,RN50x64,1.0,-0.5696492,1000000
+Race,European-American,African-American,anger,apathy,180,28,RN50x64,1.0,-0.92924553,1000000
+Asian,European-American,Asian-American,disgust,not disgust,104,28,RN50x64,1e-06,0.8438623,1000000
+Gender,Male,Female,disgust,not disgust,208,28,RN50x64,1e-06,0.74924785,1000000
+Race,European-American,African-American,disgust,not disgust,180,28,RN50x64,0.881651,-0.12490372,1000000
+Asian,European-American,Asian-American,disgust,apathy,104,28,RN50x64,0.001505,0.4094671,1000000
+Gender,Male,Female,disgust,apathy,208,28,RN50x64,1.0,-0.95034635,1000000
+Race,European-American,African-American,disgust,apathy,180,28,RN50x64,0.128137,0.12010781,1000000
+Asian,European-American,Asian-American,fear,not fear,104,140,RN50x64,1e-06,0.77220607,1000000
+Gender,Male,Female,fear,not fear,208,140,RN50x64,1e-06,0.72504526,1000000
+Race,European-American,African-American,fear,not fear,180,140,RN50x64,1e-06,0.6976243,1000000
+Asian,European-American,Asian-American,fear,apathy,104,28,RN50x64,1.8e-05,0.54638106,1000000
+Gender,Male,Female,fear,apathy,208,28,RN50x64,0.999869,-0.3489794,1000000
+Race,European-American,African-American,fear,apathy,180,28,RN50x64,0.094222,0.13908298,1000000
+Asian,European-American,Asian-American,joy,not joy,104,196,RN50x64,0.284864,0.078817174,1000000
+Gender,Male,Female,joy,not joy,208,196,RN50x64,1e-06,0.838003,1000000
+Race,European-American,African-American,joy,not joy,180,196,RN50x64,1.0,-0.6407885,1000000
+Asian,European-American,Asian-American,joy,apathy,104,28,RN50x64,0.440534,0.020552685,1000000
+Gender,Male,Female,joy,apathy,208,28,RN50x64,0.999767,-0.34130606,1000000
+Race,European-American,African-American,joy,apathy,180,28,RN50x64,1.0,-0.54964375,1000000
+Asian,European-American,Asian-American,anger,not anger,104,126,RN50x16,0.93616,-0.21135904,1000000
+Gender,Male,Female,anger,not anger,208,126,RN50x16,1e-06,1.0114151,1000000
+Race,European-American,African-American,anger,not anger,180,126,RN50x16,0.999906,-0.39303347,1000000
+Asian,European-American,Asian-American,anger,apathy,104,28,RN50x16,0.999596,-0.4568578,1000000
+Gender,Male,Female,anger,apathy,208,28,RN50x16,0.170738,0.09359831,1000000
+Race,European-American,African-American,anger,apathy,180,28,RN50x16,1.0,-0.9181539,1000000
+Asian,European-American,Asian-American,disgust,not disgust,104,28,RN50x16,0.378592,0.0428743,1000000
+Gender,Male,Female,disgust,not disgust,208,28,RN50x16,1e-06,1.0066706,1000000
+Race,European-American,African-American,disgust,not disgust,180,28,RN50x16,0.077121,0.15058333,1000000
+Asian,European-American,Asian-American,disgust,apathy,104,28,RN50x16,0.020811,0.28210044,1000000
+Gender,Male,Female,disgust,apathy,208,28,RN50x16,1.0,-0.45713517,1000000
+Race,European-American,African-American,disgust,apathy,180,28,RN50x16,1e-06,0.5211694,1000000
+Asian,European-American,Asian-American,fear,not fear,104,140,RN50x16,0.750783,-0.094379894,1000000
+Gender,Male,Female,fear,not fear,208,140,RN50x16,1e-06,0.9459149,1000000
+Race,European-American,African-American,fear,not fear,180,140,RN50x16,2e-06,0.529357,1000000
+Asian,European-American,Asian-American,fear,apathy,104,28,RN50x16,1e-06,0.7023406,1000000
+Gender,Male,Female,fear,apathy,208,28,RN50x16,1.0,-0.9017973,1000000
+Race,European-American,African-American,fear,apathy,180,28,RN50x16,0.534772,-0.008863189,1000000
+Asian,European-American,Asian-American,joy,not joy,104,196,RN50x16,0.99923,-0.43738988,1000000
+Gender,Male,Female,joy,not joy,208,196,RN50x16,1e-06,0.66239214,1000000
+Race,European-American,African-American,joy,not joy,180,196,RN50x16,1.0,-0.5587964,1000000
+Asian,European-American,Asian-American,joy,apathy,104,28,RN50x16,0.999876,-0.5012726,1000000
+Gender,Male,Female,joy,apathy,208,28,RN50x16,1.0,-0.7394628,1000000
+Race,European-American,African-American,joy,apathy,180,28,RN50x16,0.999993,-0.45214063,1000000
+Asian,European-American,Asian-American,anger,not anger,104,126,RN50x4,1e-06,0.7470339,1000000
+Gender,Male,Female,anger,not anger,208,126,RN50x4,1e-06,0.85016763,1000000
+Race,European-American,African-American,anger,not anger,180,126,RN50x4,0.999327,-0.33727646,1000000
+Asian,European-American,Asian-American,anger,apathy,104,28,RN50x4,0.030923,0.2584433,1000000
+Gender,Male,Female,anger,apathy,208,28,RN50x4,0.958284,-0.16946349,1000000
+Race,European-American,African-American,anger,apathy,180,28,RN50x4,0.999997,-0.48071033,1000000
+Asian,European-American,Asian-American,disgust,not disgust,104,28,RN50x4,0.097302,0.17976569,1000000
+Gender,Male,Female,disgust,not disgust,208,28,RN50x4,1e-06,0.93427736,1000000
+Race,European-American,African-American,disgust,not disgust,180,28,RN50x4,0.873531,-0.12105805,1000000
+Asian,European-American,Asian-American,disgust,apathy,104,28,RN50x4,1e-06,0.7450974,1000000
+Gender,Male,Female,disgust,apathy,208,28,RN50x4,1.0,-0.55296695,1000000
+Race,European-American,African-American,disgust,apathy,180,28,RN50x4,0.570756,-0.01903252,1000000
+Asian,European-American,Asian-American,fear,not fear,104,140,RN50x4,0.24737,0.09508157,1000000
+Gender,Male,Female,fear,not fear,208,140,RN50x4,1e-06,0.95565945,1000000
+Race,European-American,African-American,fear,not fear,180,140,RN50x4,0.068716,0.15620796,1000000
+Asian,European-American,Asian-American,fear,apathy,104,28,RN50x4,2e-06,0.640274,1000000
+Gender,Male,Female,fear,apathy,208,28,RN50x4,0.959653,-0.17107588,1000000
+Race,European-American,African-American,fear,apathy,180,28,RN50x4,1.0,-0.6137719,1000000
+Asian,European-American,Asian-American,joy,not joy,104,196,RN50x4,0.74717,-0.09252243,1000000
+Gender,Male,Female,joy,not joy,208,196,RN50x4,1e-06,0.7192943,1000000
+Race,European-American,African-American,joy,not joy,180,196,RN50x4,1.0,-0.7721293,1000000
+Asian,European-American,Asian-American,joy,apathy,104,28,RN50x4,0.999821,-0.48747543,1000000
+Gender,Male,Female,joy,apathy,208,28,RN50x4,1e-06,0.5564373,1000000
+Race,European-American,African-American,joy,apathy,180,28,RN50x4,0.999999,-0.47568485,1000000
+Asian,European-American,Asian-American,anger,not anger,104,126,RN101,0.107978,0.17172527,1000000
+Gender,Male,Female,anger,not anger,208,126,RN101,1e-06,1.0043243,1000000
+Race,European-American,African-American,anger,not anger,180,126,RN101,3.9e-05,0.41342393,1000000
+Asian,European-American,Asian-American,anger,apathy,104,28,RN101,0.991663,-0.33027956,1000000
+Gender,Male,Female,anger,apathy,208,28,RN101,1.0,-0.7836258,1000000
+Race,European-American,African-American,anger,apathy,180,28,RN101,1.0,-0.5338157,1000000
+Asian,European-American,Asian-American,disgust,not disgust,104,28,RN101,1e-06,0.6779239,1000000
+Gender,Male,Female,disgust,not disgust,208,28,RN101,1e-06,0.61831886,1000000
+Race,European-American,African-American,disgust,not disgust,180,28,RN101,1e-06,0.51671875,1000000
+Asian,European-American,Asian-American,disgust,apathy,104,28,RN101,0.136989,0.15216878,1000000
+Gender,Male,Female,disgust,apathy,208,28,RN101,1.0,-1.263389,1000000
+Race,European-American,African-American,disgust,apathy,180,28,RN101,0.103869,0.13319303,1000000
+Asian,European-American,Asian-American,fear,not fear,104,140,RN101,0.073088,0.2014609,1000000
+Gender,Male,Female,fear,not fear,208,140,RN101,1e-06,1.0583936,1000000
+Race,European-American,African-American,fear,not fear,180,140,RN101,1e-06,0.6167917,1000000
+Asian,European-American,Asian-American,fear,apathy,104,28,RN101,1e-06,0.7212434,1000000
+Gender,Male,Female,fear,apathy,208,28,RN101,1.0,-0.8866367,1000000
+Race,European-American,African-American,fear,apathy,180,28,RN101,5e-06,0.47279322,1000000
+Asian,European-American,Asian-American,joy,not joy,104,196,RN101,0.651953,-0.05448181,1000000
+Gender,Male,Female,joy,not joy,208,196,RN101,1e-06,1.0609424,1000000
+Race,European-American,African-American,joy,not joy,180,196,RN101,0.548245,-0.012975068,1000000
+Asian,European-American,Asian-American,joy,apathy,104,28,RN101,1.0,-0.670509,1000000
+Gender,Male,Female,joy,apathy,208,28,RN101,0.049783,0.16159247,1000000
+Race,European-American,African-American,joy,apathy,180,28,RN101,0.678857,-0.04913597,1000000
+Asian,European-American,Asian-American,anger,not anger,104,126,RN50,0.001935,0.39800656,1000000
+Gender,Male,Female,anger,not anger,208,126,RN50,1e-06,1.0891855,1000000
+Race,European-American,African-American,anger,not anger,180,126,RN50,0.999226,-0.33329844,1000000
+Asian,European-American,Asian-American,anger,apathy,104,28,RN50,0.002071,0.39533192,1000000
+Gender,Male,Female,anger,apathy,208,28,RN50,1.0,-1.3593079,1000000
+Race,European-American,African-American,anger,apathy,180,28,RN50,0.935142,-0.15981765,1000000
+Asian,European-American,Asian-American,disgust,not disgust,104,28,RN50,0.012203,0.3114301,1000000
+Gender,Male,Female,disgust,not disgust,208,28,RN50,1e-06,1.2053815,1000000
+Race,European-American,African-American,disgust,not disgust,180,28,RN50,0.996269,-0.2808932,1000000
+Asian,European-American,Asian-American,disgust,apathy,104,28,RN50,1e-06,0.69431883,1000000
+Gender,Male,Female,disgust,apathy,208,28,RN50,1.0,-1.088046,1000000
+Race,European-American,African-American,disgust,apathy,180,28,RN50,0.867757,-0.11745636,1000000
+Asian,European-American,Asian-American,fear,not fear,104,140,RN50,0.000799,0.4350916,1000000
+Gender,Male,Female,fear,not fear,208,140,RN50,1e-06,1.2560973,1000000
+Race,European-American,African-American,fear,not fear,180,140,RN50,0.005986,0.26431826,1000000
+Asian,European-American,Asian-American,fear,apathy,104,28,RN50,1e-06,0.6806943,1000000
+Gender,Male,Female,fear,apathy,208,28,RN50,0.669117,-0.04305234,1000000
+Race,European-American,African-American,fear,apathy,180,28,RN50,0.999996,-0.46168825,1000000
+Asian,European-American,Asian-American,joy,not joy,104,196,RN50,0.21318,0.11040632,1000000
+Gender,Male,Female,joy,not joy,208,196,RN50,1e-06,1.1984649,1000000
+Race,European-American,African-American,joy,not joy,180,196,RN50,1.0,-0.7257716,1000000
+Asian,European-American,Asian-American,joy,apathy,104,28,RN50,0.953691,-0.23335062,1000000
+Gender,Male,Female,joy,apathy,208,28,RN50,1e-06,0.8192426,1000000
+Race,European-American,African-American,joy,apathy,180,28,RN50,1.0,-0.9921756,1000000
