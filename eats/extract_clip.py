@@ -13,11 +13,11 @@ global text_embedding_dict
 text_embedding_dict = {}
 
 
-def clear_dict(model_name):
-    keys = list(image_embedding_dict.keys())
+def clear_dict(dict, model_name):
+    keys = list(dict.keys())
     for k in keys:
         if k[0] != model_name:
-            del image_embedding_dict[k]
+            del dict[k]
 def load_words(test, category, nwords=None):
     if category == 'Pleasant':
         all_words = pd.read_csv(os.path.join('ieat', 'data', 'bgb_pleasant-words.csv'))
@@ -77,14 +77,19 @@ def extract_images(model, preprocess, image_paths, device, model_name):
                 image_features.append(model.encode_image(image))
         image_features = torch.stack(image_features).squeeze().cpu().detach().numpy()
         image_embedding_dict[(model_name, tuple(image_paths))] = image_features
-        clear_dict(model_name)
+        clear_dict(image_embedding_dict, model_name)
     else:
         image_features = image_embedding_dict[(model_name, tuple(image_paths))]
     return image_features
 
 
 def extract_text(model, preprocess, text, device, model_name):
-    processed_text = clip.tokenize(text).to(device)
-    with torch.no_grad():
-        text_features = model.encode_text(processed_text).cpu().detach().numpy()
+    if (model_name, tuple(text)) not in text_embedding_dict.keys():
+        processed_text = clip.tokenize(text).to(device)
+        with torch.no_grad():
+           text_features = model.encode_text(processed_text).cpu().detach().numpy()
+        text_embedding_dict[(model_name, tuple(text))] = text_features
+        clear_dict(text_embedding_dict, model_name)
+    else:
+        text_features = image_embedding_dict[(model_name, tuple(text))]
     return text_features
