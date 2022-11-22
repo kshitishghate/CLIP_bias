@@ -84,7 +84,10 @@ def extract_images(model, preprocess, image_paths, device, model_name):
 
 
 def extract_text(model, preprocess, text, device, model_name):
-    text = np.sort(text)
+    try:
+        text = np.sort(text)
+    except np.AxisError:
+        pass
     if (model_name, tuple(text)) not in text_embedding_dict.keys():
         processed_text = clip.tokenize(text).to(device)
         with torch.no_grad():
