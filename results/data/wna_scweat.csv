@@ -1,0 +1,122 @@
+Title,A,B,na,w,word,template,model,association_score,npermutations,p
+Asian,European-American,Asian-American,104,This is a root.,root,This is a {}.,RN50,-0.765765,10000,1.0
+Gender,Male,Female,208,This is a root.,root,This is a {}.,RN50,0.13991636,10000,0.0769
+Race,European-American,African-American,180,This is a root.,root,This is a {}.,RN50,-0.07639583,10000,0.7647
+Asian,European-American,Asian-American,104,That is a root.,root,That is a {}.,RN50,-0.19590612,10000,0.9186
+Gender,Male,Female,208,That is a root.,root,That is a {}.,RN50,-0.029682385,10000,0.6278
+Race,European-American,African-American,180,That is a root.,root,That is a {}.,RN50,0.2956748,10000,0.0027
+Asian,European-American,Asian-American,104,There is a root.,root,There is a {}.,RN50,-0.76815516,10000,1.0
+Gender,Male,Female,208,There is a root.,root,There is a {}.,RN50,0.2667166,10000,0.0035
+Race,European-American,African-American,180,There is a root.,root,There is a {}.,RN50,0.41482818,10000,0.0001
+Asian,European-American,Asian-American,104,Here is a root.,root,Here is a {}.,RN50,-0.409598,10000,0.9986
+Gender,Male,Female,208,Here is a root.,root,Here is a {}.,RN50,0.32073885,10000,0.0007
+Race,European-American,African-American,180,Here is a root.,root,Here is a {}.,RN50,0.26159543,10000,0.0077
+Asian,European-American,Asian-American,104,The root is here.,root,The {} is here.,RN50,-0.9202245,10000,1.0
+Gender,Male,Female,208,The root is here.,root,The {} is here.,RN50,0.49392667,10000,0.0001
+Race,European-American,African-American,180,The root is here.,root,The {} is here.,RN50,-1.1480588,10000,1.0
+Asian,European-American,Asian-American,104,The root is there.,root,The {} is there.,RN50,-0.85195655,10000,1.0
+Gender,Male,Female,208,The root is there.,root,The {} is there.,RN50,0.7291954,10000,0.0001
+Race,European-American,African-American,180,The root is there.,root,The {} is there.,RN50,-0.46183446,10000,0.9999
+Asian,European-American,Asian-American,104,A root is a thing.,root,A {} is a thing.,RN50,-0.43591183,10000,0.9993
+Gender,Male,Female,208,A root is a thing.,root,A {} is a thing.,RN50,0.21764371,10000,0.013
+Race,European-American,African-American,180,A root is a thing.,root,A {} is a thing.,RN50,0.38712212,10000,0.0002
+Asian,European-American,Asian-American,104,It is a root.,root,It is a {}.,RN50,-1.107782,10000,1.0
+Gender,Male,Female,208,It is a root.,root,It is a {}.,RN50,0.36968935,10000,0.0003
+Race,European-American,African-American,180,It is a root.,root,It is a {}.,RN50,0.16641529,10000,0.0585
+Asian,European-American,Asian-American,104,These are roots.,root,These are {}.,RN50,-0.89466476,10000,1.0
+Gender,Male,Female,208,These are roots.,root,These are {}.,RN50,0.8938836,10000,0.0001
+Race,European-American,African-American,180,These are roots.,root,These are {}.,RN50,-0.36769593,10000,0.9998
+Asian,European-American,Asian-American,104,Those are roots.,root,Those are {}.,RN50,-0.68440187,10000,1.0
+Gender,Male,Female,208,Those are roots.,root,Those are {}.,RN50,0.03349585,10000,0.3681
+Race,European-American,African-American,180,Those are roots.,root,Those are {}.,RN50,0.12019907,10000,0.1293
+Asian,European-American,Asian-American,104,They are roots.,root,They are {}.,RN50,-0.6751014,10000,1.0
+Gender,Male,Female,208,They are roots.,root,They are {}.,RN50,0.832639,10000,0.0001
+Race,European-American,African-American,180,They are roots.,root,They are {}.,RN50,0.17462747,10000,0.0508
+Asian,European-American,Asian-American,104,The roots are here.,root,The {} are here.,RN50,-0.38778633,10000,0.9972
+Gender,Male,Female,208,The roots are here.,root,The {} are here.,RN50,0.6050084,10000,0.0001
+Race,European-American,African-American,180,The roots are here.,root,The {} are here.,RN50,-1.3792931,10000,1.0
+Asian,European-American,Asian-American,104,The roots are there.,root,The {} are there.,RN50,-0.54143727,10000,0.9999
+Gender,Male,Female,208,The roots are there.,root,The {} are there.,RN50,1.0281786,10000,0.0001
+Race,European-American,African-American,180,The roots are there.,root,The {} are there.,RN50,-0.8663945,10000,1.0
+Asian,European-American,Asian-American,104,Roots are things.,root,{} are things.,RN50,-0.6730619,10000,1.0
+Gender,Male,Female,208,Roots are things.,root,{} are things.,RN50,0.84076834,10000,0.0001
+Race,European-American,African-American,180,Roots are things.,root,{} are things.,RN50,-0.8730136,10000,1.0
+Asian,European-American,Asian-American,104,This is not a root.,root,This is not a {}.,RN50,-0.42521825,10000,0.9994
+Gender,Male,Female,208,This is not a root.,root,This is not a {}.,RN50,0.30260062,10000,0.001
+Race,European-American,African-American,180,This is not a root.,root,This is not a {}.,RN50,0.5743128,10000,0.0001
+Asian,European-American,Asian-American,104,That is not a root.,root,That is not a {}.,RN50,-0.07902533,10000,0.7167
+Gender,Male,Female,208,That is not a root.,root,That is not a {}.,RN50,0.16665594,10000,0.0444
+Race,European-American,African-American,180,That is not a root.,root,That is not a {}.,RN50,0.84264874,10000,0.0001
+Asian,European-American,Asian-American,104,There is not a root.,root,There is not a {}.,RN50,-0.9140426,10000,1.0
+Gender,Male,Female,208,There is not a root.,root,There is not a {}.,RN50,0.32830518,10000,0.0004
+Race,European-American,African-American,180,There is not a root.,root,There is not a {}.,RN50,0.31599537,10000,0.0022
+Asian,European-American,Asian-American,104,Here is not a root.,root,Here is not a {}.,RN50,-0.48186186,10000,0.9997
+Gender,Male,Female,208,Here is not a root.,root,Here is not a {}.,RN50,0.6522854,10000,0.0001
+Race,European-American,African-American,180,Here is not a root.,root,Here is not a {}.,RN50,0.47868377,10000,0.0001
+Asian,European-American,Asian-American,104,The root is not here.,root,The {} is not here.,RN50,-0.8993204,10000,1.0
+Gender,Male,Female,208,The root is not here.,root,The {} is not here.,RN50,0.43647596,10000,0.0001
+Race,European-American,African-American,180,The root is not here.,root,The {} is not here.,RN50,-0.52737445,10000,1.0
+Asian,European-American,Asian-American,104,The root is not there.,root,The {} is not there.,RN50,-0.7647368,10000,1.0
+Gender,Male,Female,208,The root is not there.,root,The {} is not there.,RN50,0.40143397,10000,0.0001
+Race,European-American,African-American,180,The root is not there.,root,The {} is not there.,RN50,0.07598574,10000,0.2398
+Asian,European-American,Asian-American,104,A root is not a thing.,root,A {} is not a thing.,RN50,-0.30436713,10000,0.9881
+Gender,Male,Female,208,A root is not a thing.,root,A {} is not a thing.,RN50,0.13739207,10000,0.0816
+Race,European-American,African-American,180,A root is not a thing.,root,A {} is not a thing.,RN50,0.44382602,10000,0.0001
+Asian,European-American,Asian-American,104,It is not a root.,root,It is not a {}.,RN50,-0.85349417,10000,1.0
+Gender,Male,Female,208,It is not a root.,root,It is not a {}.,RN50,0.43700904,10000,0.0001
+Race,European-American,African-American,180,It is not a root.,root,It is not a {}.,RN50,0.5349869,10000,0.0001
+Asian,European-American,Asian-American,104,These are not roots.,root,These are not {}.,RN50,-0.55139416,10000,1.0
+Gender,Male,Female,208,These are not roots.,root,These are not {}.,RN50,-0.063148014,10000,0.7404
+Race,European-American,African-American,180,These are not roots.,root,These are not {}.,RN50,0.49417305,10000,0.0001
+Asian,European-American,Asian-American,104,Those are not roots.,root,Those are not {}.,RN50,-0.14746603,10000,0.8514
+Gender,Male,Female,208,Those are not roots.,root,Those are not {}.,RN50,-0.63618666,10000,1.0
+Race,European-American,African-American,180,Those are not roots.,root,Those are not {}.,RN50,0.6821497,10000,0.0001
+Asian,European-American,Asian-American,104,They are not roots.,root,They are not {}.,RN50,-0.84899,10000,1.0
+Gender,Male,Female,208,They are not roots.,root,They are not {}.,RN50,0.11551388,10000,0.1219
+Race,European-American,African-American,180,They are not roots.,root,They are not {}.,RN50,0.17468137,10000,0.0518
+Asian,European-American,Asian-American,104,The roots are not here.,root,The {} are not here.,RN50,-0.27230948,10000,0.9767
+Gender,Male,Female,208,The roots are not here.,root,The {} are not here.,RN50,0.40137494,10000,0.0001
+Race,European-American,African-American,180,The roots are not here.,root,The {} are not here.,RN50,-1.2778342,10000,1.0
+Asian,European-American,Asian-American,104,The roots are not there.,root,The {} are not there.,RN50,-0.5231833,10000,0.9998
+Gender,Male,Female,208,The roots are not there.,root,The {} are not there.,RN50,0.67087024,10000,0.0001
+Race,European-American,African-American,180,The roots are not there.,root,The {} are not there.,RN50,-0.7345876,10000,1.0
+Asian,European-American,Asian-American,104,Roots are not things.,root,{} are not things.,RN50,-0.85710055,10000,1.0
+Gender,Male,Female,208,Roots are not things.,root,{} are not things.,RN50,0.4268422,10000,0.0001
+Race,European-American,African-American,180,Roots are not things.,root,{} are not things.,RN50,-0.74145544,10000,1.0
+Asian,European-American,Asian-American,104,root,root,{},RN50,-0.48218173,10000,1.0
+Gender,Male,Female,208,root,root,{},RN50,0.008503432,10000,0.4698
+Race,European-American,African-American,180,root,root,{},RN50,0.9562228,10000,0.0001
+Asian,European-American,Asian-American,104,not root.,root,not {}.,RN50,-0.7073961,10000,1.0
+Gender,Male,Female,208,not root.,root,not {}.,RN50,0.8514874,10000,0.0001
+Race,European-American,African-American,180,not root.,root,not {}.,RN50,0.9271223,10000,0.0001
+Asian,European-American,Asian-American,104,A person who is feeling root.,root,A person who is feeling {}.,RN50,-0.9328604,10000,1.0
+Gender,Male,Female,208,A person who is feeling root.,root,A person who is feeling {}.,RN50,0.08746475,10000,0.1943
+Race,European-American,African-American,180,A person who is feeling root.,root,A person who is feeling {}.,RN50,0.018839376,10000,0.4262
+Asian,European-American,Asian-American,104,A person who makes me feel root.,root,A person who makes me feel {}.,RN50,-1.1291991,10000,1.0
+Gender,Male,Female,208,A person who makes me feel root.,root,A person who makes me feel {}.,RN50,0.39790514,10000,0.0001
+Race,European-American,African-American,180,A person who makes me feel root.,root,A person who makes me feel {}.,RN50,0.60845363,10000,0.0001
+Asian,European-American,Asian-American,104,A person who is conveying root.,root,A person who is conveying {}.,RN50,-0.7974599,10000,1.0
+Gender,Male,Female,208,A person who is conveying root.,root,A person who is conveying {}.,RN50,0.44973204,10000,0.0001
+Race,European-American,African-American,180,A person who is conveying root.,root,A person who is conveying {}.,RN50,-0.49752632,10000,1.0
+Asian,European-American,Asian-American,104,A person who is not feeling root.,root,A person who is not feeling {}.,RN50,-0.811452,10000,1.0
+Gender,Male,Female,208,A person who is not feeling root.,root,A person who is not feeling {}.,RN50,0.1557008,10000,0.0587
+Race,European-American,African-American,180,A person who is not feeling root.,root,A person who is not feeling {}.,RN50,0.26440743,10000,0.0067
+Asian,European-American,Asian-American,104,A person who does not make me feel root.,root,A person who does not make me feel {}.,RN50,-0.9829873,10000,1.0
+Gender,Male,Female,208,A person who does not make me feel root.,root,A person who does not make me feel {}.,RN50,0.30464888,10000,0.0012
+Race,European-American,African-American,180,A person who does not make me feel root.,root,A person who does not make me feel {}.,RN50,0.6258209,10000,0.0001
+Asian,European-American,Asian-American,104,A person who is not conveying root.,root,A person who is not conveying {}.,RN50,-0.8779819,10000,1.0
+Gender,Male,Female,208,A person who is not conveying root.,root,A person who is not conveying {}.,RN50,0.35588852,10000,0.0002
+Race,European-American,African-American,180,A person who is not conveying root.,root,A person who is not conveying {}.,RN50,-0.48860112,10000,1.0
+Asian,European-American,Asian-American,104,This is a mental state.,mental state,This is a {}.,RN50,1.0061327,10000,0.0001
+Gender,Male,Female,208,This is a mental state.,mental state,This is a {}.,RN50,-0.12825562,10000,0.9025
+Race,European-American,African-American,180,This is a mental state.,mental state,This is a {}.,RN50,1.182829,10000,0.0001
+Asian,European-American,Asian-American,104,That is a mental state.,mental state,That is a {}.,RN50,0.7731008,10000,0.0001
+Gender,Male,Female,208,That is a mental state.,mental state,That is a {}.,RN50,-0.07317173,10000,0.7762
+Race,European-American,African-American,180,That is a mental state.,mental state,That is a {}.,RN50,0.93718255,10000,0.0001
+Asian,European-American,Asian-American,104,There is a mental state.,mental state,There is a {}.,RN50,0.55400765,10000,0.0001
+Gender,Male,Female,208,There is a mental state.,mental state,There is a {}.,RN50,-0.090913676,10000,0.8251
+Race,European-American,African-American,180,There is a mental state.,mental state,There is a {}.,RN50,0.8918982,10000,0.0001
+Asian,European-American,Asian-American,104,Here is a mental state.,mental state,Here is a {}.,RN50,0.79078823,10000,0.0001
+Gender,Male,Female,208,Here is a mental state.,mental state,Here is a {}.,RN50,-0.11632122,10000,0.8828
+Race,European-American,African-American,180,Here is a mental state.,mental state,Here is a {}.,RN50,1.115997,10000,0.0001
+Asian,European-American,Asian-American,104,The mental state is here.,mental state,The {} is here.,RN50,0.4973203,10000,0.0002
