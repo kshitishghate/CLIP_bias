@@ -76,19 +76,20 @@ def perform_test():
     hierarchy = ET.parse(os.path.join('data','wn-domains-3.2','wn-affect-1.1','a-hierarchy.xml'))
     all_words = [w.attrib['name'].replace('positive-','').replace('negative-','').replace('neutral-','').replace('-',' ') for w in hierarchy.getroot()]
 
-    total = len(clip.available_models()) * 36 * 312
     results_fp = os.path.join('results', 'data', 'wna_scweat.csv')
+    models = clip.available_models()
+    # models.reverse()
+    models = models[:4]
+    total = len(models) * 36 * 312
     if os.path.exists(results_fp):
         completed = pd.read_csv(results_fp)
-        completed = [completed['A'].str.contains(a) for a in nouns]
+        completed = [completed['model'].str.contains(a) for a in models]
         completed = pd.concat(completed, axis=1).any(axis=1).sum()
     else:
         completed = 0
     remaining = total - completed
 
     with tqdm(total=remaining) as pbar:
-        models = clip.available_models()
-        models.reverse()
         for model_name in models:
             # device = 'cuda' if torch.cuda.is_available() else 'cpu'
             device = 'cpu'
