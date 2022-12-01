@@ -63,7 +63,7 @@ def place_in_templates(word, negate=False):
     return templated, singular_templates + plural_templates
 
 
-def perform_test():
+def perform_test(device='cpu'):
     nouns = [
         'anger', 'disgust', 'fear', 'joy',
         'sadness', 'surprise', 'anticipation', 'trust'
@@ -90,8 +90,6 @@ def perform_test():
 
     with tqdm(total=remaining) as pbar:
         for model_name in models:
-            # device = 'cuda' if torch.cuda.is_available() else 'cpu'
-            device = 'cpu'
             model, preprocess = clip.load(model_name, device)
 
 
@@ -154,4 +152,12 @@ def perform_test():
 
 
 if __name__ == '__main__':
-    perform_test()
+    should_continue=True
+    while should_continue:
+        num_results_so_far = len(pd.read_csv('/home/isaac/PycharmProjects/language_vision_bias/results/data/wna_scweat.csv'))
+        try:
+            perform_test('cuda' if torch.cuda.is_available() else 'cpu')
+        except:
+            perform_test('cpu')
+        if num_results_so_far == len(pd.read_csv('/home/isaac/PycharmProjects/language_vision_bias/results/data/wna_scweat.csv')):
+            should_continue = False
