@@ -82,7 +82,7 @@ def load_images(test, category, dataset='ieat'):
             both_ethnicities_map = {'Asian': ['White', 'East Asian', 'Southeast Asian'],'Race':['Black','White']}
 
             both_ethnicities = codebook[codebook['race'].isin(both_ethnicities_map[test])]
-            sample_size = min(both_ethnicities.groupby(['race','gender'])['file'].count().min(), 60 * 10 / 2)
+            sample_size = int(min(both_ethnicities.groupby(['race','gender'])['file'].count().min(), 60 * 10 / 2))
 
             relevant_models = codebook[codebook['race'].isin(ethnicity_map[category])]
             np.random.seed(6471043)
