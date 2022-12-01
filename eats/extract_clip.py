@@ -6,6 +6,7 @@ import torch
 from PIL import Image
 
 from CLIP import clip
+from pathlib import Path
 
 global image_embedding_dict
 image_embedding_dict = {}
@@ -64,6 +65,30 @@ def load_images(test, category, dataset='ieat'):
             if len(possible_images) != 1:
                 raise ValueError
             image_paths.append(os.path.join(dir,possible_images[0]))
+
+    elif dataset == 'fairface':
+        codebook = pd.read_csv(Path('data') / 'fairface_label_train.csv')
+
+        if test == 'Gender':
+            sample_size = int(min(codebook.groupby(['race','gender'])['file'].count().min(),60 * 10 / len(codebook[['race']].drop_duplicates()))) + 1
+            relevant_models = codebook.groupby(['race','gender']).sample(sample_size)
+            gender_map = {'Male':'Male','Female':'Female'}
+            relevant_models = relevant_models[relevant_models['gender'] == gender_map[category]]['file'].tolist()
+
+        elif test in ['Asian','Race']:
+            ethnicity_map = {'European-American': ['White'],
+                            'African-American': ['Black'],
+                            'Asian-American': ['East Asian', 'Southeast Asian']}
+            both_ethnicities_map = {'Asian': ['White', 'East Asian', 'Southeast Asian'],'Race':['Black','White']}
+
+            both_ethnicities = codebook[codebook['race'].isin(both_ethnicities_map[test])]
+            sample_size = min(both_ethnicities.groupby(['race','gender'])['file'].count().min(), 60 * 10 / 2)
+
+            relevant_models = codebook[codebook['race'].isin(ethnicity_map[category])]
+            np.random.seed(6471043)
+            relevant_models = relevant_models.groupby('gender').sample(sample_size)['file'].tolist()
+
+        image_paths = [os.path.join('data','fairface-img-margin025-trainval',m) for m in relevant_models]
 
     return image_paths
 

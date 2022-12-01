@@ -75,11 +75,11 @@ def perform_test():
     hierarchy = ET.parse(os.path.join('data','wn-domains-3.2','wn-affect-1.1','a-hierarchy.xml'))
     all_words = [w.attrib['name'].replace('positive-','').replace('negative-','').replace('neutral-','').replace('-',' ') for w in hierarchy.getroot()]
 
-    results_fp = os.path.join('results', 'data', 'wna_scweat.csv')
+    results_fp = os.path.join('results', 'data', 'wna_scweat_fairface.csv')
     models = clip.available_models()
     # models.reverse()
     models = models[:4]
-    total = len(models) * 36 * 298 * 3
+    total = len(models) * 18 * 298 * 3
     if os.path.exists(results_fp):
         completed = pd.read_csv(results_fp)
         completed = [completed['model'].str.contains(a) for a in models]
@@ -97,14 +97,20 @@ def perform_test():
 
             for word in all_words:
                 semantically_bleached, sb_templates = place_in_templates(word, False)
-                semantically_bleached_and_negated, sbn_templates = place_in_templates(word, True)
+                # semantically_bleached_and_negated, sbn_templates = place_in_templates(word, True)
 
-                other_templates = ['{}','not {}.', 'A person who is feeling {}.', 'A person who makes me feel {}.',
-                                   'A person who is conveying {}.', 'A person who is not feeling {}.',
-                                   'A person who does not make me feel {}.', 'A person who is not conveying {}.']
+                other_templates = ['{}', 'A person who is feeling {}.', 'A person who makes me feel {}.',
+                                   'A person who is conveying {}.',
+                                   # 'not {}.','A person who is not feeling {}.', 'A person who does not make me feel {}.',
+                                   # 'A person who is not conveying {}.'
+                                   ]
 
-                all_to_test = semantically_bleached + semantically_bleached_and_negated + [t.format(word) for t in other_templates]
-                all_templates = sb_templates + sbn_templates + other_templates
+                all_to_test = (semantically_bleached
+                               # + semantically_bleached_and_negated
+                               + [t.format(word) for t in other_templates])
+                all_templates = (sb_templates
+                                 # + sbn_templates
+                                 + other_templates)
 
                 for phrase, template in zip(all_to_test, all_templates):
 
@@ -117,14 +123,14 @@ def perform_test():
 
 
                         if not test_already_run(model_name, test, results_fp):
-                            test['na'] = len(load_images(test['Title'], test['A'], 'cfd'))
+                            test['na'] = len(load_images(test['Title'], test['A'], 'fairface'))
 
                             np.random.seed(82804230)
 
                             stimuli = {
                                 'w': phrase,
-                                'A': load_images(test['Title'], test['A'], 'cfd'),
-                                'B': load_images(test['Title'], test['B'], 'cfd'),
+                                'A': load_images(test['Title'], test['A'], 'fairface'),
+                                'B': load_images(test['Title'], test['B'], 'fairface'),
 
                             }
 
