@@ -129,4 +129,5 @@
 /data/fairface-img-margin025-trainval/fairface_label_train.csv filter=lfs diff=lfs merge=lfs -text
 /results/data/categorical_synonyms_cfd_results.csv filter=lfs diff=lfs merge=lfs -text
 /results/data/wna_scweat.csv filter=lfs diff=lfs merge=lfs -text
+/results/data/wna_scweat_fairface.csv filter=lfs diff=lfs merge=lfs -text
 --above=100Kb !text !filter !merge !diff
