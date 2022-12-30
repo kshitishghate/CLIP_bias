@@ -18,140 +18,148 @@ from eats.sc_weat import SCWEAT
 from eats.result_saving import save_test_results
 
 
-def test_already_run(model_name, test, file_name):
-    if not os.path.exists(file_name):
-        return False
-    previous_results = pd.read_csv(file_name)
-    relevant_results = previous_results[
-        (previous_results['model'] == model_name)
-        & (previous_results['w'] == test['w'])
-        & (previous_results['A'] == test['A'])
-        & (previous_results['B'] == test['B'])
-        & (previous_results['Title'] == test['Title'])
-        & (True if 'context' not in test.index else (previous_results['context'] == test['context']))
-    ]
-    return len(relevant_results) > 0
+def retrieve_word_name(obj, hierarchy):
+    word = obj.attrib['name']
+    if '-' in word:
+        word_classes = ['positive', 'negative', 'neutral', 'ambiguous']
+        for word_class in word_classes:
+            word = word.replace(f'{word_class}-', '')
+        if 'isa' in obj.attrib.keys():
+            parent_obj = [p for p in hierarchy.getroot() if p.attrib['name'] == obj.attrib['isa']][0]
+            parent = retrieve_word_name(parent_obj, hierarchy)
+            word = word.replace(f'{parent}-','')
+        word = word.replace('-', ' ')
+    return word
 
+def find_all_tests(models = None):
+    if models is None:
+        models = clip.available_models()
+    all_models = pd.DataFrame({'model': models, 'I': 1})
 
-def place_in_templates(word, negate=False):
-    vowel_list = ['a','e','i','o','u']
-    # Check if first letter is vowel, which would mean using "an" instead of "a"
-    if negate:
-        if word[0] in vowel_list:
-            singular_templates = ['This is not an {}.', 'That is not an {}.', 'There is not an {}.', 'Here is not an {}.',
-                                  'The {} is not here.',
-                                  'The {} is not there.', 'An {} is not a thing.', 'It is not an {}.']
+    all_demographics = pd.read_csv(os.path.join('data', 'sc_weat_tests.csv'))
+    all_demographics['I'] = 1
+
+    hierarchy = ET.parse(os.path.join('data', 'wn-domains-3.2', 'wn-affect-1.1', 'a-hierarchy.xml'))
+    cleaned_words = [retrieve_word_name(w, hierarchy) for w in hierarchy.getroot()]
+    uncleaned_words = [w.attrib['name'].replace('-', ' ') for w in hierarchy.getroot()]
+    all_words = np.unique(cleaned_words + uncleaned_words)
+    all_plurals = [pluralize(w) for w in all_words]
+    all_words = pd.DataFrame({'singular': all_words, 'plural': all_plurals, 'I': 1})
+
+    bleached = pd.read_csv(os.path.join('data', 'emotion_templates', 'bleached.txt'), header=0, comment='#')
+    feeling = pd.read_csv(os.path.join('data', 'emotion_templates', 'feeling.txt'), header=0, comment='#')
+    simple = pd.read_csv(os.path.join('data', 'emotion_templates', 'simple.txt'), header=0, comment='#')
+    all_templates = pd.concat([bleached, feeling, simple], axis=0)
+    all_templates['I'] = 1
+
+    # place all words into templates
+    all_tests = all_templates.merge(all_words, on='I')
+    templated = []
+    for i, (_, requires_plural, for_words_that_start_with_vowel, template, _, singular, plural) in all_tests.iterrows():
+        vowels = ['a', 'e', 'i', 'o', 'u']
+        # if there aren't any grammer requirements for the template, just place the singular version of the word in
+        if np.isnan(for_words_that_start_with_vowel):
+            templated.append(template.replace('<EMOTION>', singular))
+        # if the template is for vowels, but this word doesn't start with a vowel, then throw this template out
+        elif for_words_that_start_with_vowel and singular[0] not in vowels:
+            templated.append(np.nan)
+        # if the template is not for vowels, but this word starts with a vowel, then throw this template out
+        elif not for_words_that_start_with_vowel and singular[0] in vowels:
+            templated.append(np.nan)
+        elif requires_plural:
+            templated.append(template.replace('<EMOTION>', plural))
+        elif not requires_plural:
+            templated.append(template.replace('<EMOTION>', singular))
         else:
-            singular_templates = ['This is not a {}.', 'That is not a {}.', 'There is not a {}.', 'Here is not a {}.',
-                                  'The {} is not here.',
-                                  'The {} is not there.', 'A {} is not a thing.', 'It is not a {}.']
+            raise ValueError
+    all_tests['formatted'] = templated
+    all_tests = all_tests[~all_tests['formatted'].isna()]
 
-        plural_templates = ['These are not {}.', 'Those are not {}.', 'They are not {}.', 'The {} are not here.',
-                            'The {} are not there.', '{} are not things.']
+    all_tests = all_tests.merge(all_models, on='I')
+    all_tests = all_tests.merge(all_demographics, on='I')
+
+    all_tests = all_tests.drop(columns='I')
+
+    all_tests = all_tests.sort_values(['model', 'Title']).reset_index(drop=True)
+
+    return all_tests
+
+
+def find_remaining_tests_to_run(models=None):
+    all_tests = find_all_tests(models=models)
+    if not os.path.exists(os.path.join('results','data','wna_scweat.csv')):
+        return all_tests
     else:
-        if word[0] in vowel_list:
-            singular_templates = ['This is an {}.', 'That is an {}.', 'There is an {}.', 'Here is an {}.', 'The {} is here.',
-                                 'The {} is there.', 'An {} is a thing.', 'It is an {}.']
-        else:
-            singular_templates = ['This is a {}.', 'That is a {}.', 'There is a {}.', 'Here is a {}.', 'The {} is here.',
-                         'The {} is there.', 'A {} is a thing.', 'It is a {}.']
+        already_completed = pd.read_csv(os.path.join('results','data','wna_scweat.csv'))
+        outer_join = all_tests.merge(already_completed, on=['model','Title','formatted'], suffixes = ('','_DELETE'), how='outer', indicator=True)
+        remaining_tests = outer_join[outer_join['_merge'] == 'left_only'].drop(['_merge'] + [c for c in outer_join.columns if '_DELETE' in c], axis=1)
+        remaining_tests = remaining_tests.sort_values(['model','Title']).reset_index(drop=True)
+        return remaining_tests
 
-        plural_templates = ['These are {}.', 'Those are {}.', 'They are {}.', 'The {} are here.',
-                            'The {} are there.', '{} are things.']
-
-    templated = [t.format(word).capitalize() for t in singular_templates] + [t.format(pluralize(word)).capitalize() for t in plural_templates]
-    return templated, singular_templates + plural_templates
 
 
 def perform_test(device):
-    nouns = [
-        'anger', 'disgust', 'fear', 'joy',
-        'sadness', 'surprise', 'anticipation', 'trust'
-    ]
-
-    npermutations = 10000
-    all_tests = pd.read_csv(os.path.join('data', 'sc_weat_tests.csv'))
-
-    hierarchy = ET.parse(os.path.join('data','wn-domains-3.2','wn-affect-1.1','a-hierarchy.xml'))
-    all_words = [w.attrib['name'].replace('positive-','').replace('negative-','').replace('neutral-','').replace('-',' ') for w in hierarchy.getroot()]
-
     results_fp = os.path.join('results', 'data', 'wna_scweat.csv')
     models = clip.available_models()
-    # models.reverse()
+    models.reverse()
     models = models[:4]
-    total = len(models) * 36 * 298 * 3
-    if os.path.exists(results_fp):
-        completed = pd.read_csv(results_fp)
-        completed = [completed['model'].str.contains(a) for a in models]
-        completed = pd.concat(completed, axis=1).any(axis=1).sum()
-    else:
-        completed = 0
-    remaining = total - completed
 
-    with tqdm(total=remaining) as pbar:
-        for model_name in models:
-            model, preprocess = clip.load(model_name, device)
+    tests_to_run = find_remaining_tests_to_run(models=models)
+
+    current_model_name = None
 
 
-            for word in all_words:
-                semantically_bleached, sb_templates = place_in_templates(word, False)
-                semantically_bleached_and_negated, sbn_templates = place_in_templates(word, True)
+    new_results = []
+    with tqdm(total=len(tests_to_run)) as pbar:
+        for i, test in tests_to_run.iterrows():
+            if current_model_name != test['model']:
+                current_model_name = test['model']
+                model, preprocess = clip.load(current_model_name, device)
 
-                other_templates = ['{}','not {}.', 'A person who is feeling {}.', 'A person who makes me feel {}.',
-                                   'A person who is conveying {}.', 'A person who is not feeling {}.',
-                                   'A person who does not make me feel {}.', 'A person who is not conveying {}.']
+            test['na'] = len(load_images(test['Title'], test['A'], 'cfd'))
 
-                all_to_test = semantically_bleached + semantically_bleached_and_negated + [t.format(word) for t in other_templates]
-                all_templates = sb_templates + sbn_templates + other_templates
+            np.random.seed(82804230)
 
-                for phrase, template in zip(all_to_test, all_templates):
+            stimuli = {
+                'w': test['formatted'],
+                'A': load_images(test['Title'], test['A'], 'cfd'),
+                'B': load_images(test['Title'], test['B'], 'cfd'),
+            }
 
-                    for i, test in all_tests.iterrows():
-
-                        test['w'] = phrase
-                        test['word'] = word
-                        test['template'] = template
-                        test.name = None
-
-
-                        if not test_already_run(model_name, test, results_fp):
-                            test['na'] = len(load_images(test['Title'], test['A'], 'cfd'))
-
-                            np.random.seed(82804230)
-
-                            stimuli = {
-                                'w': phrase,
-                                'A': load_images(test['Title'], test['A'], 'cfd'),
-                                'B': load_images(test['Title'], test['B'], 'cfd'),
-
-                            }
-
-                            embeddings = {
-                                'w': extract_text(model, preprocess, stimuli['w'], device, model_name),
-                                'A': extract_images(model, preprocess, stimuli['A'], device, model_name),
-                                'B': extract_images(model, preprocess, stimuli['B'], device, model_name),
-                            }
+            embeddings = {
+                'w': extract_text(model, preprocess, stimuli['w'], device, current_model_name),
+                'A': extract_images(model, preprocess, stimuli['A'], device, current_model_name),
+                'B': extract_images(model, preprocess, stimuli['B'], device, current_model_name),
+            }
 
 
-                            test_result = SCWEAT(embeddings['w'], embeddings['A'], embeddings['B'])
-                            test_result = pd.Series({
-                                'model':model_name,
-                                'association_score':test_result.association_score()[0],
-                                'p':test_result.p(n_samples=npermutations),
-                                'npermutations':npermutations,
-                            })
+            test_result = SCWEAT(embeddings['w'], embeddings['A'], embeddings['B'])
+            test['association_score'] = test_result.association_score()[0]
+            test['dist_to_pleasantness'] = test_result.mean_similarity('A')[0]
+            test['dist_to_unpleasantness'] = test_result.mean_similarity('B')[0]
+            test['dist_std'] = test_result.AB_std()
 
-                            save_test_results(pd.concat([test, test_result]), results_fp)
-                            pbar.update()
+            new_results.append(test)
+
+            if i % 250 == 0:
+                new_results = pd.concat(new_results, axis=1).T
+                save_test_results(new_results, results_fp)
+                new_results = []
+            pbar.update()
+    new_results = pd.concat(new_results, axis=1).T
+    save_test_results(new_results, results_fp)
 
 
 if __name__ == '__main__':
     should_continue=True
     while should_continue:
-        num_results_so_far = len(pd.read_csv('/home/isaac/PycharmProjects/language_vision_bias/results/data/wna_scweat.csv'))
+        if os.path.exists(os.path.join('results','data','wna_scweat.csv')):
+            num_results_so_far = len(pd.read_csv(os.path.join('results','data','wna_scweat.csv')))
+        else:
+            num_results_so_far = 0
         try:
             perform_test('cuda' if torch.cuda.is_available() else 'cpu')
         except:
             perform_test('cpu')
-        if num_results_so_far == len(pd.read_csv('/home/isaac/PycharmProjects/language_vision_bias/results/data/wna_scweat.csv')):
+        if num_results_so_far == len(pd.read_csv(os.path.join('results','data','wna_scweat.csv'))):
             should_continue = False
