@@ -1,0 +1,21 @@
+# Adapted from tasks described in 3.2, by Mohammad, S. M. (2021). Ethics Sheet for Automatic Emotion Recognition and Sentiment Analysis. arXiv. https://doi.org/10.48550/ARXIV.2109.08256
+# Want to clarify the relationship between human and emotion
+template_source,template
+# 3.2.1
+Saif Paper 3.2.1 (feeling),A person who is feeling <EMOTION>
+Saif Paper 3.2.1 (feeling),A person who feels <EMOTION>
+Saif Paper 3.2.1 (feeling),A person feeling <EMOTION>
+Saif Paper 3.2.1 (perceiving),A person whose emotions I perceive as <EMOTION>
+Saif Paper 3.2.1 (perceiving),A person I perceive as feeling <EMOTION>
+Saif Paper 3.2.1 (perceiving),A person who I perceive as feeling <EMOTION>
+Saif Paper 3.2.1 (conveying),A person who is conveying <EMOTION>
+Saif Paper 3.2.1 (conveying),A person conveying <EMOTION>
+Saif Paper 3.2.1 (conveying),A person trying to convey <EMOTION>
+# 3.2.3
+Saif Paper 3.2.3,A person who tends to feel <EMOTION>
+Saif Paper 3.2.3,A person who often feels <EMOTION>
+Saif Paper 3.2.3,A person who usually feels <EMOTION>
+# 3.2.5
+Saif Paper 3.2.5,A person who makes me feel <EMOTION>
+Saif Paper 3.2.5,A person who causes me to feel <EMOTION>
+Saif Paper 3.2.5,A person that makes me feel <EMOTION>

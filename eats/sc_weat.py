@@ -271,6 +271,24 @@ class SCWEAT:
         AB = np.concatenate((self.A, self.B))
         return cosine_similarity(self.w, AB)
 
+
+    def mean_similarity(self, mask):
+        """
+        Return mean similarity between w and indexes in mask
+
+        :param mask: Mask on the AB axis of similarity matrix, or string 'A' or 'B', indicating which indexes
+        :return:
+        """
+        if type(mask) == str:
+            if mask == 'A':
+                mask = np.arange(len(self.A))
+            elif mask == 'B':
+                mask = np.arange(len(self.A), len(self.A) + len(self.B))
+            else:
+                raise ValueError
+
+        return self.similarity_matrix[:, mask].mean(axis=1)
+
     def s_wAB(self, A, B):
         """
         Return vector of s(w, A, B) across w, where
@@ -279,7 +297,7 @@ class SCWEAT:
         :param A: Mask on the AB axis of similarity matrix to use for A
         :param B: Mask on the AB axis of similarity matrix to use for B
         """
-        return self.similarity_matrix[:, A].mean(axis=1) - self.similarity_matrix[:, B].mean(axis=1)
+        return self.mean_similarity(A) - self.mean_similarity(B)
 
 
     def p(self, n_samples=10000):
@@ -320,6 +338,9 @@ class SCWEAT:
 
         return total_true / total
 
+    def AB_std(self):
+        return np.std(self.similarity_matrix[:, :], ddof=1)
+
     def association_score(self, A_idx = None, B_idx = None):
         """
         Compute the association score, which is defined as
@@ -332,7 +353,7 @@ class SCWEAT:
             A_idx = np.arange(len(self.A))
             B_idx = np.arange(len(self.A), len(self.A) + len(self.B))
         numerator = self.s_wAB(A_idx, B_idx)
-        denominator = np.std(self.similarity_matrix[:, :], ddof=1)
+        denominator = self.AB_std()
         return numerator / denominator
 
 

@@ -22,11 +22,11 @@ def test_already_run(model_name, test, file_name):
 
 
 def save_test_results(result, file_name):
-    new_result = pd.DataFrame(result).T
+    if type(result) == pd.Series:
+        result = pd.DataFrame(result).T
     if os.path.exists(file_name):
         previous_results = pd.read_csv(file_name)
-        all_results = pd.concat([previous_results, new_result]).reset_index(drop=True)
+        all_results = pd.concat([previous_results, result]).reset_index(drop=True)
     else:
-        all_results = new_result
-
+        all_results = result
     all_results.to_csv(file_name, index=False)

@@ -12,6 +12,8 @@ global image_embedding_dict
 image_embedding_dict = {}
 global text_embedding_dict
 text_embedding_dict = {}
+global image_dict
+image_dict = {}
 
 
 def clear_dict(dict, model_name):
@@ -28,8 +30,17 @@ def load_words(test, category, nwords=None):
         words = all_words.sort_values(['pleasantness']).head(nwords)['word'].tolist()
     return words
 
+def load_words_greenwald(category):
+    if category == 'pleasant':
+        words = pd.read_csv(os.path.join('data', 'greenwald_words', 'pleasant.csv'), header=None)[0].tolist()
+    elif category == 'unpleasant':
+        words = pd.read_csv(os.path.join('data', 'greenwald_words', 'unpleasant.csv'), header=None)[0].tolist()
+    return words
+
 
 def load_images(test, category, dataset='ieat'):
+    if (test, category, dataset) in image_dict.keys():
+        return image_dict[(test, category, dataset)]
     if dataset == 'ieat':
         image_dir = os.path.join('ieat', 'data', 'experiments', test.lower(), category.lower())
         image_paths = [os.path.join(image_dir, n) for n in os.listdir(image_dir)]
@@ -90,6 +101,7 @@ def load_images(test, category, dataset='ieat'):
 
         image_paths = [os.path.join('data','fairface-img-margin025-trainval',m) for m in relevant_models]
 
+    image_dict[(test, category, dataset)] = image_paths
     return image_paths
 
 
@@ -105,6 +117,8 @@ def extract_images(model, preprocess, image_paths, device, model_name):
         clear_dict(image_embedding_dict, model_name)
     else:
         image_features = image_embedding_dict[(model_name, tuple(image_paths))]
+    if len(image_features.shape) == 1:
+        image_features = image_features.reshape(1, -1)
     return image_features
 
 
