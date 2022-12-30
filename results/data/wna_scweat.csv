@@ -1,2 +1,3 @@
-template_source,requires_plural,for_words_that_start_with_vowel,template,singular,plural,formatted,model,Title,A,B,na,association_score,dist_to_pleasantness,dist_to_unpleasantness,dist_std
-SEAT Paper B.2.2,False,,This is <EMOTION>,abashment,abashments,This is abashment,ViT-B/16,Asian,European-American,Asian-American,104.0,0.0660421252250671,0.2214953005313873,0.2210790812969207,0.006302329711616
+version https://git-lfs.github.com/spec/v1
+oid sha256:04badc7bd8fd98e9a83b2b7fad534168b8658fd787acbce7d8bc90ca6aaa26f6
+size 39965521
