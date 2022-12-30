@@ -146,8 +146,9 @@ def perform_test(device):
                 save_test_results(new_results, results_fp)
                 new_results = []
             pbar.update()
-    new_results = pd.concat(new_results, axis=1).T
-    save_test_results(new_results, results_fp)
+    if len(new_results) > 0:
+        new_results = pd.concat(new_results, axis=1).T
+        save_test_results(new_results, results_fp)
 
 
 if __name__ == '__main__':

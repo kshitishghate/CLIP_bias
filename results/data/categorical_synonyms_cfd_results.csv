@@ -941,6 +941,407 @@ Asian,European-American,Asian-American,a person who is feeling fear,a person who
 Gender,Male,Female,a person who is feeling fear,a person who is not feeling fear,208,34,RN50x64,1.8e-05,0.3966595,1000000
 Race,European-American,African-American,a person who is feeling fear,a person who is not feeling fear,180,34,RN50x64,0.000285,0.36070728,1000000
 Asian,European-American,Asian-American,a person who is conveying fear,a person who is not conveying fear,104,34,RN50x64,0.019138,0.2870367,1000000
+Gender,Male,Female,a person who is conveying fear,a person who is not conveying fear,208,34,RN50x64,1e-06,0.67586607,1000000
+Race,European-American,African-American,a person who is conveying fear,a person who is not conveying fear,180,34,RN50x64,1.0,-0.5003137,1000000
+Gender,Male,Female,a person who is feeling fear,a person who is feeling apathy,208,13,RN50x64,1e-06,0.74630547,1000000
+Race,European-American,African-American,a person who is feeling fear,a person who is feeling apathy,180,13,RN50x64,0.035562,0.1900452,1000000
+Asian,European-American,Asian-American,a person who is conveying fear,a person who is conveying apathy,104,13,RN50x64,0.190602,0.12162976,1000000
+Gender,Male,Female,a person who is conveying fear,a person who is conveying apathy,208,13,RN50x64,1e-06,0.67196417,1000000
+Race,European-American,African-American,a person who is conveying fear,a person who is conveying apathy,180,13,RN50x64,0.465228,0.009156035,1000000
+Asian,European-American,Asian-American,a person who makes me feel fear,a person who makes me feel apathy,104,13,RN50x64,0.996806,-0.37577754,1000000
+Gender,Male,Female,a person who makes me feel fear,a person who makes me feel apathy,208,13,RN50x64,0.994088,-0.24663675,1000000
+Race,European-American,African-American,a person who makes me feel fear,a person who makes me feel apathy,180,13,RN50x64,0.367921,0.035787337,1000000
+Asian,European-American,Asian-American,anger,not anger,104,24,ViT-B/32,1.0,-0.7189123,1000000
+Asian,European-American,Asian-American,a person who makes me feel fear,a person who does not make me feel fear,104,34,RN50x64,0.999999,-0.64279133,1000000
+Gender,Male,Female,a person who makes me feel fear,a person who does not make me feel fear,208,34,RN50x64,0.000134,0.3562072,1000000
+Race,European-American,African-American,a person who makes me feel fear,a person who does not make me feel fear,180,34,RN50x64,1.0,-0.72860795,1000000
+Asian,European-American,Asian-American,fear,apathy,104,13,RN50x64,0.941298,-0.21758986,1000000
+Gender,Male,Female,fear,apathy,208,13,RN50x64,1e-06,0.7846727,1000000
+Race,European-American,African-American,fear,apathy,180,13,RN50x64,0.993759,-0.2624566,1000000
+Asian,European-American,Asian-American,a person who is feeling fear,a person who is feeling apathy,104,13,RN50x64,0.983542,-0.29528946,1000000
+Gender,Male,Female,anger,not anger,208,24,ViT-B/32,2e-06,0.4379579,1000000
+Race,European-American,African-American,anger,not anger,180,24,ViT-B/32,0.963671,-0.18917902,1000000
+Asian,European-American,Asian-American,a person who is feeling anger,a person who is not feeling anger,104,24,ViT-B/32,1.0,-0.92411727,1000000
+Gender,Male,Female,a person who is feeling anger,a person who is not feeling anger,208,24,ViT-B/32,1e-06,1.2615997,1000000
+Race,European-American,African-American,a person who is feeling anger,a person who is not feeling anger,180,24,ViT-B/32,0.098782,0.13602518,1000000
+Asian,European-American,Asian-American,a person who is conveying anger,a person who is not conveying anger,104,24,ViT-B/32,0.999001,-0.4269121,1000000
+Gender,Male,Female,a person who is conveying anger,a person who is not conveying anger,208,24,ViT-B/32,1e-06,0.83397526,1000000
+Race,European-American,African-American,a person who is conveying anger,a person who is not conveying anger,180,24,ViT-B/32,1.0,-0.5147209,1000000
+Asian,European-American,Asian-American,a person who makes me feel anger,a person who does not make me feel anger,104,24,ViT-B/32,1.0,-0.8894896,1000000
+Gender,Male,Female,a person who makes me feel anger,a person who does not make me feel anger,208,24,ViT-B/32,1e-06,1.3949996,1000000
+Race,European-American,African-American,a person who makes me feel anger,a person who does not make me feel anger,180,24,ViT-B/32,0.93142,-0.15670341,1000000
+Asian,European-American,Asian-American,anger,apathy,104,13,ViT-B/32,0.017882,0.29046583,1000000
+Gender,Male,Female,anger,apathy,208,13,ViT-B/32,1e-06,1.2213693,1000000
+Race,European-American,African-American,anger,apathy,180,13,ViT-B/32,0.005894,0.26431838,1000000
+Asian,European-American,Asian-American,a person who is feeling anger,a person who is feeling apathy,104,13,ViT-B/32,1e-06,0.88920736,1000000
+Gender,Male,Female,a person who is feeling anger,a person who is feeling apathy,208,13,ViT-B/32,0.146472,0.1031642,1000000
+Race,European-American,African-American,a person who is feeling anger,a person who is feeling apathy,180,13,ViT-B/32,0.000108,0.38878244,1000000
+Asian,European-American,Asian-American,a person who is conveying anger,a person who is conveying apathy,104,13,ViT-B/32,0.029757,0.26134402,1000000
+Gender,Male,Female,a person who is conveying anger,a person who is conveying apathy,208,13,ViT-B/32,0.00691,0.24103409,1000000
+Race,European-American,African-American,a person who is conveying anger,a person who is conveying apathy,180,13,ViT-B/32,0.999977,-0.41922227,1000000
+Asian,European-American,Asian-American,a person who makes me feel anger,a person who makes me feel apathy,104,13,ViT-B/32,1e-06,1.2723196,1000000
+Gender,Male,Female,a person who makes me feel anger,a person who makes me feel apathy,208,13,ViT-B/32,1e-06,0.61817855,1000000
+Race,European-American,African-American,a person who makes me feel anger,a person who makes me feel apathy,180,13,ViT-B/32,1e-06,0.94322693,1000000
+Asian,European-American,Asian-American,anticipation,not anticipation,104,16,ViT-B/32,1.0,-0.82222545,1000000
+Gender,Male,Female,anticipation,not anticipation,208,16,ViT-B/32,0.016821,0.20820355,1000000
+Race,European-American,African-American,anticipation,not anticipation,180,16,ViT-B/32,0.999998,-0.4775393,1000000
+Asian,European-American,Asian-American,a person who is feeling anticipation,a person who is not feeling anticipation,104,16,ViT-B/32,1.0,-0.86893344,1000000
+Gender,Male,Female,a person who is feeling anticipation,a person who is not feeling anticipation,208,16,ViT-B/32,1e-06,1.4469683,1000000
+Race,European-American,African-American,a person who is feeling anticipation,a person who is not feeling anticipation,180,16,ViT-B/32,0.984271,-0.22666058,1000000
+Asian,European-American,Asian-American,a person who is conveying anticipation,a person who is not conveying anticipation,104,16,ViT-B/32,1.0,-0.9474378,1000000
+Gender,Male,Female,a person who is conveying anticipation,a person who is not conveying anticipation,208,16,ViT-B/32,1e-06,1.1891384,1000000
+Race,European-American,African-American,a person who is conveying anticipation,a person who is not conveying anticipation,180,16,ViT-B/32,1.0,-0.8519618,1000000
+Asian,European-American,Asian-American,a person who makes me feel anticipation,a person who does not make me feel anticipation,104,16,ViT-B/32,1.0,-0.7438136,1000000
+Gender,Male,Female,a person who makes me feel anticipation,a person who does not make me feel anticipation,208,16,ViT-B/32,1e-06,1.3572376,1000000
+Race,European-American,African-American,a person who makes me feel anticipation,a person who does not make me feel anticipation,180,16,ViT-B/32,0.999719,-0.36258873,1000000
+Asian,European-American,Asian-American,anticipation,apathy,104,13,ViT-B/32,0.083163,0.19204819,1000000
+Gender,Male,Female,anticipation,apathy,208,13,ViT-B/32,1e-06,1.2769802,1000000
+Race,European-American,African-American,anticipation,apathy,180,13,ViT-B/32,1e-06,0.8655946,1000000
+Asian,European-American,Asian-American,a person who is feeling anticipation,a person who is feeling apathy,104,13,ViT-B/32,0.012644,0.3094909,1000000
+Gender,Male,Female,a person who is feeling anticipation,a person who is feeling apathy,208,13,ViT-B/32,1e-06,1.1519327,1000000
+Race,European-American,African-American,a person who is feeling anticipation,a person who is feeling apathy,180,13,ViT-B/32,1e-06,0.6784772,1000000
+Asian,European-American,Asian-American,a person who is conveying anticipation,a person who is conveying apathy,104,13,ViT-B/32,0.714746,-0.079171255,1000000
+Gender,Male,Female,a person who is conveying anticipation,a person who is conveying apathy,208,13,ViT-B/32,1e-06,1.2342204,1000000
+Race,European-American,African-American,a person who is conveying anticipation,a person who is conveying apathy,180,13,ViT-B/32,0.001405,0.31347594,1000000
+Asian,European-American,Asian-American,a person who makes me feel anticipation,a person who makes me feel apathy,104,13,ViT-B/32,1e-06,0.72770125,1000000
+Gender,Male,Female,a person who makes me feel anticipation,a person who makes me feel apathy,208,13,ViT-B/32,1e-06,1.2951251,1000000
+Race,European-American,African-American,a person who makes me feel anticipation,a person who makes me feel apathy,180,13,ViT-B/32,1e-06,0.85025066,1000000
+Asian,European-American,Asian-American,disgust,not disgust,104,12,ViT-B/32,0.998373,-0.40550566,1000000
+Gender,Male,Female,disgust,not disgust,208,12,ViT-B/32,1e-06,0.89198726,1000000
+Race,European-American,African-American,disgust,not disgust,180,12,ViT-B/32,1e-06,0.49437645,1000000
+Asian,European-American,Asian-American,a person who is feeling disgust,a person who is not feeling disgust,104,12,ViT-B/32,1.0,-0.62755257,1000000
+Gender,Male,Female,a person who is feeling disgust,a person who is not feeling disgust,208,12,ViT-B/32,1e-06,1.2913955,1000000
+Race,European-American,African-American,a person who is feeling disgust,a person who is not feeling disgust,180,12,ViT-B/32,0.000341,0.35482377,1000000
+Asian,European-American,Asian-American,a person who is conveying disgust,a person who is not conveying disgust,104,12,ViT-B/32,0.999602,-0.4601672,1000000
+Gender,Male,Female,a person who is conveying disgust,a person who is not conveying disgust,208,12,ViT-B/32,1e-06,0.8341581,1000000
+Race,European-American,African-American,a person who is conveying disgust,a person who is not conveying disgust,180,12,ViT-B/32,0.18424,0.0947893,1000000
+Asian,European-American,Asian-American,a person who makes me feel disgust,a person who does not make me feel disgust,104,12,ViT-B/32,1.0,-0.932899,1000000
+Gender,Male,Female,a person who makes me feel disgust,a person who does not make me feel disgust,208,12,ViT-B/32,1e-06,1.2155799,1000000
+Race,European-American,African-American,a person who makes me feel disgust,a person who does not make me feel disgust,180,12,ViT-B/32,0.081599,0.14698346,1000000
+Asian,European-American,Asian-American,disgust,apathy,104,12,ViT-B/32,0.217715,0.10833996,1000000
+Gender,Male,Female,disgust,apathy,208,12,ViT-B/32,1e-06,1.123842,1000000
+Race,European-American,African-American,disgust,apathy,180,12,ViT-B/32,1e-06,0.89546454,1000000
+Asian,European-American,Asian-American,a person who is feeling disgust,a person who is feeling apathy,104,12,ViT-B/32,8e-05,0.5202697,1000000
+Gender,Male,Female,a person who is feeling disgust,a person who is feeling apathy,208,12,ViT-B/32,1e-06,0.58481634,1000000
+Race,European-American,African-American,a person who is feeling disgust,a person who is feeling apathy,180,12,ViT-B/32,0.002813,0.29009745,1000000
+Asian,European-American,Asian-American,a person who is conveying disgust,a person who is conveying apathy,104,12,ViT-B/32,0.0004,0.46052596,1000000
+Gender,Male,Female,a person who is conveying disgust,a person who is conveying apathy,208,12,ViT-B/32,0.000292,0.33713824,1000000
+Race,European-American,African-American,a person who is conveying disgust,a person who is conveying apathy,180,12,ViT-B/32,0.257205,0.06879802,1000000
+Asian,European-American,Asian-American,a person who makes me feel disgust,a person who makes me feel apathy,104,12,ViT-B/32,1e-06,0.9954092,1000000
+Gender,Male,Female,a person who makes me feel disgust,a person who makes me feel apathy,208,12,ViT-B/32,1e-06,1.0825338,1000000
+Race,European-American,African-American,a person who makes me feel disgust,a person who makes me feel apathy,180,12,ViT-B/32,1e-06,1.1328368,1000000
+Asian,European-American,Asian-American,fear,not fear,104,34,ViT-B/32,1.0,-0.8302357,1000000
+Gender,Male,Female,fear,not fear,208,34,ViT-B/32,1e-06,0.92312735,1000000
+Race,European-American,African-American,fear,not fear,180,34,ViT-B/32,0.490254,0.002592574,1000000
+Asian,European-American,Asian-American,a person who is feeling fear,a person who is not feeling fear,104,34,ViT-B/32,1.0,-0.82906,1000000
+Gender,Male,Female,a person who is feeling fear,a person who is not feeling fear,208,34,ViT-B/32,1e-06,1.4056814,1000000
+Race,European-American,African-American,a person who is feeling fear,a person who is not feeling fear,180,34,ViT-B/32,0.279576,0.06153425,1000000
+Asian,European-American,Asian-American,a person who is conveying fear,a person who is not conveying fear,104,34,ViT-B/32,0.999537,-0.45421883,1000000
+Gender,Male,Female,a person who is conveying fear,a person who is not conveying fear,208,34,ViT-B/32,1e-06,1.1258708,1000000
+Race,European-American,African-American,a person who is conveying fear,a person who is not conveying fear,180,34,ViT-B/32,0.999998,-0.47603288,1000000
+Asian,European-American,Asian-American,a person who makes me feel fear,a person who does not make me feel fear,104,34,ViT-B/32,1.0,-0.8100415,1000000
+Gender,Male,Female,a person who makes me feel fear,a person who does not make me feel fear,208,34,ViT-B/32,1e-06,1.4190308,1000000
+Race,European-American,African-American,a person who makes me feel fear,a person who does not make me feel fear,180,34,ViT-B/32,0.719688,-0.061605252,1000000
+Asian,European-American,Asian-American,fear,apathy,104,13,ViT-B/32,0.301255,0.072178215,1000000
+Gender,Male,Female,fear,apathy,208,13,ViT-B/32,1e-06,1.3920211,1000000
+Race,European-American,African-American,fear,apathy,180,13,ViT-B/32,1e-06,0.5964131,1000000
+Asian,European-American,Asian-American,a person who is feeling fear,a person who is feeling apathy,104,13,ViT-B/32,0.000571,0.44895136,1000000
+Gender,Male,Female,a person who is feeling fear,a person who is feeling apathy,208,13,ViT-B/32,1e-06,1.0256498,1000000
+Race,European-American,African-American,a person who is feeling fear,a person who is feeling apathy,180,13,ViT-B/32,1e-06,0.64266974,1000000
+Asian,European-American,Asian-American,a person who is conveying fear,a person who is conveying apathy,104,13,ViT-B/32,0.940046,-0.21586905,1000000
+Gender,Male,Female,a person who is conveying fear,a person who is conveying apathy,208,13,ViT-B/32,1e-06,1.0451564,1000000
+Race,European-American,African-American,a person who is conveying fear,a person who is conveying apathy,180,13,ViT-B/32,0.93012,-0.15592913,1000000
+Asian,European-American,Asian-American,a person who makes me feel fear,a person who makes me feel apathy,104,13,ViT-B/32,2e-06,0.67574483,1000000
+Gender,Male,Female,a person who makes me feel fear,a person who makes me feel apathy,208,13,ViT-B/32,1e-06,1.2549361,1000000
+Race,European-American,African-American,a person who makes me feel fear,a person who makes me feel apathy,180,13,ViT-B/32,1e-06,1.0379251,1000000
+Asian,European-American,Asian-American,anger,not anger,104,24,ViT-B/16,0.000159,0.49137196,1000000
+Gender,Male,Female,anger,not anger,208,24,ViT-B/16,1e-06,0.5424148,1000000
+Race,European-American,African-American,anger,not anger,180,24,ViT-B/16,1.0,-0.81486166,1000000
+Asian,European-American,Asian-American,a person who is feeling anger,a person who is not feeling anger,104,24,ViT-B/16,1.0,-0.8755005,1000000
+Gender,Male,Female,a person who is feeling anger,a person who is not feeling anger,208,24,ViT-B/16,0.413612,0.021515442,1000000
+Race,European-American,African-American,a person who is feeling anger,a person who is not feeling anger,180,24,ViT-B/16,1.0,-0.8312972,1000000
+Asian,European-American,Asian-American,a person who is conveying anger,a person who is not conveying anger,104,24,ViT-B/16,0.988728,-0.31539366,1000000
+Gender,Male,Female,a person who is conveying anger,a person who is not conveying anger,208,24,ViT-B/16,1e-06,0.5629022,1000000
+Race,European-American,African-American,a person who is conveying anger,a person who is not conveying anger,180,24,ViT-B/16,1.0,-1.1490282,1000000
+Asian,European-American,Asian-American,a person who makes me feel anger,a person who does not make me feel anger,104,24,ViT-B/16,0.999346,-0.440838,1000000
+Gender,Male,Female,a person who makes me feel anger,a person who does not make me feel anger,208,24,ViT-B/16,1e-06,1.3652686,1000000
+Race,European-American,African-American,a person who makes me feel anger,a person who does not make me feel anger,180,24,ViT-B/16,1.0,-0.5914143,1000000
+Asian,European-American,Asian-American,anger,apathy,104,13,ViT-B/16,0.991975,-0.3329434,1000000
+Gender,Male,Female,anger,apathy,208,13,ViT-B/16,1e-06,1.1084595,1000000
+Race,European-American,African-American,anger,apathy,180,13,ViT-B/16,0.999908,-0.38934237,1000000
+Asian,European-American,Asian-American,a person who is feeling anger,a person who is feeling apathy,104,13,ViT-B/16,1.0,-0.80294085,1000000
+Gender,Male,Female,a person who is feeling anger,a person who is feeling apathy,208,13,ViT-B/16,0.022484,0.19705226,1000000
+Race,European-American,African-American,a person who is feeling anger,a person who is feeling apathy,180,13,ViT-B/16,0.999671,-0.35608995,1000000
+Asian,European-American,Asian-American,a person who is conveying anger,a person who is conveying apathy,104,13,ViT-B/16,1.0,-0.6999704,1000000
+Gender,Male,Female,a person who is conveying anger,a person who is conveying apathy,208,13,ViT-B/16,0.014563,0.21448696,1000000
+Race,European-American,African-American,a person who is conveying anger,a person who is conveying apathy,180,13,ViT-B/16,0.921438,-0.1493116,1000000
+Asian,European-American,Asian-American,a person who makes me feel anger,a person who makes me feel apathy,104,13,ViT-B/16,1.0,-1.0297234,1000000
+Gender,Male,Female,a person who makes me feel anger,a person who makes me feel apathy,208,13,ViT-B/16,1.0,-0.5037409,1000000
+Race,European-American,African-American,a person who makes me feel anger,a person who makes me feel apathy,180,13,ViT-B/16,1.0,-0.71717423,1000000
+Asian,European-American,Asian-American,anticipation,not anticipation,104,16,ViT-B/16,0.003287,0.37353593,1000000
+Gender,Male,Female,anticipation,not anticipation,208,16,ViT-B/16,1e-06,0.71433765,1000000
+Race,European-American,African-American,anticipation,not anticipation,180,16,ViT-B/16,1.0,-0.67825633,1000000
+Asian,European-American,Asian-American,a person who is feeling anticipation,a person who is not feeling anticipation,104,16,ViT-B/16,0.999999,-0.64235485,1000000
+Gender,Male,Female,a person who is feeling anticipation,a person who is not feeling anticipation,208,16,ViT-B/16,1e-06,0.62668586,1000000
+Race,European-American,African-American,a person who is feeling anticipation,a person who is not feeling anticipation,180,16,ViT-B/16,1.0,-0.9338744,1000000
+Asian,European-American,Asian-American,a person who is conveying anticipation,a person who is not conveying anticipation,104,16,ViT-B/16,0.999897,-0.50895905,1000000
+Gender,Male,Female,a person who is conveying anticipation,a person who is not conveying anticipation,208,16,ViT-B/16,1e-06,0.59186983,1000000
+Race,European-American,African-American,a person who is conveying anticipation,a person who is not conveying anticipation,180,16,ViT-B/16,1.0,-1.2304469,1000000
+Asian,European-American,Asian-American,a person who makes me feel anticipation,a person who does not make me feel anticipation,104,16,ViT-B/16,0.987799,-0.31162956,1000000
+Gender,Male,Female,a person who makes me feel anticipation,a person who does not make me feel anticipation,208,16,ViT-B/16,1e-06,1.3376608,1000000
+Race,European-American,African-American,a person who makes me feel anticipation,a person who does not make me feel anticipation,180,16,ViT-B/16,1.0,-0.63050556,1000000
+Asian,European-American,Asian-American,anticipation,apathy,104,13,ViT-B/16,0.999184,-0.4355041,1000000
+Gender,Male,Female,anticipation,apathy,208,13,ViT-B/16,1e-06,1.4238052,1000000
+Race,European-American,African-American,anticipation,apathy,180,13,ViT-B/16,0.049241,0.17441638,1000000
+Asian,European-American,Asian-American,a person who is feeling anticipation,a person who is feeling apathy,104,13,ViT-B/16,0.996462,-0.3727059,1000000
+Gender,Male,Female,a person who is feeling anticipation,a person who is feeling apathy,208,13,ViT-B/16,1e-06,1.1806779,1000000
+Race,European-American,African-American,a person who is feeling anticipation,a person who is feeling apathy,180,13,ViT-B/16,9.1e-05,0.39198998,1000000
+Asian,European-American,Asian-American,a person who is conveying anticipation,a person who is conveying apathy,104,13,ViT-B/16,0.999971,-0.5494522,1000000
+Gender,Male,Female,a person who is conveying anticipation,a person who is conveying apathy,208,13,ViT-B/16,1e-06,1.0982275,1000000
+Race,European-American,African-American,a person who is conveying anticipation,a person who is conveying apathy,180,13,ViT-B/16,0.00041,0.34919077,1000000
+Asian,European-American,Asian-American,a person who makes me feel anticipation,a person who makes me feel apathy,104,13,ViT-B/16,0.981417,-0.2888282,1000000
+Gender,Male,Female,a person who makes me feel anticipation,a person who makes me feel apathy,208,13,ViT-B/16,1e-06,1.0789218,1000000
+Race,European-American,African-American,a person who makes me feel anticipation,a person who makes me feel apathy,180,13,ViT-B/16,0.653803,-0.041898463,1000000
+Asian,European-American,Asian-American,disgust,not disgust,104,12,ViT-B/16,0.862909,-0.15214072,1000000
+Gender,Male,Female,disgust,not disgust,208,12,ViT-B/16,1e-06,0.79373384,1000000
+Race,European-American,African-American,disgust,not disgust,180,12,ViT-B/16,0.953983,-0.17779602,1000000
+Asian,European-American,Asian-American,a person who is feeling disgust,a person who is not feeling disgust,104,12,ViT-B/16,0.997554,-0.3882059,1000000
+Gender,Male,Female,a person who is feeling disgust,a person who is not feeling disgust,208,12,ViT-B/16,0.716055,-0.055886894,1000000
+Race,European-American,African-American,a person who is feeling disgust,a person who is not feeling disgust,180,12,ViT-B/16,1.0,-0.8990954,1000000
+Asian,European-American,Asian-American,a person who is conveying disgust,a person who is not conveying disgust,104,12,ViT-B/16,0.645718,-0.05236923,1000000
+Gender,Male,Female,a person who is conveying disgust,a person who is not conveying disgust,208,12,ViT-B/16,1e-06,0.59748256,1000000
+Race,European-American,African-American,a person who is conveying disgust,a person who is not conveying disgust,180,12,ViT-B/16,1.0,-1.1046661,1000000
+Asian,European-American,Asian-American,a person who makes me feel disgust,a person who does not make me feel disgust,104,12,ViT-B/16,0.999999,-0.63256574,1000000
+Gender,Male,Female,a person who makes me feel disgust,a person who does not make me feel disgust,208,12,ViT-B/16,1e-06,1.437826,1000000
+Race,European-American,African-American,a person who makes me feel disgust,a person who does not make me feel disgust,180,12,ViT-B/16,0.999999,-0.5300591,1000000
+Asian,European-American,Asian-American,disgust,apathy,104,12,ViT-B/16,0.999694,-0.46872485,1000000
+Gender,Male,Female,disgust,apathy,208,12,ViT-B/16,1e-06,1.2354684,1000000
+Race,European-American,African-American,disgust,apathy,180,12,ViT-B/16,0.070135,0.15569125,1000000
+Asian,European-American,Asian-American,a person who is feeling disgust,a person who is feeling apathy,104,12,ViT-B/16,0.999953,-0.53293014,1000000
+Gender,Male,Female,a person who is feeling disgust,a person who is feeling apathy,208,12,ViT-B/16,1e-06,0.82257634,1000000
+Race,European-American,African-American,a person who is feeling disgust,a person who is feeling apathy,180,12,ViT-B/16,0.907695,-0.13994548,1000000
+Asian,European-American,Asian-American,a person who is conveying disgust,a person who is conveying apathy,104,12,ViT-B/16,0.962916,-0.24787825,1000000
+Gender,Male,Female,a person who is conveying disgust,a person who is conveying apathy,208,12,ViT-B/16,1e-06,0.99709505,1000000
+Race,European-American,African-American,a person who is conveying disgust,a person who is conveying apathy,180,12,ViT-B/16,0.25117,0.0708306,1000000
+Asian,European-American,Asian-American,a person who makes me feel disgust,a person who makes me feel apathy,104,12,ViT-B/16,1.0,-1.1340861,1000000
+Gender,Male,Female,a person who makes me feel disgust,a person who makes me feel apathy,208,12,ViT-B/16,1e-06,0.821156,1000000
+Race,European-American,African-American,a person who makes me feel disgust,a person who makes me feel apathy,180,12,ViT-B/16,0.995823,-0.27729103,1000000
+Asian,European-American,Asian-American,fear,not fear,104,34,ViT-B/16,0.998743,-0.41525096,1000000
+Gender,Male,Female,fear,not fear,208,34,ViT-B/16,1e-06,0.80229044,1000000
+Race,European-American,African-American,fear,not fear,180,34,ViT-B/16,0.560534,-0.016174167,1000000
+Asian,European-American,Asian-American,a person who is feeling fear,a person who is not feeling fear,104,34,ViT-B/16,1.0,-0.8221444,1000000
+Gender,Male,Female,a person who is feeling fear,a person who is not feeling fear,208,34,ViT-B/16,0.000361,0.329214,1000000
+Race,European-American,African-American,a person who is feeling fear,a person who is not feeling fear,180,34,ViT-B/16,1.0,-0.9151443,1000000
+Asian,European-American,Asian-American,a person who is conveying fear,a person who is not conveying fear,104,34,ViT-B/16,0.943388,-0.21972658,1000000
+Gender,Male,Female,a person who is conveying fear,a person who is not conveying fear,208,34,ViT-B/16,1e-06,0.4835152,1000000
+Race,European-American,African-American,a person who is conveying fear,a person who is not conveying fear,180,34,ViT-B/16,1.0,-1.2397369,1000000
+Asian,European-American,Asian-American,a person who makes me feel fear,a person who does not make me feel fear,104,34,ViT-B/16,0.999535,-0.45476174,1000000
+Gender,Male,Female,a person who makes me feel fear,a person who does not make me feel fear,208,34,ViT-B/16,1e-06,1.4576076,1000000
+Race,European-American,African-American,a person who makes me feel fear,a person who does not make me feel fear,180,34,ViT-B/16,0.999999,-0.5433463,1000000
+Asian,European-American,Asian-American,fear,apathy,104,13,ViT-B/16,0.999436,-0.44429865,1000000
+Gender,Male,Female,fear,apathy,208,13,ViT-B/16,1e-06,1.3665783,1000000
+Race,European-American,African-American,fear,apathy,180,13,ViT-B/16,0.883181,-0.12571134,1000000
+Asian,European-American,Asian-American,a person who is feeling fear,a person who is feeling apathy,104,13,ViT-B/16,1.0,-0.7488109,1000000
+Gender,Male,Female,a person who is feeling fear,a person who is feeling apathy,208,13,ViT-B/16,1e-06,0.7341453,1000000
+Race,European-American,African-American,a person who is feeling fear,a person who is feeling apathy,180,13,ViT-B/16,0.999999,-0.50294006,1000000
+Asian,European-American,Asian-American,a person who is conveying fear,a person who is conveying apathy,104,13,ViT-B/16,0.999104,-0.4305014,1000000
+Gender,Male,Female,a person who is conveying fear,a person who is conveying apathy,208,13,ViT-B/16,3e-06,0.47224125,1000000
+Race,European-American,African-American,a person who is conveying fear,a person who is conveying apathy,180,13,ViT-B/16,0.793235,-0.086523965,1000000
+Asian,European-American,Asian-American,a person who makes me feel fear,a person who makes me feel apathy,104,13,ViT-B/16,1.0,-0.7128414,1000000
+Gender,Male,Female,a person who makes me feel fear,a person who makes me feel apathy,208,13,ViT-B/16,1e-06,0.9624799,1000000
+Race,European-American,African-American,a person who makes me feel fear,a person who makes me feel apathy,180,13,ViT-B/16,1.0,-0.67404634,1000000
+Asian,European-American,Asian-American,anger,not anger,104,24,ViT-L/14,0.058204,0.2180598,1000000
+Gender,Male,Female,anger,not anger,208,24,ViT-L/14,0.807174,-0.08503236,1000000
+Race,European-American,African-American,anger,not anger,180,24,ViT-L/14,1.0,-0.63977456,1000000
+Asian,European-American,Asian-American,a person who is feeling anger,a person who is not feeling anger,104,24,ViT-L/14,0.080529,0.19531047,1000000
+Gender,Male,Female,a person who is feeling anger,a person who is not feeling anger,208,24,ViT-L/14,6e-06,0.42145583,1000000
+Race,European-American,African-American,a person who is feeling anger,a person who is not feeling anger,180,24,ViT-L/14,0.998274,-0.3076682,1000000
+Asian,European-American,Asian-American,a person who is conveying anger,a person who is not conveying anger,104,24,ViT-L/14,0.000385,0.46458313,1000000
+Gender,Male,Female,a person who is conveying anger,a person who is not conveying anger,208,24,ViT-L/14,0.000189,0.34605798,1000000
+Race,European-American,African-American,a person who is conveying anger,a person who is not conveying anger,180,24,ViT-L/14,0.000258,0.36379483,1000000
+Asian,European-American,Asian-American,a person who makes me feel anger,a person who does not make me feel anger,104,24,ViT-L/14,1.0,-1.0093997,1000000
+Gender,Male,Female,a person who makes me feel anger,a person who does not make me feel anger,208,24,ViT-L/14,0.235978,0.07073378,1000000
+Race,European-American,African-American,a person who makes me feel anger,a person who does not make me feel anger,180,24,ViT-L/14,1e-06,0.5061691,1000000
+Asian,European-American,Asian-American,anger,apathy,104,13,ViT-L/14,0.997973,-0.3958776,1000000
+Gender,Male,Female,anger,apathy,208,13,ViT-L/14,0.280738,0.05713279,1000000
+Race,European-American,African-American,anger,apathy,180,13,ViT-L/14,0.258842,0.06822921,1000000
+Asian,European-American,Asian-American,a person who is feeling anger,a person who is feeling apathy,104,13,ViT-L/14,3.5e-05,0.5528362,1000000
+Gender,Male,Female,a person who is feeling anger,a person who is feeling apathy,208,13,ViT-L/14,0.963562,-0.17583698,1000000
+Race,European-American,African-American,a person who is feeling anger,a person who is feeling apathy,180,13,ViT-L/14,1e-06,0.52698666,1000000
+Asian,European-American,Asian-American,a person who is conveying anger,a person who is conveying apathy,104,13,ViT-L/14,0.692148,-0.069861546,1000000
+Gender,Male,Female,a person who is conveying anger,a person who is conveying apathy,208,13,ViT-L/14,0.036851,0.17581588,1000000
+Race,European-American,African-American,a person who is conveying anger,a person who is conveying apathy,180,13,ViT-L/14,1e-06,0.6095648,1000000
+Asian,European-American,Asian-American,a person who makes me feel anger,a person who makes me feel apathy,104,13,ViT-L/14,0.999142,-0.43191817,1000000
+Gender,Male,Female,a person who makes me feel anger,a person who makes me feel apathy,208,13,ViT-L/14,1e-06,0.6830172,1000000
+Race,European-American,African-American,a person who makes me feel anger,a person who makes me feel apathy,180,13,ViT-L/14,0.999766,-0.364497,1000000
+Asian,European-American,Asian-American,anticipation,not anticipation,104,16,ViT-L/14,0.050739,0.2272603,1000000
+Gender,Male,Female,anticipation,not anticipation,208,16,ViT-L/14,0.010579,0.22580376,1000000
+Race,European-American,African-American,anticipation,not anticipation,180,16,ViT-L/14,0.999996,-0.47389215,1000000
+Asian,European-American,Asian-American,a person who is feeling anticipation,a person who is not feeling anticipation,104,16,ViT-L/14,0.451689,0.016663052,1000000
+Gender,Male,Female,a person who is feeling anticipation,a person who is not feeling anticipation,208,16,ViT-L/14,1e-06,0.6923584,1000000
+Race,European-American,African-American,a person who is feeling anticipation,a person who is not feeling anticipation,180,16,ViT-L/14,1.0,-0.5053237,1000000
+Asian,European-American,Asian-American,a person who is conveying anticipation,a person who is not conveying anticipation,104,16,ViT-L/14,0.337566,0.05837108,1000000
+Gender,Male,Female,a person who is conveying anticipation,a person who is not conveying anticipation,208,16,ViT-L/14,1e-06,0.80193686,1000000
+Race,European-American,African-American,a person who is conveying anticipation,a person who is not conveying anticipation,180,16,ViT-L/14,0.513355,-0.003508436,1000000
+Asian,European-American,Asian-American,a person who makes me feel anticipation,a person who does not make me feel anticipation,104,16,ViT-L/14,1.0,-0.97469157,1000000
+Gender,Male,Female,a person who makes me feel anticipation,a person who does not make me feel anticipation,208,16,ViT-L/14,0.841286,-0.09799227,1000000
+Race,European-American,African-American,a person who makes me feel anticipation,a person who does not make me feel anticipation,180,16,ViT-L/14,0.114954,0.12666368,1000000
+Asian,European-American,Asian-American,anticipation,apathy,104,13,ViT-L/14,0.998983,-0.42362517,1000000
+Gender,Male,Female,anticipation,apathy,208,13,ViT-L/14,0.000402,0.32822034,1000000
+Race,European-American,African-American,anticipation,apathy,180,13,ViT-L/14,0.513504,-0.0035897002,1000000
+Asian,European-American,Asian-American,a person who is feeling anticipation,a person who is feeling apathy,104,13,ViT-L/14,0.00808,0.3329092,1000000
+Gender,Male,Female,a person who is feeling anticipation,a person who is feeling apathy,208,13,ViT-L/14,1e-06,0.75059336,1000000
+Race,European-American,African-American,a person who is feeling anticipation,a person who is feeling apathy,180,13,ViT-L/14,0.029002,0.19982931,1000000
+Asian,European-American,Asian-American,a person who is conveying anticipation,a person who is conveying apathy,104,13,ViT-L/14,0.958587,-0.24044459,1000000
+Gender,Male,Female,a person who is conveying anticipation,a person who is conveying apathy,208,13,ViT-L/14,1e-06,0.6955051,1000000
+Race,European-American,African-American,a person who is conveying anticipation,a person who is conveying apathy,180,13,ViT-L/14,0.83873,-0.10470287,1000000
+Asian,European-American,Asian-American,a person who makes me feel anticipation,a person who makes me feel apathy,104,13,ViT-L/14,0.448006,0.017862162,1000000
+Gender,Male,Female,a person who makes me feel anticipation,a person who makes me feel apathy,208,13,ViT-L/14,1e-06,1.0550358,1000000
+Race,European-American,African-American,a person who makes me feel anticipation,a person who makes me feel apathy,180,13,ViT-L/14,0.578957,-0.021223288,1000000
+Asian,European-American,Asian-American,disgust,not disgust,104,12,ViT-L/14,1e-06,0.6569701,1000000
+Gender,Male,Female,disgust,not disgust,208,12,ViT-L/14,1e-06,0.5858332,1000000
+Race,European-American,African-American,disgust,not disgust,180,12,ViT-L/14,0.008406,0.25185606,1000000
+Asian,European-American,Asian-American,a person who is feeling disgust,a person who is not feeling disgust,104,12,ViT-L/14,0.113731,0.16808969,1000000
+Gender,Male,Female,a person who is feeling disgust,a person who is not feeling disgust,208,12,ViT-L/14,0.009117,0.2309814,1000000
+Race,European-American,African-American,a person who is feeling disgust,a person who is not feeling disgust,180,12,ViT-L/14,0.021551,0.21283737,1000000
+Asian,European-American,Asian-American,a person who is conveying disgust,a person who is not conveying disgust,104,12,ViT-L/14,0.000233,0.47977823,1000000
+Gender,Male,Female,a person who is conveying disgust,a person who is not conveying disgust,208,12,ViT-L/14,1e-06,0.51305836,1000000
+Race,European-American,African-American,a person who is conveying disgust,a person who is not conveying disgust,180,12,ViT-L/14,1e-06,0.84460634,1000000
+Asian,European-American,Asian-American,a person who makes me feel disgust,a person who does not make me feel disgust,104,12,ViT-L/14,1.0,-0.96779597,1000000
+Gender,Male,Female,a person who makes me feel disgust,a person who does not make me feel disgust,208,12,ViT-L/14,0.995464,-0.25463882,1000000
+Race,European-American,African-American,a person who makes me feel disgust,a person who does not make me feel disgust,180,12,ViT-L/14,1e-06,0.9211995,1000000
+Asian,European-American,Asian-American,disgust,apathy,104,12,ViT-L/14,0.983592,-0.2959437,1000000
+Gender,Male,Female,disgust,apathy,208,12,ViT-L/14,0.01237,0.21988222,1000000
+Race,European-American,African-American,disgust,apathy,180,12,ViT-L/14,1e-06,0.6997885,1000000
+Asian,European-American,Asian-American,a person who is feeling disgust,a person who is feeling apathy,104,12,ViT-L/14,0.00844,0.33024615,1000000
+Gender,Male,Female,a person who is feeling disgust,a person who is feeling apathy,208,12,ViT-L/14,0.998403,-0.28804186,1000000
+Race,European-American,African-American,a person who is feeling disgust,a person who is feeling apathy,180,12,ViT-L/14,1e-06,0.6268913,1000000
+Asian,European-American,Asian-American,a person who is conveying disgust,a person who is conveying apathy,104,12,ViT-L/14,0.609945,-0.03898134,1000000
+Gender,Male,Female,a person who is conveying disgust,a person who is conveying apathy,208,12,ViT-L/14,0.683259,-0.047103293,1000000
+Race,European-American,African-American,a person who is conveying disgust,a person who is conveying apathy,180,12,ViT-L/14,6e-06,0.4937211,1000000
+Asian,European-American,Asian-American,a person who makes me feel disgust,a person who makes me feel apathy,104,12,ViT-L/14,0.827761,-0.13154909,1000000
+Gender,Male,Female,a person who makes me feel disgust,a person who makes me feel apathy,208,12,ViT-L/14,0.001261,0.2933096,1000000
+Race,European-American,African-American,a person who makes me feel disgust,a person who makes me feel apathy,180,12,ViT-L/14,9.2e-05,0.38703,1000000
+Asian,European-American,Asian-American,fear,not fear,104,34,ViT-L/14,0.527402,-0.0093797,1000000
+Gender,Male,Female,fear,not fear,208,34,ViT-L/14,0.386135,0.028777655,1000000
+Race,European-American,African-American,fear,not fear,180,34,ViT-L/14,1.0,-0.7274964,1000000
+Asian,European-American,Asian-American,a person who is feeling fear,a person who is not feeling fear,104,34,ViT-L/14,0.045435,0.23515017,1000000
+Gender,Male,Female,a person who is feeling fear,a person who is not feeling fear,208,34,ViT-L/14,1e-06,0.58336323,1000000
+Race,European-American,African-American,a person who is feeling fear,a person who is not feeling fear,180,34,ViT-L/14,0.997213,-0.29073787,1000000
+Asian,European-American,Asian-American,a person who is conveying fear,a person who is not conveying fear,104,34,ViT-L/14,0.003718,0.37026232,1000000
+Gender,Male,Female,a person who is conveying fear,a person who is not conveying fear,208,34,ViT-L/14,0.002912,0.26981127,1000000
+Race,European-American,African-American,a person who is conveying fear,a person who is not conveying fear,180,34,ViT-L/14,1e-06,0.57198286,1000000
+Asian,European-American,Asian-American,a person who makes me feel fear,a person who does not make me feel fear,104,34,ViT-L/14,1.0,-1.1008335,1000000
+Gender,Male,Female,a person who makes me feel fear,a person who does not make me feel fear,208,34,ViT-L/14,0.97278,-0.18846193,1000000
+Race,European-American,African-American,a person who makes me feel fear,a person who does not make me feel fear,180,34,ViT-L/14,1e-06,0.52644676,1000000
+Asian,European-American,Asian-American,fear,apathy,104,13,ViT-L/14,0.999999,-0.64007694,1000000
+Gender,Male,Female,fear,apathy,208,13,ViT-L/14,0.003257,0.2662146,1000000
+Race,European-American,African-American,fear,apathy,180,13,ViT-L/14,0.741283,-0.06829123,1000000
+Asian,European-American,Asian-American,a person who is feeling fear,a person who is feeling apathy,104,13,ViT-L/14,0.105667,0.17337279,1000000
+Gender,Male,Female,a person who is feeling fear,a person who is feeling apathy,208,13,ViT-L/14,0.260902,0.06299423,1000000
+Race,European-American,African-American,a person who is feeling fear,a person who is feeling apathy,180,13,ViT-L/14,0.000446,0.3471845,1000000
+Asian,European-American,Asian-American,a person who is conveying fear,a person who is conveying apathy,104,13,ViT-L/14,0.976436,-0.27453825,1000000
+Gender,Male,Female,a person who is conveying fear,a person who is conveying apathy,208,13,ViT-L/14,1e-05,0.42047083,1000000
+Race,European-American,African-American,a person who is conveying fear,a person who is conveying apathy,180,13,ViT-L/14,1e-06,0.66594887,1000000
+Asian,European-American,Asian-American,a person who makes me feel fear,a person who makes me feel apathy,104,13,ViT-L/14,0.999983,-0.56576085,1000000
+Gender,Male,Female,a person who makes me feel fear,a person who makes me feel apathy,208,13,ViT-L/14,1e-06,0.89282,1000000
+Race,European-American,African-American,a person who makes me feel fear,a person who makes me feel apathy,180,13,ViT-L/14,0.562834,-0.01678224,1000000
+Asian,European-American,Asian-American,anger,not anger,104,24,ViT-L/14@336px,0.029375,0.26185307,1000000
+Gender,Male,Female,anger,not anger,208,24,ViT-L/14@336px,0.176742,0.09125856,1000000
+Race,European-American,African-American,anger,not anger,180,24,ViT-L/14@336px,1.0,-0.6040009,1000000
+Asian,European-American,Asian-American,a person who is feeling anger,a person who is not feeling anger,104,24,ViT-L/14@336px,0.000676,0.43904743,1000000
+Gender,Male,Female,a person who is feeling anger,a person who is not feeling anger,208,24,ViT-L/14@336px,1e-06,0.6270403,1000000
+Race,European-American,African-American,a person who is feeling anger,a person who is not feeling anger,180,24,ViT-L/14@336px,0.726219,-0.063671924,1000000
+Asian,European-American,Asian-American,a person who is conveying anger,a person who is not conveying anger,104,24,ViT-L/14@336px,0.001599,0.40538597,1000000
+Gender,Male,Female,a person who is conveying anger,a person who is not conveying anger,208,24,ViT-L/14@336px,5.3e-05,0.3753981,1000000
+Race,European-American,African-American,a person who is conveying anger,a person who is not conveying anger,180,24,ViT-L/14@336px,1.3e-05,0.43643045,1000000
+Asian,European-American,Asian-American,a person who makes me feel anger,a person who does not make me feel anger,104,24,ViT-L/14@336px,1.0,-0.9693168,1000000
+Gender,Male,Female,a person who makes me feel anger,a person who does not make me feel anger,208,24,ViT-L/14@336px,0.304278,0.050388496,1000000
+Race,European-American,African-American,a person who makes me feel anger,a person who does not make me feel anger,180,24,ViT-L/14@336px,0.015776,0.22646672,1000000
+Asian,European-American,Asian-American,anger,apathy,104,13,ViT-L/14@336px,0.994601,-0.35172924,1000000
+Gender,Male,Female,anger,apathy,208,13,ViT-L/14@336px,0.005469,0.24882005,1000000
+Race,European-American,African-American,anger,apathy,180,13,ViT-L/14@336px,0.124492,0.12176338,1000000
+Asian,European-American,Asian-American,a person who is feeling anger,a person who is feeling apathy,104,13,ViT-L/14@336px,9.8e-05,0.5128922,1000000
+Gender,Male,Female,a person who is feeling anger,a person who is feeling apathy,208,13,ViT-L/14@336px,0.989613,-0.22642425,1000000
+Race,European-American,African-American,a person who is feeling anger,a person who is feeling apathy,180,13,ViT-L/14@336px,1.5e-05,0.42792255,1000000
+Asian,European-American,Asian-American,a person who is conveying anger,a person who is conveying apathy,104,13,ViT-L/14@336px,0.9519,-0.23116982,1000000
+Gender,Male,Female,a person who is conveying anger,a person who is conveying apathy,208,13,ViT-L/14@336px,0.002124,0.2814799,1000000
+Race,European-American,African-American,a person who is conveying anger,a person who is conveying apathy,180,13,ViT-L/14@336px,1e-06,0.59083587,1000000
+Asian,European-American,Asian-American,a person who makes me feel anger,a person who makes me feel apathy,104,13,ViT-L/14@336px,0.967167,-0.2551282,1000000
+Gender,Male,Female,a person who makes me feel anger,a person who makes me feel apathy,208,13,ViT-L/14@336px,1e-06,0.69001615,1000000
+Race,European-American,African-American,a person who makes me feel anger,a person who makes me feel apathy,180,13,ViT-L/14@336px,1.0,-0.48729798,1000000
+Asian,European-American,Asian-American,anticipation,not anticipation,104,16,ViT-L/14@336px,0.137036,0.1523656,1000000
+Gender,Male,Female,anticipation,not anticipation,208,16,ViT-L/14@336px,0.541997,-0.010215718,1000000
+Race,European-American,African-American,anticipation,not anticipation,180,16,ViT-L/14@336px,1.0,-0.52703977,1000000
+Asian,European-American,Asian-American,a person who is feeling anticipation,a person who is not feeling anticipation,104,16,ViT-L/14@336px,0.006101,0.34783828,1000000
+Gender,Male,Female,a person who is feeling anticipation,a person who is not feeling anticipation,208,16,ViT-L/14@336px,1e-06,0.69617534,1000000
+Race,European-American,African-American,a person who is feeling anticipation,a person who is not feeling anticipation,180,16,ViT-L/14@336px,0.99894,-0.32280433,1000000
+Asian,European-American,Asian-American,a person who is conveying anticipation,a person who is not conveying anticipation,104,16,ViT-L/14@336px,0.427922,0.025375318,1000000
+Gender,Male,Female,a person who is conveying anticipation,a person who is not conveying anticipation,208,16,ViT-L/14@336px,1e-06,0.6755767,1000000
+Race,European-American,African-American,a person who is conveying anticipation,a person who is not conveying anticipation,180,16,ViT-L/14@336px,0.868934,-0.11821414,1000000
+Asian,European-American,Asian-American,a person who makes me feel anticipation,a person who does not make me feel anticipation,104,16,ViT-L/14@336px,1.0,-0.87143564,1000000
+Gender,Male,Female,a person who makes me feel anticipation,a person who does not make me feel anticipation,208,16,ViT-L/14@336px,0.998415,-0.28772122,1000000
+Race,European-American,African-American,a person who makes me feel anticipation,a person who does not make me feel anticipation,180,16,ViT-L/14@336px,0.909206,-0.14109033,1000000
+Asian,European-American,Asian-American,anticipation,apathy,104,13,ViT-L/14@336px,0.951105,-0.22929037,1000000
+Gender,Male,Female,anticipation,apathy,208,13,ViT-L/14@336px,0.005841,0.246636,1000000
+Race,European-American,African-American,anticipation,apathy,180,13,ViT-L/14@336px,0.184492,0.094798274,1000000
+Asian,European-American,Asian-American,a person who is feeling anticipation,a person who is feeling apathy,104,13,ViT-L/14@336px,1.7e-05,0.5591282,1000000
+Gender,Male,Female,a person who is feeling anticipation,a person who is feeling apathy,208,13,ViT-L/14@336px,1e-06,0.7934606,1000000
+Race,European-American,African-American,a person who is feeling anticipation,a person who is feeling apathy,180,13,ViT-L/14@336px,0.088153,0.14239952,1000000
+Asian,European-American,Asian-American,a person who is conveying anticipation,a person who is conveying apathy,104,13,ViT-L/14@336px,0.694761,-0.070769936,1000000
+Gender,Male,Female,a person who is conveying anticipation,a person who is conveying apathy,208,13,ViT-L/14@336px,1e-06,0.82754415,1000000
+Race,European-American,African-American,a person who is conveying anticipation,a person who is conveying apathy,180,13,ViT-L/14@336px,0.929871,-0.15566687,1000000
+Asian,European-American,Asian-American,a person who makes me feel anticipation,a person who makes me feel apathy,104,13,ViT-L/14@336px,0.01544,0.29858205,1000000
+Gender,Male,Female,a person who makes me feel anticipation,a person who makes me feel apathy,208,13,ViT-L/14@336px,1e-06,1.0727475,1000000
+Race,European-American,African-American,a person who makes me feel anticipation,a person who makes me feel apathy,180,13,ViT-L/14@336px,0.879637,-0.12397148,1000000
+Asian,European-American,Asian-American,disgust,not disgust,104,12,ViT-L/14@336px,0.000181,0.4899361,1000000
+Gender,Male,Female,disgust,not disgust,208,12,ViT-L/14@336px,1e-06,0.54963267,1000000
+Race,European-American,African-American,disgust,not disgust,180,12,ViT-L/14@336px,0.07333,0.15322965,1000000
+Asian,European-American,Asian-American,a person who is feeling disgust,a person who is not feeling disgust,104,12,ViT-L/14@336px,0.007777,0.33459434,1000000
+Gender,Male,Female,a person who is feeling disgust,a person who is not feeling disgust,208,12,ViT-L/14@336px,0.000917,0.3043597,1000000
+Race,European-American,African-American,a person who is feeling disgust,a person who is not feeling disgust,180,12,ViT-L/14@336px,4e-06,0.4605134,1000000
+Asian,European-American,Asian-American,a person who is conveying disgust,a person who is not conveying disgust,104,12,ViT-L/14@336px,0.002533,0.3865381,1000000
+Gender,Male,Female,a person who is conveying disgust,a person who is not conveying disgust,208,12,ViT-L/14@336px,1.5e-05,0.39971814,1000000
+Race,European-American,African-American,a person who is conveying disgust,a person who is not conveying disgust,180,12,ViT-L/14@336px,1e-06,0.8641453,1000000
+Asian,European-American,Asian-American,a person who makes me feel disgust,a person who does not make me feel disgust,104,12,ViT-L/14@336px,1.0,-0.96021235,1000000
+Gender,Male,Female,a person who makes me feel disgust,a person who does not make me feel disgust,208,12,ViT-L/14@336px,0.999393,-0.3153258,1000000
+Race,European-American,African-American,a person who makes me feel disgust,a person who does not make me feel disgust,180,12,ViT-L/14@336px,1e-06,0.6387927,1000000
+Asian,European-American,Asian-American,disgust,apathy,104,12,ViT-L/14@336px,0.985712,-0.30278265,1000000
+Gender,Male,Female,disgust,apathy,208,12,ViT-L/14@336px,0.043206,0.1682528,1000000
+Race,European-American,African-American,disgust,apathy,180,12,ViT-L/14@336px,1e-06,0.7586079,1000000
+Asian,European-American,Asian-American,a person who is feeling disgust,a person who is feeling apathy,104,12,ViT-L/14@336px,0.014075,0.30326903,1000000
+Gender,Male,Female,a person who is feeling disgust,a person who is feeling apathy,208,12,ViT-L/14@336px,0.996972,-0.26879954,1000000
+Race,European-American,African-American,a person who is feeling disgust,a person who is feeling apathy,180,12,ViT-L/14@336px,2e-06,0.5324293,1000000
+Asian,European-American,Asian-American,a person who is conveying disgust,a person who is conveying apathy,104,12,ViT-L/14@336px,0.567622,-0.02384055,1000000
+Gender,Male,Female,a person who is conveying disgust,a person who is conveying apathy,208,12,ViT-L/14@336px,0.75361,-0.06751187,1000000
+Race,European-American,African-American,a person who is conveying disgust,a person who is conveying apathy,180,12,ViT-L/14@336px,2e-06,0.56382596,1000000
+Asian,European-American,Asian-American,a person who makes me feel disgust,a person who makes me feel apathy,104,12,ViT-L/14@336px,0.40331,0.034100737,1000000
+Gender,Male,Female,a person who makes me feel disgust,a person who makes me feel apathy,208,12,ViT-L/14@336px,0.000191,0.34464914,1000000
+Race,European-American,African-American,a person who makes me feel disgust,a person who makes me feel apathy,180,12,ViT-L/14@336px,0.00026,0.36145735,1000000
+Asian,European-American,Asian-American,fear,not fear,104,34,ViT-L/14@336px,0.753626,-0.09520832,1000000
+Gender,Male,Female,fear,not fear,208,34,ViT-L/14@336px,0.706107,-0.053155877,1000000
+Race,European-American,African-American,fear,not fear,180,34,ViT-L/14@336px,1.0,-0.8814373,1000000
+Asian,European-American,Asian-American,a person who is feeling fear,a person who is not feeling fear,104,34,ViT-L/14@336px,0.000239,0.48117092,1000000
+Gender,Male,Female,a person who is feeling fear,a person who is not feeling fear,208,34,ViT-L/14@336px,1e-06,0.6770064,1000000
+Race,European-American,African-American,a person who is feeling fear,a person who is not feeling fear,180,34,ViT-L/14@336px,0.69829,-0.054945163,1000000
+Asian,European-American,Asian-American,a person who is conveying fear,a person who is not conveying fear,104,34,ViT-L/14@336px,0.029861,0.26068145,1000000
+Gender,Male,Female,a person who is conveying fear,a person who is not conveying fear,208,34,ViT-L/14@336px,0.049646,0.16208358,1000000
+Race,European-American,African-American,a person who is conveying fear,a person who is not conveying fear,180,34,ViT-L/14@336px,1e-06,0.5783177,1000000
+Asian,European-American,Asian-American,a person who makes me feel fear,a person who does not make me feel fear,104,34,ViT-L/14@336px,1.0,-1.0383356,1000000
+Gender,Male,Female,a person who makes me feel fear,a person who does not make me feel fear,208,34,ViT-L/14@336px,0.997894,-0.278712,1000000
+Race,European-American,African-American,a person who makes me feel fear,a person who does not make me feel fear,180,34,ViT-L/14@336px,0.001433,0.3131418,1000000
+Asian,European-American,Asian-American,fear,apathy,104,13,ViT-L/14@336px,0.999994,-0.5818004,1000000
+Gender,Male,Female,fear,apathy,208,13,ViT-L/14@336px,1e-06,0.5043208,1000000
+Race,European-American,African-American,fear,apathy,180,13,ViT-L/14@336px,0.489744,0.002628403,1000000
+Asian,European-American,Asian-American,a person who is feeling fear,a person who is feeling apathy,104,13,ViT-L/14@336px,0.022638,0.27726674,1000000
+Gender,Male,Female,a person who is feeling fear,a person who is feeling apathy,208,13,ViT-L/14@336px,0.031028,0.18312053,1000000
+Race,European-American,African-American,a person who is feeling fear,a person who is feeling apathy,180,13,ViT-L/14@336px,0.001506,0.3117662,1000000
+Asian,European-American,Asian-American,a person who is conveying fear,a person who is conveying apathy,104,13,ViT-L/14@336px,0.95883,-0.24024084,1000000
+Gender,Male,Female,a person who is conveying fear,a person who is conveying apathy,208,13,ViT-L/14@336px,1e-06,0.55438626,1000000
+Race,European-American,African-American,a person who is conveying fear,a person who is conveying apathy,180,13,ViT-L/14@336px,1e-06,0.62677586,1000000
+Asian,European-American,Asian-American,a person who makes me feel fear,a person who makes me feel apathy,104,13,ViT-L/14@336px,0.985765,-0.3030926,1000000
+Gender,Male,Female,a person who makes me feel fear,a person who makes me feel apathy,208,13,ViT-L/14@336px,1e-06,0.9872552,1000000
+Race,European-American,African-American,a person who makes me feel fear,a person who makes me feel apathy,180,13,ViT-L/14@336px,0.822834,-0.097594246,1000000
 Race,European-American,African-American,a person who makes me feel trust,a person who makes me feel apathy,180,13,RN50x64,1.0,-0.8541087,1000000
 Asian,European-American,Asian-American,joy,not joy,104,15,ViT-B/32,1.0,-0.89573884,1000000
 Gender,Male,Female,joy,not joy,208,15,ViT-B/32,0.002939,0.26957145,1000000
