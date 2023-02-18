@@ -81,11 +81,13 @@ class Linear_Reg_Diagnostic():
         self.xvar = self.results.model.exog
         self.xvar_names = self.results.model.exog_names
 
+
         self.residual = np.array(self.results.resid)
-        influence = self.results.get_influence()
-        self.residual_norm = influence.resid_studentized_internal
-        self.leverage = influence.hat_matrix_diag
-        self.cooks_distance = influence.cooks_distance[0]
+        if isinstance(results.model, statsmodels.regression.linear_model.OLS):
+            influence = self.results.get_influence()
+            self.residual_norm = influence.resid_studentized_internal
+            self.leverage = influence.hat_matrix_diag
+            self.cooks_distance = influence.cooks_distance[0]
         self.nparams = len(self.results.params)
 
     def __call__(self, plot_context='seaborn-paper'):
@@ -134,6 +136,43 @@ class Linear_Reg_Diagnostic():
         ax.set_xlabel('Fitted values')
         ax.set_ylabel('Residuals')
         return ax
+
+
+    def f_test_for_lack_of_fit(self):
+        pass
+    def predictor_plots(self):
+        """
+        Predictor vs Fitted Plot
+
+        Graphical tool to identify non-linearity.
+        (Roughly) Horizontal red line is an indicator that the residual has a linear pattern
+        """
+        fig, ax = plt.subplots()
+
+        sns.residplot(
+            x=self.y_predict,
+            y=self.residual,
+            lowess=True,
+            scatter_kws={'alpha': 0.5},
+            line_kws={'color': 'red', 'lw': 1, 'alpha': 0.8},
+            ax=ax)
+
+        # annotations
+        residual_abs = np.abs(self.residual)
+        abs_resid = np.flip(np.sort(residual_abs))
+        abs_resid_top_3 = abs_resid[:3]
+        for i, _ in enumerate(abs_resid_top_3):
+            ax.annotate(
+                i,
+                xy=(self.y_predict[i], self.residual[i]),
+                color='C3')
+
+        ax.set_title('Residuals vs Fitted', fontweight="bold")
+        ax.set_xlabel('Fitted values')
+        ax.set_ylabel('Residuals')
+        return ax
+
+
 
     def qq_plot(self, ax=None):
         """
