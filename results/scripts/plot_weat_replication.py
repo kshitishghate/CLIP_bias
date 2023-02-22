@@ -60,7 +60,8 @@ def plot_overall(df, y_axis_col):
 
     plt.scatter(y=df[y_axis_col],
                 x=df['effect_size'],
-                c='gray')
+                c='#AA4499',
+                marker='+')
 
 
 
@@ -70,8 +71,8 @@ def plot_overall(df, y_axis_col):
 
     for mean_y, weat_clip, weat_glove in type_ids.values():
         plt.axhline(y=mean_y-0.5,c='gray',alpha=0.2)
-        plt.scatter([weat_clip], mean_y, marker='s', c='#D81B60',s=100,zorder=10)
-        plt.scatter([weat_glove], mean_y, marker='v', c='#1E88E5',s=100,zorder=10)
+        plt.scatter([weat_clip], mean_y, marker='s', c='#882255',s=100,zorder=10)
+        plt.scatter([weat_glove], mean_y, marker='v', c='#44AA99',s=100,zorder=10)
 
 
     # label y axis
@@ -84,9 +85,9 @@ def plot_overall(df, y_axis_col):
 
     # add legend
     handles = [
-        plt.scatter([-10], [-100], marker='o', c='gray', label='WEAT $d$ for \nIndivid. CLIP Model', s=50),
-        plt.scatter([-10], [-100], marker='s',  c='#D81B60', label='Mean WEAT $d$ for CLIP Models', s=100),
-               plt.scatter([-10], [-100], marker='v', c='#1E88E5', label='WEAT $D$ for GloVe', s=100)]
+        plt.scatter([-10], [-100], marker='+', c='#AA4499', label='WEAT $d$ for \nIndivid. CLIP Model', s=50),
+        plt.scatter([-10], [-100], marker='s',  c='#882255', label='Mean WEAT $d$ for CLIP Models', s=100),
+               plt.scatter([-10], [-100], marker='v', c='#44AA99', label='WEAT $D$ for GloVe', s=100)]
     ax.legend(handles=handles,
               # bbox_to_anchor=(0,0.85),
               loc='upper left')
