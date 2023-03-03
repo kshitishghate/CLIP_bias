@@ -1,6 +1,0 @@
-template_source,template
-Simple,<EMOTION>
-Simple,The emotion <EMOTION>
-Simple,The feeling <EMOTION>
-Simple,The phrase <EMOTION>
-Simple,The feeling of <EMOTION>

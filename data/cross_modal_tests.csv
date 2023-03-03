@@ -1,0 +1,23 @@
+Image Test,Text Test,image_target_dir,image_target_1,image_target_2,image_attribute_dir,image_attribute_1,image_attribute_2,text_file,text_target_1,text_target_2,text_attribute_1,text_attribute_2
+Insect-Flower/Valence,SENT-WEAT1,Insect-Flower,Flower,Insect,Valence,Pleasant,Unpleasant,sent-weat1.jsonl,Flowers,Insects,Pleasant,Unpleasant
+Race/Valence,SENT-WEAT3,Race,European-American,African-American,Valence,Pleasant,Unpleasant,sent-weat3.jsonl,EuropeanAmericanNames,AfricanAmericanNames,Pleasant,Unpleasant
+Race/Valence,SENT-WEAT4,Race,European-American,African-American,Valence,Pleasant,Unpleasant,sent-weat4.jsonl,EuropeanAmericanNames,AfricanAmericanNames,Pleasant,Unpleasant
+Race/Valence,SENT-WEAT5,Race,European-American,African-American,Valence,Pleasant,Unpleasant,sent-weat5.jsonl,EuropeanAmericanNames,AfricanAmericanNames,Pleasant,Unpleasant
+Gender/Career vs. Family,SENT-WEAT6,Gender,Male,Female,Gender,Career,Family,sent-weat6.jsonl,MaleNames,FemaleNames,Career,Family
+Gender/Science vs. Arts,SENT-WEAT8,Gender,Male,Female,Gender,Science,Liberal-Arts,sent-weat8.jsonl,MaleTerms,FemaleTerms,Science,Arts
+Age/Valence,SENT-WEAT10,Age,Young,Old,Valence,Pleasant,Unpleasant,sent-weat10.jsonl,YoungPeoplesNames,OldPeoplesNames,Pleasant,Unpleasant
+Insect-Flower/Valence,WEAT1,Insect-Flower,Flower,Insect,Valence,Pleasant,Unpleasant,weat1.jsonl,Flowers,Insects,Pleasant,Unpleasant
+Race/Valence,WEAT3,Race,European-American,African-American,Valence,Pleasant,Unpleasant,weat3.jsonl,EuropeanAmericanNames,AfricanAmericanNames,Pleasant,Unpleasant
+Race/Valence,WEAT4,Race,European-American,African-American,Valence,Pleasant,Unpleasant,weat4.jsonl,EuropeanAmericanNames,AfricanAmericanNames,Pleasant,Unpleasant
+Race/Valence,WEAT5,Race,European-American,African-American,Valence,Pleasant,Unpleasant,weat5.jsonl,EuropeanAmericanNames,AfricanAmericanNames,Pleasant,Unpleasant
+Gender/Career vs. Family,WEAT6,Gender,Male,Female,Gender,Career,Family,weat6.jsonl,MaleNames,FemaleNames,Career,Family
+Gender/Science vs. Arts,WEAT8,Gender,Male,Female,Gender,Science,Liberal-Arts,weat8.jsonl,MaleTerms,FemaleTerms,Science,Arts
+Age/Valence,WEAT10,Age,Young,Old,Valence,Pleasant,Unpleasant,weat10.jsonl,YoungPeoplesNames,OldPeoplesNames,Pleasant,Unpleasant
+Race/Valence,SENT-WEAT3B,Race,European-American,African-American,Valence,Pleasant,Unpleasant,sent-weat3b.jsonl,EuropeanAmericanTerms,AfricanAmericanTerms,Pleasant,Unpleasant
+Race/Valence,SENT-WEAT5B,Race,European-American,African-American,Valence,Pleasant,Unpleasant,sent-weat5b.jsonl,EuropeanAmericanTerms,AfricanAmericanTerms,Pleasant,Unpleasant
+Gender/Career vs. Family,SENT-WEAT6B,Gender,Male,Female,Gender,Career,Family,sent-weat6b.jsonl,MaleTerms,FemaleTerms,Career,Family
+Gender/Science vs. Arts,SENT-WEAT8B,Gender,Male,Female,Gender,Science,Liberal-Arts,sent-weat8b.jsonl,MaleNames,FemaleNames,Science,Arts
+Race/Valence,WEAT3B,Race,European-American,African-American,Valence,Pleasant,Unpleasant,weat3b.jsonl,EuropeanAmericanTerms,AfricanAmericanTerms,Pleasant,Unpleasant
+Race/Valence,WEAT5B,Race,European-American,African-American,Valence,Pleasant,Unpleasant,weat5b.jsonl,EuropeanAmericanTerms,AfricanAmericanTerms,Pleasant,Unpleasant
+Gender/Career vs. Family,WEAT6B,Gender,Male,Female,Gender,Career,Family,weat6b.jsonl,MaleTerms,FemaleTerms,Career,Family
+Gender/Science vs. Arts,WEAT8B,Gender,Male,Female,Gender,Science,Liberal-Arts,weat8b.jsonl,MaleNames,FemaleNames,Science,Arts
