@@ -1,0 +1,20 @@
+Target,X,Y,A,B,nt,na,Attribute
+Age,Young,Old,Pleasant,Unpleasant,6,55,Valence
+Arab-Muslim,Other-People,Arab-Muslim,Pleasant,Unpleasant,10,55,Valence
+Asian,European-American,Asian-American,American,Foreign,6,6,Native
+Asian,European-American,Asian-American,Pleasant,Unpleasant,6,55,Valence
+Disabled,Disabled,Abled,Pleasant,Unpleasant,4,55,Valence
+Gender,Male,Female,Career,Family,40,21,Gender
+Gender,Male,Female,Pleasant,Unpleasant,40,55,Valence
+Gender,Male,Female,Science,Liberal-Arts,40,21,Gender
+Insect-Flower,Flower,Insect,Pleasant,Unpleasant,35,55,Valence
+Native,Euro,Native,US,World,8,5,Native
+Native,Euro,Native,Pleasant,Unpleasant,8,55,Valence
+Race,European-American,African-American,Pleasant,Unpleasant,6,55,Valence
+Religion,Christianity,Judaism,Pleasant,Unpleasant,7,55,Valence
+Sexuality,Gay,Straight,Pleasant,Unpleasant,9,55,Valence
+Skin-Tone,Light,Dark,Pleasant,Unpleasant,7,55,Valence
+Weapon,White,Black,Tool-modern,Weapon-modern,6,9,Weapon (Modern)
+Weapon,White,Black,Pleasant,Unpleasant,6,55,Valence
+Weapon,White,Black,Tool,Weapon,6,7,Weapon
+Weight,Thin,Fat,Pleasant,Unpleasant,10,55,Valence
