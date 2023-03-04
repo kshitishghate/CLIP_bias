@@ -6,6 +6,7 @@ import torch
 import nltk
 import numpy as np
 import pandas as pd
+import json
 
 from scipy.special import comb
 from CLIP import clip
@@ -37,12 +38,27 @@ def get_all_image_paths():
                 all_images.append(os.path.join(root, f))
     return all_images
 
+def load_seat(test: str):
+    with open(os.path.join('data', 'tests', test), 'r') as f:
+        stimuli = json.load(f)
+
+    stimuli = {
+        'names': [stimuli['targ1']['category'], stimuli['targ2']['category'],
+                  stimuli['attr1']['category'], stimuli['attr2']['category']],
+        'X': stimuli['targ1']['examples'],
+        'Y': stimuli['targ2']['examples'],
+        'A': stimuli['attr1']['examples'],
+        'B': stimuli['attr2']['examples']
+    }
+    assert(len(stimuli['X']) == len(stimuli['Y']))
+    return stimuli
+
 
 def perform_test(device):
 
     npermutations = 10000
 
-    results_fp = os.path.join('results', 'data', 'cfd_scweat.csv')
+    results_fp = os.path.join('results', 'data', 'cfd_7b_scseat.csv')
     models = clip.available_models()
     all_image_paths = get_all_image_paths()
 
@@ -58,6 +74,8 @@ def perform_test(device):
 
     remaining = total - completed
 
+    a_stimuli = load_seat('sent-weat7b.jsonl')['X']
+    b_stimuli = load_seat('sent-weat7b.jsonl')['Y']
     with tqdm(total=remaining) as pbar:
         for model_name in models:
             model, preprocess = clip.load(model_name, device)
@@ -68,14 +86,14 @@ def perform_test(device):
                         'model': model_name}
 
                 if not test_already_run(test, results_fp):
-                    test['na'] = len(load_words_greenwald('pleasant'))
+                    test['na'] = len(a_stimuli)
 
                     np.random.seed(5718980)
 
                     stimuli = {
                         'w': [image_fp],
-                        'A': load_words_greenwald('pleasant'),
-                        'B': load_words_greenwald('unpleasant'),
+                        'A': a_stimuli,
+                        'B': b_stimuli,
                     }
 
                     embeddings = {
@@ -88,8 +106,8 @@ def perform_test(device):
                     test_result = SCWEAT(embeddings['w'], embeddings['A'], embeddings['B'])
                     test_result = pd.Series({
                         'association_score':test_result.association_score()[0],
-                        'dist_to_pleasantness': test_result.mean_similarity('A')[0],
-                        'dist_to_unpleasantness': test_result.mean_similarity('B')[0],
+                        'dist_to_math': test_result.mean_similarity('A')[0],
+                        'dist_to_arts': test_result.mean_similarity('B')[0],
                         'dist_std': test_result.AB_std(),
                         'npermutations':npermutations,
                     })
@@ -101,13 +119,13 @@ def perform_test(device):
 if __name__ == '__main__':
     should_continue=True
     while should_continue:
-        if os.path.exists(os.path.join('results','data','cfd_scweat.csv')):
-            num_results_so_far = len(pd.read_csv(os.path.join('results','data','cfd_scweat.csv')))
+        if os.path.exists(os.path.join('results','data','cfd_7b_scseat.csv')):
+            num_results_so_far = len(pd.read_csv(os.path.join('results','data','cfd_7b_scseat.csv')))
         else:
             num_results_so_far = 0
         try:
             perform_test('cuda' if torch.cuda.is_available() else 'cpu')
         except:
             perform_test('cpu')
-        if num_results_so_far == len(pd.read_csv(os.path.join('results','data','cfd_scweat.csv'))):
+        if num_results_so_far == len(pd.read_csv(os.path.join('results','data','cfd_7b_scseat.csv'))):
             should_continue = False

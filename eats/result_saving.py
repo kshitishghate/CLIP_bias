@@ -9,14 +9,19 @@ def test_already_run(model_name, test, file_name):
     previous_results = pd.read_csv(file_name)
     relevant_results = previous_results[
         (previous_results['model'] == model_name)
-        & (previous_results['X'] == test['X'])
-        & (previous_results['Y'] == test['Y'])
-        & (previous_results['A'] == test['A'])
-        & (previous_results['B'] == test['B'])
-        & (previous_results['Title'] == test['Title'])
-        & (previous_results['na'] == test['na'])
-        & (previous_results['nt'] == test['nt'])
+        & (True if 'X' not in test.index else (previous_results['X'] == test['X']))
+        & (True if 'Y' not in test.index else (previous_results['Y'] == test['Y']))
+        & (True if 'A' not in test.index else (previous_results['A'] == test['A']))
+        & (True if 'B' not in test.index else (previous_results['B'] == test['B']))
+        & (True if 'Image Test' not in test.index else (previous_results['Image Test'] == test['Image Test']))
+        & (True if 'Text Test' not in test.index else (previous_results['Text Test'] == test['Text Test']))
+        & (True if 'Target' not in test.index else (previous_results['Target'] == test['Target']))
+        & (True if 'na' not in test.index else (previous_results['na'] == test['na']))
+        & (True if 'nt' not in test.index else (previous_results['nt'] == test['nt']))
+        & (True if 'naa' not in test.index else (previous_results['naa'] == test['naa']))
+        & (True if 'nab' not in test.index else (previous_results['nab'] == test['nab']))
         & (True if 'context' not in test.index else (previous_results['context'] == test['context']))
+        & (True if 'order' not in test.index else (previous_results['order'] == test['order']))
     ]
     return len(relevant_results) > 0
 
