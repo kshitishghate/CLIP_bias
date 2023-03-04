@@ -20,11 +20,81 @@ all_results = all_results.sort_values([
     'test_name'
 ])
 
+all_results['Test'] = all_results['Test'].replace({
+    'Weat10': 'Age/Valence',
+    'Weat1': 'Flower/Valence',
+    'Weat2': 'Instruments/Valence',
+    'Weat3': 'EA-AA Names/Valence',
+    'Weat3B': 'EA - AA Terms / Valences',
+    'Weat4': 'EA-AA Names/Valence',
+    'Weat5': 'EA-AA Names/Valence',
+    'Weat5B': 'EA-AA Terms/Valence',
+    'Weat6': 'Gendered Names/Career',
+    'Weat6B': 'Gendered Terms/Career',
+    'Weat7': 'Math/Gendered Terms',
+    'Weat7B': 'Math/Gendered Names',
+    'Weat8': 'Science/Gendered Terms',
+    'Weat8B': 'Science/Gendered Names',
+    'Weat9': 'Physical Disease/Permanent',
+
+    'Sent-Weat10': 'Sentences: Age/Valence',
+    'Sent-Weat1': 'Sentences: Flower/Valence',
+    'Sent-Weat2': 'Sentences: Instruments/Valence',
+    'Sent-Weat3': 'Sentences: EA-AA Names/Valence',
+    'Sent-Weat3B': 'Sentences: EA - AA Terms / Valences',
+    'Sent-Weat4': 'Sentences: EA-AA Names/Valence',
+    'Sent-Weat5': 'Sentences: EA-AA Names/Valence',
+    'Sent-Weat5B': 'Sentences: EA-AA Terms/Valence',
+    'Sent-Weat6': 'Sentences: Gendered Names/Career',
+    'Sent-Weat6B': 'Sentences: Gendered Terms/Career',
+    'Sent-Weat7': 'Sentences: Math/Gendered Terms',
+    'Sent-Weat7B': 'Sentences: Math/Gendered Names',
+    'Sent-Weat8': 'Sentences: Science/Gendered Terms',
+    'Sent-Weat8B': 'Sentences: Science/Gendered Names',
+    'Sent-Weat9': 'Sentences: Physical Disease/Permanent',
+
+})
+
+
 
 original_results = pd.read_csv(os.path.join('data','seat_results','results.tsv'), sep='\t')
 original_results['Test'] = original_results["test"].str.replace('.jsonl','',regex=False).str.replace('_',' ',regex=False).str.title()
 original_results['Test'] = original_results['Test'].str.strip()
 original_results = original_results[original_results['Test'].str.contains('Weat')]
+original_results['Test'] = original_results['Test'].replace({
+    'Weat10': 'Age/Valence',
+    'Weat1': 'Flower/Valence',
+    'Weat2': 'Instruments/Valence',
+    'Weat3': 'EA-AA Names/Valence',
+    'Weat3B': 'EA - AA Terms / Valences',
+    'Weat4': 'EA-AA Names/Valence',
+    'Weat5': 'EA-AA Names/Valence',
+    'Weat5B': 'EA-AA Terms/Valence',
+    'Weat6': 'Gendered Names/Career',
+    'Weat6B': 'Gendered Terms/Career',
+    'Weat7': 'Math/Gendered Terms',
+    'Weat7B': 'Math/Gendered Names',
+    'Weat8': 'Science/Gendered Terms',
+    'Weat8B': 'Science/Gendered Names',
+    'Weat9': 'Physical Disease/Permanent',
+
+    'Sent-Weat10': 'Sentences: Age/Valence',
+    'Sent-Weat1': 'Sentences: Flower/Valence',
+    'Sent-Weat2': 'Sentences: Instruments/Valence',
+    'Sent-Weat3': 'Sentences: EA-AA Names/Valence',
+    'Sent-Weat3B': 'Sentences: EA - AA Terms / Valences',
+    'Sent-Weat4': 'Sentences: EA-AA Names/Valence',
+    'Sent-Weat5': 'Sentences: EA-AA Names/Valence',
+    'Sent-Weat5B': 'Sentences: EA-AA Terms/Valence',
+    'Sent-Weat6': 'Sentences: Gendered Names/Career',
+    'Sent-Weat6B': 'Sentences: Gendered Terms/Career',
+    'Sent-Weat7': 'Sentences: Math/Gendered Terms',
+    'Sent-Weat7B': 'Sentences: Math/Gendered Names',
+    'Sent-Weat8': 'Sentences: Science/Gendered Terms',
+    'Sent-Weat8B': 'Sentences: Science/Gendered Names',
+    'Sent-Weat9': 'Sentences: Physical Disease/Permanent',
+
+})
 
 def plot_overall(df, original_df, y_axis_col):
     plt.clf()
