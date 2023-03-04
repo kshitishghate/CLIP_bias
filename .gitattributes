@@ -1,3 +1,4 @@
+*.csv filter=lfs diff=lfs merge=lfs -text
 /data/wariner.csv filter=lfs diff=lfs merge=lfs -text
 /data/NRC-Emotion-Lexicon/NRC-Emotion-Lexicon-ForVariousLanguages.txt filter=lfs diff=lfs merge=lfs -text
 /data/NRC-Emotion-Lexicon/NRC-Emotion-Lexicon-Senselevel-v0.92.txt filter=lfs diff=lfs merge=lfs -text
