@@ -1,20 +1,3 @@
-Title,X,Y,A,B,nt,na
-Age,Young,Old,Pleasant,Unpleasant,6,55
-Arab-Muslim,Other-People,Arab-Muslim,Pleasant,Unpleasant,10,55
-Asian,European-American,Asian-American,American,Foreign,6,6
-Asian,European-American,Asian-American,Pleasant,Unpleasant,6,6
-Disabled,Disabled,Abled,Pleasant,Unpleasant,4,55
-Gender,Male,Female,Career,Family,40,21
-Gender,Male,Female,Pleasant,Unpleasant,40,21
-Gender,Male,Female,Science,Liberal-Arts,40,21
-Insect-Flower,Flower,Insect,Pleasant,Unpleasant,35,55
-Native,Euro,Native,U.S.,World,8,5
-Native,Euro,Native,Pleasant,Unpleasant,8,5
-Race,European-American,African-American,Pleasant,Unpleasant,6,55
-Religion,Christianity,Judaism,Pleasant,Unpleasant,7,55
-Sexuality,Gay,Straight,Pleasant,Unpleasant,9,55
-Skin-Tone,Light,Dark,Pleasant,Unpleasant,7,55
-Weapon,White,Black,Tool,Weapon,6,7
-Weapon,White,Black,Pleasant,Unpleasant,6,9
-Weapon (Modern),White,Black,Tool,Weapon,6,9
-Weight,Thin,Fat,Pleasant,Unpleasant,10,55
+version https://git-lfs.github.com/spec/v1
+oid sha256:f6a6b8b82e760bb92dfc47fcba84da490e267c5922f084f773e5fbd207723f1a
+size 932
