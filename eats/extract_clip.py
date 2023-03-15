@@ -5,7 +5,6 @@ import pandas as pd
 import torch
 from PIL import Image
 
-from CLIP import clip
 from pathlib import Path
 
 global image_embedding_dict
@@ -128,7 +127,7 @@ def extract_text(model, preprocess, text, device, model_name):
     except np.AxisError:
         pass
     if (model_name, tuple(text)) not in text_embedding_dict.keys():
-        processed_text = clip.tokenize(text).to(device)
+        processed_text = preprocess(text).to(device)
         with torch.no_grad():
            text_features = model.encode_text(processed_text).cpu().detach().numpy()
         text_embedding_dict[(model_name, tuple(text))] = text_features

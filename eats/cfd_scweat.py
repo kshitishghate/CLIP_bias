@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 
 from scipy.special import comb
-from CLIP import clip
+import open_clip
 from tqdm import tqdm
 from nltk.corpus import wordnet
 from pattern.text.en import pluralize
@@ -43,16 +43,22 @@ def perform_test(device):
     npermutations = 10000
 
     results_fp = os.path.join('results', 'data', 'cfd_scweat.csv')
-    models = clip.available_models()
+
+    models = open_clip.list_pretrained()
+    # Not using convnext_xxlarge because it is not supported by timm 0.6.12
+    models = [m for m in models if m[0] != 'convnext_xxlarge']
+
+
     all_image_paths = get_all_image_paths()
 
     # models.reverse()
     total = len(models) * len(all_image_paths)
 
     if os.path.exists(results_fp):
+        model_name_strs = ['_'.join(m).replace('/', '') for m in models]
         completed = pd.read_csv(results_fp)
-        completed = [completed['model'].str.contains(a) for a in models]
-        completed = pd.concat(completed, axis=1).any(axis=1).sum()
+        completed = completed['model'].isin(model_name_strs).astype(int)
+        completed = completed.sum()
     else:
         completed = 0
 
@@ -60,12 +66,14 @@ def perform_test(device):
 
     with tqdm(total=remaining) as pbar:
         for model_name in models:
-            model, preprocess = clip.load(model_name, device)
+            model, _, preprocess = open_clip.create_model_and_transforms(model_name[0], pretrained=model_name[1],
+                                                                         device=device)
+            tokenizer = open_clip.get_tokenizer(model_name[0])
 
             for image_fp in all_image_paths:
                 test = {'image_name': os.path.basename(image_fp),
                         'image_fp':image_fp,
-                        'model': model_name}
+                        'model': '_'.join(model_name).replace('/', '')}
 
                 if not test_already_run(test, results_fp):
                     test['na'] = len(load_words_greenwald('pleasant'))
@@ -80,8 +88,8 @@ def perform_test(device):
 
                     embeddings = {
                         'w': extract_images(model, preprocess, stimuli['w'], device, model_name),
-                        'A': extract_text(model, preprocess, stimuli['A'], device, model_name),
-                        'B': extract_text(model, preprocess, stimuli['B'], device, model_name),
+                        'A': extract_text(model, tokenizer, stimuli['A'], device, model_name),
+                        'B': extract_text(model, tokenizer, stimuli['B'], device, model_name),
                     }
 
 

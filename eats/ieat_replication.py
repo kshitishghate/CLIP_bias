@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 from scipy.special import comb
-from CLIP import clip
+import open_clip
 from tqdm import tqdm
 
 
@@ -19,24 +19,30 @@ from eats.result_saving import test_already_run, save_test_results
 def perform_test():
     all_tests = pd.read_csv(os.path.join('data', 'ieat_tests.csv'))
 
-    total = len(clip.available_models()) * len(all_tests)
+    models = open_clip.list_pretrained()
+    # Not using convnext_xxlarge because it is not supported by timm 0.6.12
+    models = [m for m in models if m[0] != 'convnext_xxlarge']
+    total = len(models) * len(all_tests)
+
     results_fp = os.path.join('results', 'data', 'ieat_replication.csv')
     if os.path.exists(results_fp):
-        completed = len(pd.read_csv(results_fp))
+        model_name_strs = ['_'.join(m).replace('/', '') for m in models]
+        completed = pd.read_csv(results_fp)
+        completed = completed['model'].isin(model_name_strs).astype(int)
+        completed = completed.sum()
     else:
         completed = 0
     remaining = total - completed
 
     with tqdm(total=remaining) as pbar:
-        for model_name in clip.available_models():
+        for model_name in models:
             device = "cuda" if torch.cuda.is_available() else "cpu"
             # device =  "mps"
-            model, preprocess = clip.load(model_name, device)
+            model, _, preprocess = open_clip.create_model_and_transforms(model_name[0], pretrained=model_name[1],
+                                                                         device=device)
 
             for i, test in all_tests.iterrows():
-                #test['A'] = context.format(emotion)
-                #test['B'] = opposite_context.format(emotion) if comparison_name == 'negation' else context.format('apathy')
-                if not test_already_run(model_name, test, results_fp):
+                if not test_already_run('_'.join(model_name).replace('/',''), test, results_fp):
                     np.random.seed(82804230)
 
                     attr_folder = test['Attribute'] if test['Attribute'] == 'Valence' else test['Target']
@@ -65,7 +71,7 @@ def perform_test():
 
                     test_result = Test(embeddings['X'], embeddings['Y'], embeddings['A'], embeddings['B'])
                     test_result = pd.Series({
-                        'model':model_name,
+                        'model':'_'.join(model_name).replace('/',''),
                         'pvalue':test_result.p(npermutations),
                         'effect_size':test_result.effect_size(),
                         'npermutations':npermutations,

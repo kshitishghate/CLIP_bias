@@ -9,7 +9,7 @@ import pandas as pd
 import json
 
 from scipy.special import comb
-from CLIP import clip
+import open_clip
 from tqdm import tqdm
 from nltk.corpus import wordnet
 from pattern.text.en import pluralize
@@ -49,7 +49,9 @@ def perform_test(device):
     npermutations = 100000
 
     results_fp = os.path.join('results', 'data', 'seat_replication.csv')
-    models = clip.available_models()
+    models = open_clip.list_pretrained()
+    # Not using convnext_xxlarge because it is not supported by timm 0.6.12
+    models = [m for m in models if m[0] != 'convnext_xxlarge']
     tests = [f for f in os.listdir(os.path.join('data','tests')) if f.split('.')[1] == 'jsonl']
 
     # models.reverse()
@@ -57,9 +59,10 @@ def perform_test(device):
 
 
     if os.path.exists(results_fp):
+        model_name_strs = ['_'.join(m).replace('/','') for m in models]
         completed = pd.read_csv(results_fp)
-        completed = [completed['model'].str.contains(a) for a in models]
-        completed = pd.concat(completed, axis=1).any(axis=1).sum()
+        completed = completed['model'].isin(model_name_strs).astype(int)
+        completed = completed.sum()
     else:
         completed = 0
 
@@ -67,7 +70,9 @@ def perform_test(device):
 
     with tqdm(total=remaining) as pbar:
         for model_name in models:
-            model, preprocess = clip.load(model_name, device)
+            model, _, preprocess = open_clip.create_model_and_transforms(model_name[0], pretrained=model_name[1],
+                                                                         device=device)
+            tokenizer = open_clip.get_tokenizer(model_name[0])
 
             for test_name in tests:
                 try:
@@ -79,7 +84,7 @@ def perform_test(device):
                             'B': stimuli['names'][3],
                             'nt': len(stimuli['X']),
                             'na': len(stimuli['A']),
-                            'model': model_name}
+                            'model': '_'.join(model_name).replace('/','')}
                 except AssertionError as e:
                     test = {'test_name': str(test_name),
                             'X': np.NaN,
@@ -88,7 +93,7 @@ def perform_test(device):
                             'B': np.NaN,
                             'nt': np.NaN,
                             'na': np.NaN,
-                            'model': model_name}
+                            'model': '_'.join(model_name).replace('/','')}
 
 
                 if not test_already_run(test, results_fp):
@@ -98,10 +103,10 @@ def perform_test(device):
 
                         try:
                             embeddings = {
-                                'X': extract_text(model, preprocess, stimuli['X'], device, model_name),
-                                'Y': extract_text(model, preprocess, stimuli['Y'], device, model_name),
-                                'A': extract_text(model, preprocess, stimuli['A'], device, model_name),
-                                'B': extract_text(model, preprocess, stimuli['B'], device, model_name),
+                                'X': extract_text(model, tokenizer, stimuli['X'], device, model_name),
+                                'Y': extract_text(model, tokenizer, stimuli['Y'], device, model_name),
+                                'A': extract_text(model, tokenizer, stimuli['A'], device, model_name),
+                                'B': extract_text(model, tokenizer, stimuli['B'], device, model_name),
                             }
                             test_result = WEAT(embeddings['X'], embeddings['Y'], embeddings['A'], embeddings['B'])
                             test_result = pd.Series({
