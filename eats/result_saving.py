@@ -22,6 +22,7 @@ def test_already_run(model_name, test, file_name):
         & (True if 'nab' not in test.index else (previous_results['nab'] == test['nab']))
         & (True if 'context' not in test.index else (previous_results['context'] == test['context']))
         & (True if 'order' not in test.index else (previous_results['order'] == test['order']))
+        & (True if 'category' not in test.index else (previous_results['category'] == test['category']))
     ]
     return len(relevant_results) > 0
 
