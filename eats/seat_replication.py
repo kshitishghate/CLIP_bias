@@ -16,7 +16,7 @@ from pattern.text.en import pluralize
 
 import os
 
-
+from eats.load_cherti_model_names import cherti_et_al_models
 
 
 from eats.extract_clip import extract_images, extract_text, load_words_greenwald
@@ -49,7 +49,7 @@ def perform_test(device):
     npermutations = 100000
 
     results_fp = os.path.join('results', 'data', 'seat_replication.csv')
-    models = open_clip.list_pretrained()
+    models = cherti_et_al_models() + open_clip.list_pretrained()
     # Not using convnext_xxlarge because it is not supported by timm 0.6.12
     models = [m for m in models if m[0] != 'convnext_xxlarge']
     tests = [f for f in os.listdir(os.path.join('data','tests')) if f.split('.')[1] == 'jsonl']
@@ -71,7 +71,8 @@ def perform_test(device):
     with tqdm(total=remaining) as pbar:
         for model_name in models:
             model, _, preprocess = open_clip.create_model_and_transforms(model_name[0], pretrained=model_name[1],
-                                                                         device=device)
+                                                                         device=device,
+                                                                         cache_dir='scaling-laws-openclip' if '.pt' in model_name[1] else None)
             tokenizer = open_clip.get_tokenizer(model_name[0])
 
             for test_name in tests:

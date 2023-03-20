@@ -14,12 +14,12 @@ from eats.extract_clip import load_images, extract_images, extract_text
 from ieat.weat.weat.test import Test
 from eats.result_saving import test_already_run, save_test_results
 
-
+from eats.load_cherti_model_names import cherti_et_al_models
 
 def perform_test():
     all_tests = pd.read_csv(os.path.join('data', 'ieat_tests.csv'))
 
-    models = open_clip.list_pretrained()
+    models = open_clip.list_pretrained() + cherti_et_al_models()
     # Not using convnext_xxlarge because it is not supported by timm 0.6.12
     models = [m for m in models if m[0] != 'convnext_xxlarge']
     total = len(models) * len(all_tests)

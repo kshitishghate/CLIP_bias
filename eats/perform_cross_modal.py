@@ -10,6 +10,8 @@ from scipy.special import comb
 import open_clip
 from tqdm import tqdm
 
+from eats.load_cherti_model_names import cherti_et_al_models
+
 
 
 from eats.extract_clip import load_images, extract_images, extract_text
@@ -33,7 +35,7 @@ def load_seat(test: str, name: str):
 def perform_test():
     all_tests = pd.read_csv(os.path.join('data', 'cross_modal_tests.csv'))
 
-    models = open_clip.list_pretrained()
+    models = open_clip.list_pretrained() + cherti_et_al_models()
     # Not using convnext_xxlarge because it is not supported by timm 0.6.12
     models = [m for m in models if m[0] != 'convnext_xxlarge']
 

@@ -4,3 +4,6 @@
 [submodule "ieat"]
 	path = ieat
 	url = https://github.com/ryansteed/ieat
+[submodule "scaling-laws-openclip"]
+	path = scaling-laws-openclip
+	url = https://github.com/LAION-AI/scaling-laws-openclip/
