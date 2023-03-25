@@ -7,3 +7,6 @@
 [submodule "scaling-laws-openclip"]
 	path = scaling-laws-openclip
 	url = https://github.com/LAION-AI/scaling-laws-openclip/
+[submodule "CLIP_benchmark"]
+	path = CLIP_benchmark
+	url = https://github.com/LAION-AI/CLIP_benchmark
