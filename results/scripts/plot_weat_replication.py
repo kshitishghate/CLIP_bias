@@ -2,31 +2,41 @@ import math
 import os
 import random
 
+from CLIP import clip
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+def load_all_results(models=None, openai_only=False):
+    all_results = pd.read_csv(os.path.join('results','data','weat_replication.csv'))
+    open_ai_model_names = clip.available_models()
+    if openai_only:
+        all_results = all_results[all_results['model'].isin(open_ai_model_names)]
+    else:
+        all_results = all_results[~all_results['model'].isin(open_ai_model_names)]
 
-all_results = pd.read_csv(os.path.join('results','data','weat_replication.csv'))
+    if models is not None:
+        all_results = all_results[all_results['model'].isin(models)]
+
+    all_results['Test'] = ('WEAT '
+                           + all_results["weat_num"].astype(str) + ' ('
+                           + all_results["X"] + " and "
+                           + all_results['Y'] + " / "
+                           + all_results['A'] + " and "
+                           + all_results['B'] + ')')
+    all_results['Test'] = all_results['Test'].str.strip()
 
 
-all_results['Test'] = ('WEAT '
-                       + all_results["weat_num"].astype(str) + ' ('
-                       + all_results["X"] + " and "
-                       + all_results['Y'] + " / "
-                       + all_results['A'] + " and "
-                       + all_results['B'] + ')')
-all_results['Test'] = all_results['Test'].str.strip()
+    all_results = all_results.sort_values([
+        'weat_num'
+    ])
 
-
-all_results = all_results.sort_values([
-    'weat_num'
-])
+    return all_results
 
 
 
-def plot_overall(df, y_axis_col):
+def plot_overall(df, y_axis_col, openai_only):
     plt.clf()
     df = df.copy()
 
@@ -96,65 +106,19 @@ def plot_overall(df, y_axis_col):
     plt.ylim(-0.5, len(type_ids)-0.5)
 
     plt.tight_layout()
-    plt.savefig(os.path.join('results','plots','weat_replication.pdf'))
+    if openai_only:
+        plt.savefig(os.path.join('results','plots','openai_models_only','weat_replication.pdf'))
+    else:
+        plt.savefig(os.path.join('results','plots','weat_replication.pdf'))
 
 
-def plot_cat(df, y_axis_col, hue_col):
-    plt.clf()
-    df = df.copy()
 
-    def jitter(y, jitter_size=0.25):
-        return y + random.uniform(0, jitter_size * 2) - jitter_size
-
-    type_ids = {k:v for k,v in zip(df[y_axis_col].unique(), range(len(df[y_axis_col].unique())-1,
-                                                                  -1,
-                                                                  -1))}
-
-    df[y_axis_col] = df[y_axis_col].apply(lambda x: type_ids[x])
-    df[y_axis_col] = df[y_axis_col].apply(lambda x: jitter(x))
-
-    colors = ['#332288','#88CCEE','#DDCC77','#882255','#117733','#E83C59','#88CCEE','#AA4499']
-    markers = ['o','P','s','v','X', 'D']
-    mmap = {k:[c,m] for k, c, m in zip(df[hue_col].unique(),
-                                       colors[:len(df[hue_col].unique())],
-                                       markers[:len(df[hue_col].unique())],
-                                       )}
-
-    fig, (ax) = plt.subplots(1, 1, figsize=(10, 4))
-
-    for v, (c, m) in mmap.items():
-        plt.scatter(y=df[y_axis_col][df[hue_col] == v],
-                    x=df['SpEAT d'][df[hue_col] == v],
-                    c=c,
-                    marker = m)
-
-    # add legend
-    handles = [plt.Line2D([0], [0], marker=m, color='w', markerfacecolor=c, label=v, markersize=8) for v, (c,m) in
-               mmap.items()]
-    ax.legend(title=hue_col, handles=handles,
-              # bbox_to_anchor=(0,0.85),
-              loc='upper right')
-
-
-    plt.yticks(range(len(type_ids)))
-    labs = list(type_ids.keys())
-    labs.reverse()
-    plt.gca().set_yticklabels(labs)
-
-    plt.axvline(x=0, color='black')
-
-    for mean_y in range(len(type_ids) - 1):
-        plt.axhline(y=mean_y+0.5,c='gray',alpha=0.2)
-
-
-    plt.xlim(-1.99, 1.99)
-
-    plt.tight_layout()
-    plt.savefig(os.path.join('plots', 'eats', 'images', f'{hue_col.lower().replace(" ","_")}.pdf'))
 
 
 if __name__ == '__main__':
-    plot_overall(all_results, 'Test')
+    openai_only = True
+    all_results = load_all_results(openai_only=openai_only)
+    plot_overall(all_results, 'Test', openai_only=openai_only)
 
 
 

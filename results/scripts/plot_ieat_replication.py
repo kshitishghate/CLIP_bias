@@ -2,44 +2,59 @@ import math
 import os
 import random
 
+from CLIP import clip
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-ieats = pd.read_csv(os.path.join('results','data','ieat_replication.csv'))
-ieats['Test'] = ieats['Target'] + '/' + ieats['A'] + ' vs. ' + ieats['B']
-ieats['Test'] = ieats['Test'].str.replace('Pleasant vs. Unpleasant', 'Valence',regex=False)
-ieats['Test'] = ieats['Test'].str.replace('Weapon/Tool vs. Weapon', 'Race/Tool vs. Weapon',regex=False)
-ieats['Test'] = ieats['Test'].str.replace('Weapon/Tool-modern vs. Weapon-modern', 'Race/Tool vs. Weapon (Modern)',regex=False)
-ieats = ieats.sort_values([
-    'Test'
-])
 
-original_results = pd.read_csv(os.path.join('ieat','output','results.csv'))
-original_results = original_results.rename(columns={'d':'effect_size'})
-original_results['Test'] = original_results['Test'].replace(
-    {'Disability':'Disabled',
-     'Gender-Career':'Gender',
-     'Gender-Science':'Gender',
-     'Weapon-Race':'Race'
-     }
-)
-original_results['Test'] = (original_results['Test'] + '/' + original_results['A'].str.title()
-                            + ' vs. ' + original_results['B'].str.title())
-original_results['Test'] = original_results['Test'].replace({
-    'Native/Us vs. World':'Native/US vs. World',
-    'Weapon-Race (Modern)/Tool-Modern vs. Weapon-Modern':'Race/Tool vs. Weapon (Modern)'
-})
-original_results['Test'] = original_results['Test'].str.replace('Pleasant vs. Unpleasant', 'Valence',regex=False)
-original_results['Test'] = original_results['Test'].str.replace('Weapon/Tool vs. Weapon', 'Race/Tool vs. Weapon',regex=False)
-original_results['Test'] = original_results['Test'].str.replace('Weapon/Tool-modern vs. Weapon-modern', 'Race/Tool vs. Weapon (Modern)',regex=False)
+def load_all_results(models=None, openai_only=False):
+    ieats = pd.read_csv(os.path.join('results','data','ieat_replication.csv'))
 
-original_results = original_results[original_results['Test'].isin(ieats['Test'])]
-ieats = ieats[ieats['Test'].isin(original_results['Test'])]
+    openai_model_names = [m.replace('/','') for m in clip.available_models()] + clip.available_models()
+    if openai_only:
+        ieats = ieats[ieats['model'].isin(openai_model_names)]
+    else:
+        ieats = ieats[~ieats['model'].isin(openai_model_names)]
 
-def plot_overall(df, original_df, y_axis_col):
+    if models is not None:
+        ieats = ieats[ieats['model'].isin(models)]
+
+    ieats['Test'] = ieats['Target'] + '/' + ieats['A'] + ' vs. ' + ieats['B']
+    ieats['Test'] = ieats['Test'].str.replace('Pleasant vs. Unpleasant', 'Valence',regex=False)
+    ieats['Test'] = ieats['Test'].str.replace('Weapon/Tool vs. Weapon', 'Race/Tool vs. Weapon',regex=False)
+    ieats['Test'] = ieats['Test'].str.replace('Weapon/Tool-modern vs. Weapon-modern', 'Race/Tool vs. Weapon (Modern)',regex=False)
+    ieats = ieats.sort_values([
+        'Test'
+    ])
+
+    original_results = pd.read_csv(os.path.join('ieat','output','results.csv'))
+    original_results = original_results.rename(columns={'d':'effect_size'})
+    original_results['Test'] = original_results['Test'].replace(
+        {'Disability':'Disabled',
+         'Gender-Career':'Gender',
+         'Gender-Science':'Gender',
+         'Weapon-Race':'Race'
+         }
+    )
+    original_results['Test'] = (original_results['Test'] + '/' + original_results['A'].str.title()
+                                + ' vs. ' + original_results['B'].str.title())
+    original_results['Test'] = original_results['Test'].replace({
+        'Native/Us vs. World':'Native/US vs. World',
+        'Weapon-Race (Modern)/Tool-Modern vs. Weapon-Modern':'Race/Tool vs. Weapon (Modern)'
+    })
+    original_results['Test'] = original_results['Test'].str.replace('Pleasant vs. Unpleasant', 'Valence',regex=False)
+    original_results['Test'] = original_results['Test'].str.replace('Weapon/Tool vs. Weapon', 'Race/Tool vs. Weapon',regex=False)
+    original_results['Test'] = original_results['Test'].str.replace('Weapon/Tool-modern vs. Weapon-modern', 'Race/Tool vs. Weapon (Modern)',regex=False)
+
+    original_results = original_results[original_results['Test'].isin(ieats['Test'])]
+    ieats = ieats[ieats['Test'].isin(original_results['Test'])]
+
+    return ieats, original_results
+
+def plot_overall(df, original_df, y_axis_col, openai_only):
     plt.clf()
     df = df.copy()
 
@@ -108,11 +123,16 @@ def plot_overall(df, original_df, y_axis_col):
     plt.ylim(-0.5, len(aggregated_info)-0.5)
 
     plt.tight_layout()
-    plt.savefig(os.path.join('results','plots','ieat_replication.pdf'))
+    if openai_only:
+        plt.savefig(os.path.join('results','plots','openai_models_only','ieat_replication.pdf'))
+    else:
+        plt.savefig(os.path.join('results','plots','ieat_replication.pdf'))
 
 
 if __name__ == '__main__':
-    plot_overall(ieats, original_results, 'Test')
+    openai_only = False
+    ieats, original_results = load_all_results(openai_only=openai_only)
+    plot_overall(ieats, original_results, 'Test', openai_only=openai_only)
 
 
 

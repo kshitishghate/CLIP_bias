@@ -2,6 +2,7 @@ import math
 import os
 import random
 
+from CLIP import clip
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -9,10 +10,16 @@ import seaborn as sns
 
 
 
-def load_cross_modal_results(models=None):
+def load_cross_modal_results(models=None, openai_only=False):
     """Load the cross modal results, potentially filtering by model name"""
 
     all_results = pd.read_csv(os.path.join('results','data','cross_modal.csv'))
+    clip_model_names = [m.replace('/','') for m in clip.available_models()] + clip.available_models()
+    if openai_only:
+        all_results = all_results[all_results['model'].isin(clip_model_names)]
+    else:
+        all_results = all_results[~all_results['model'].isin(clip_model_names)]
+
     if models is not None:
         all_results = all_results[all_results['model'].isin(models)]
 
@@ -39,6 +46,11 @@ def load_cross_modal_results(models=None):
 
 
     ieat_results = pd.read_csv(os.path.join('results','data','ieat_replication.csv'))
+    if openai_only:
+        ieat_results = ieat_results[ieat_results['model'].isin(clip_model_names)]
+    else:
+        ieat_results = ieat_results[~ieat_results['model'].isin(clip_model_names)]
+
     if models is not None:
         ieat_results = ieat_results[ieat_results['model'].isin(models)]
 
@@ -57,6 +69,10 @@ def load_cross_modal_results(models=None):
 
 
     seat_results = pd.read_csv(os.path.join('results','data','seat_replication.csv'))
+    if openai_only:
+        seat_results = seat_results[seat_results['model'].isin(clip_model_names)]
+    else:
+        seat_results = seat_results[~seat_results['model'].isin(clip_model_names)]
     if models is not None:
         seat_results = seat_results[seat_results['model'].isin(models)]
     seat_results['Test'] = seat_results["test_name"].str.replace('.jsonl','',regex=False).str.replace('_',' ',regex=False).str.title()
@@ -90,7 +106,7 @@ def load_cross_modal_results(models=None):
     return averaged_results, all_results
 
 
-def plot_overall(df, y_axis_col):
+def plot_overall(df, y_axis_col, openai_only=False):
     plt.clf()
     df = df.copy()
 
@@ -135,12 +151,16 @@ def plot_overall(df, y_axis_col):
     plt.ylim(-0.5, len(df)-0.5)
 
     plt.tight_layout()
-    plt.savefig(os.path.join('results','plots','cross_modal.pdf'))
+    if openai_only:
+        plt.savefig(os.path.join('results','plots','openai_models_only','cross_modal.pdf'))
+    else:
+        plt.savefig(os.path.join('results','plots','cross_modal.pdf'))
 
 
 if __name__ == '__main__':
-    averaged_results, all_results = load_cross_modal_results('ViT-L/14@336px')
-    plot_overall(averaged_results, 'Test')
+    openai_only = False
+    averaged_results, all_results = load_cross_modal_results(openai_only=openai_only)
+    plot_overall(averaged_results, 'Test',openai_only=openai_only)
 
 
 
