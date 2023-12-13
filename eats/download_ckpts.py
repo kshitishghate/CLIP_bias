@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 import argparse
-from huggingface_hub import hf_hub_download
+from huggingface_hub import hf_hub_download, list_files_info
 from huggingface_hub.utils._errors import EntryNotFoundError
 
 trained_models_info= pd.read_csv("scaling-laws-openclip/trained_models_info.csv")
@@ -11,18 +11,18 @@ def download_intermediate_ckpts(filename):
     # Make dirs
     hf_dir = 'full_checkpoints/' + filename.replace('.pt', '')
     os.makedirs(os.path.join('scaling-laws-openclip', os.path.normpath(hf_dir)), exist_ok=True)
-    epochs_found = 0
-    for i in range(300):
-        epoch_filename = os.path.normpath(hf_dir + f'/epoch_{i}.pt')
-        try:
-            hf_hub_download("laion/scaling-laws-openclip", hf_dir + f'/epoch_{i}.pt',
-                            cache_dir="scaling-laws-openclip",
-                            force_filename=epoch_filename)
-            epochs_found += 1
-        except EntryNotFoundError:
-            print(f'epoch {i} not found for model {filename}')
-    print(f'{epochs_found} epochs found for model {filename}')
+    all_epoch_files_for_model = [f.path for f in list_files_info("laion/scaling-laws-openclip")
+                 if f.path.endswith('.pt') and 'full_checkpoints' in f.path
+                 and 'epoch_' in f.path and 'latest' not in f.path
+                 and filename.replace('.pt', '') in f.path]
+    print(f"{len(all_epoch_files_for_model)} epochs found for model {filename}")
 
+    # for epoch_filename in all_epoch_files_for_model:
+    #     epoch_num = int(epoch_filename.split('epoch_')[1].split('.pt')[0])
+    #     hf_hub_download("laion/scaling-laws-openclip", hf_dir + f'/epoch_{epoch_num}.pt',
+    #                     cache_dir="scaling-laws-openclip",
+    #                     force_filename=epoch_filename)
+    return
 
 def download_model(model, samples_seen, dataset):
     res = trained_models_info[

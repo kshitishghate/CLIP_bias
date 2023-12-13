@@ -4,6 +4,16 @@ import pandas as pd
 
 import open_clip
 
+from huggingface_hub import hf_hub_url, get_hf_file_metadata, list_files_info
+from huggingface_hub.utils._errors import EntryNotFoundError
+
+
+def cherti_et_al_ckpts():
+    all_epoch_files = [f.path for f in list_files_info("laion/scaling-laws-openclip")
+                 if f.path.endswith('.pt') and 'full_checkpoints' in f.path
+                 and 'epoch_' in f.path and 'latest' not in f.path]
+    return all_epoch_files
+
 
 def cherti_et_al_models():
     """Get model names from Cherti et al. Adapted from scaling-laws-openclip/download_models.py"""
@@ -42,7 +52,7 @@ def cherti_et_al_models():
 
 
 if __name__ == '__main__':
-    print(cherti_et_al_models())
+    print(cherti_et_al_ckpts())
 
 
 
