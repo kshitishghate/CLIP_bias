@@ -1,9 +1,9 @@
 import open_clip
 import pandas as pd
 import numpy as np
-from results.scripts.plot_seat_replication import load_all_results as load_seat_replication_results
-from results.scripts.plot_ieat_replication import load_all_results as load_ieat_replication_results
-from results.scripts.plot_cross_modal import load_cross_modal_results
+from results.analysis_scripts.result_loading import load_seat_replication_results
+from results.analysis_scripts.result_loading import load_ieat_replication_results
+from results.analysis_scripts.result_loading import load_cross_modal_results
 import os
 from eats.model_profiler import profile_model
 
@@ -146,7 +146,7 @@ def load_text_bias_results():
 
 
 
-def load_model_info():
+def load_model_info(include_num_params=True):
     # Want to fix ordering on Math/Gender tests and Science/Gender tests - make sure it's the same in both modalities
     model_list = open_clip.list_pretrained()
     model_list = [m for m in model_list if m[0] != 'convnext_xxlarge']
@@ -228,11 +228,10 @@ def load_model_info():
         '.+s34b.+': 34 * billion,
         '.+s39b.+': 39 * billion,
         'openai': 13 * billion,
-        'yfcc15m': np.NAN,
-        'cc12m': np.NAN,
-        'laion400m_e31': np.NAN,
-        'laion400m_e32': np.NAN,
-        'laion2b_e16': np.NAN
+        'yfcc15m': 32 * 0.015 * billion, #https://github.com/mlfoundations/open_clip/discussions/472
+        'cc12m': 32 * 0.0108 * billion, # https://github.com/mlfoundations/open_clip/discussions/472
+        'laion400m_e32': 32 * 0.4 * billion, # https://github.com/mlfoundations/open_clip/discussions/472
+        'laion2b_e16': 16 * 2 * billion, # https://github.com/mlfoundations/open_clip/discussions/472
     })
 
     model_info['model_name'] = model_info['architecture'] + '_' + model_info['other_info']
@@ -253,26 +252,27 @@ def load_model_info():
         ['architecture', 'dataset', 'samples_seen']).reset_index(drop=True)
 
     # Get num params/num gmacs
-    model_info_dict = {}
-    already_computed = {}
-    for i, model in model_info.iterrows():
-        if len(model_info_dict) == 0:
-            results = profile_model(model['architecture'])
-            for key, value in results.items():
-                model_info_dict[key] = [value]
-            already_computed[model['architecture']] = results
-        else:
-            if model['architecture'] not in already_computed.keys():
-                already_computed[model['architecture']] = profile_model(model['architecture'])
-            for key in model_info_dict.keys():
-                try:
-                    model_info_dict[key].append(already_computed[model['architecture']][key])
-                except KeyError:
-                    model_info_dict[key].append(np.nan)
+    if include_num_params:
+        model_info_dict = {}
+        already_computed = {}
+        for i, model in model_info.iterrows():
+            if len(model_info_dict) == 0:
+                results = profile_model(model['architecture'])
+                for key, value in results.items():
+                    model_info_dict[key] = [value]
+                already_computed[model['architecture']] = results
+            else:
+                if model['architecture'] not in already_computed.keys():
+                    already_computed[model['architecture']] = profile_model(model['architecture'])
+                for key in model_info_dict.keys():
+                    try:
+                        model_info_dict[key].append(already_computed[model['architecture']][key])
+                    except KeyError:
+                        model_info_dict[key].append(np.nan)
 
-    model_info_dict.pop('model')
-    for key in model_info_dict.keys():
-        model_info[key] = model_info_dict[key]
+        model_info_dict.pop('model')
+        for key in model_info_dict.keys():
+            model_info[key] = model_info_dict[key]
 
     model_info['dataset_size'] = model_info['dataset'].replace({
         'OpenAI WebImageText':0.4*billion,
@@ -318,25 +318,102 @@ def load_model_info():
                                     'text_retrieval_recall@5','mean_average_precision'],
                             columns=['downstream_dataset']) # Pivot to have one row per model
     cherti_performance = cherti_performance.dropna(axis=1, how='all').reset_index() # drop empty columns
-    cherti_performance = cherti_performance.rename(columns={'arch': 'architecture', 'name': 'model_name'}) # rename columns
-    cherti_performance = cherti_performance[cherti_performance['model_name'] != 'openai'] # remove openai, as they're in other version
+    cherti_performance = cherti_performance[[('arch', ''), ('name', ''), ('acc1', 'vtab'), ('acc1', 'vtab+')]]  # rename
+    cherti_performance.columns = ['architecture', 'model_name', 'vtab', 'vtab+'] # rename columns
+    cherti_performance = cherti_performance[cherti_performance['model_name'] != 'openai']
+
+
+    openclip_local_performance = pd.read_csv('results/performance_evaluation/benchmark.csv').drop_duplicates()
+    openclip_local_performance = openclip_local_performance.pivot(index=['model','model_fullname', 'pretrained'],
+                                                  values=['acc1', 'acc5', 'mean_per_class_recall',
+                                                          'image_retrieval_recall@5',
+                                                          'text_retrieval_recall@5', 'mean_average_precision'],
+                                                  columns=['dataset'])  # Pivot to have one row per model
+    openclip_local_performance = openclip_local_performance.dropna(axis=1, how='all').reset_index()  # drop empty columns
+    openclip_local_performance = openclip_local_performance.rename(
+        columns={'model': 'architecture', 'pretrained': 'model_name'})  # rename columns
 
     # open_clip performance info
-    open_clip_performance = pd.read_csv(os.path.join('CLIP_benchmark','benchmark','benchmark.csv'))
-    open_clip_performance = open_clip_performance.pivot(index=['model_fullname'],
-                            values=['acc1','acc5', 'mean_per_class_recall', 'image_retrieval_recall@5',
-                                    'text_retrieval_recall@5','mean_average_precision'],
-                            columns=['dataset'])
-    open_clip_performance = open_clip_performance.dropna(axis=1, how='all').reset_index()
-    open_clip_performance['architecture'], open_clip_performance['model_name'] = open_clip_performance['model_fullname'].str.split(' ', 1).str
-    open_clip_performance = open_clip_performance.drop(columns=['model_fullname'])
-    open_clip_performance['model_name'] = open_clip_performance['architecture'] + '_' + open_clip_performance['model_name']
+    openclip_performance = pd.read_csv('https://raw.githubusercontent.com/mlfoundations/open_clip/ebe135b23161e375892acf72a1ee884e03976ab8/docs/openclip_results.csv')
+    openclip_performance = openclip_performance.rename(columns={'name': 'architecture', 'pretrained': 'model_name'})
+    openclip_performance = openclip_local_performance.merge(openclip_performance, on=['architecture', 'model_name'])
 
-    all_performance = pd.concat([cherti_performance, open_clip_performance]).reset_index(drop=True)
+    vtab_tasks = [
+        'Caltech-101',
+        'CIFAR-100',
+        'CLEVR Counts',
+        'CLEVR Distance',
+        'Describable Textures',
+        'EuroSAT',
+        'KITTI Vehicle Distance',
+        'Oxford-IIIT Pet',
+        'Oxford Flowers-102',
+        'PatchCamelyon',
+        'RESISC45',
+        'SUN397',
+        'SVHN',
+        ('acc1', 'wds/vtab/diabetic_retinopathy'),
+        ('acc1', 'wds/vtab/dmlab'),
+        ('acc1', 'wds/vtab/dsprites_label_orientation'),
+        ('acc1', 'wds/vtab/dsprites_label_x_position'),
+        ('acc1', 'wds/vtab/dsprites_label_x_position'),
+        ('acc1', 'wds/vtab/smallnorb_label_azimuth'),
+    ]
+
+
+    vtab_plus_tasks = [
+        'Caltech-101',
+        'CIFAR-10',
+        'CIFAR-100',
+        'CLEVR Counts',
+        'CLEVR Distance',
+        'Describable Textures',
+        'EuroSAT',
+        'KITTI Vehicle Distance',
+        'Oxford-IIIT Pet',
+        'Oxford Flowers-102',
+        'PatchCamelyon',
+        'RESISC45',
+        'SUN397',
+        'SVHN',
+        'ImageNet 1k',
+        'ImageNet v2',
+        'ImageNet Sketch',
+        'ImageNet-A',
+        'ImageNet-R',
+        'ObjectNet',
+        'Pascal VOC 2007',
+        'Stanford Cars',
+        'FGVC Aircraft',
+        'MNIST',
+        'STL-10',
+        'GTSRB',
+        'Country211',
+        'Rendered SST2',
+
+        ('acc1', 'wds/vtab/diabetic_retinopathy'),
+        ('acc1', 'wds/vtab/dmlab'),
+        ('acc1', 'wds/vtab/dsprites_label_orientation'),
+        ('acc1', 'wds/vtab/dsprites_label_x_position'),
+        ('acc1', 'wds/vtab/dsprites_label_x_position'),
+        ('acc1', 'wds/vtab/smallnorb_label_azimuth'),
+
+        ('acc1', 'wds/fer2013'),
+    ]
+
+    openclip_performance['vtab'] = openclip_performance[vtab_tasks].mean(axis=1)
+    openclip_performance['vtab+'] = openclip_performance[vtab_plus_tasks].mean(axis=1)
+    openclip_performance['model_fullname'] = openclip_performance[('model_fullname', '')]
+    openclip_performance = openclip_performance[['architecture', 'model_fullname', 'vtab', 'vtab+']].rename(columns={'model_fullname':'model_name'})
+    openclip_performance['model_name'] = openclip_performance['model_name'].str.replace(' ', '_')
+
+
+    all_performance = pd.concat([cherti_performance,
+                                 openclip_performance]).reset_index(drop=True)
     all_performance = all_performance[~(all_performance['model_name']).isin(repeated_between_modelsets)]
     all_performance = all_performance[~(all_performance['model_name']).isin(quickgelu_repeats)]
 
-    model_info = model_info.merge(all_performance, on=['architecture', 'model_name'], how='left')
+    model_info = model_info.merge(all_performance, on=['architecture', 'model_name'], how='outer')
 
     model_info['model_name'] = np.where(
         model_info['model_name'].str.slice(-3) != '.pt',
@@ -387,11 +464,10 @@ if __name__ == '__main__':
     full_biases = full_biases.dropna(axis=1)
     full_biases = full_biases.drop(columns=['X','Y','A','B','nt','na', 'npermutations'])
 
-    _, cross_modal_results = load_cross_modal_bias()
-
-    model_info = load_model_info()
+    # cross_modal_results = load_cross_modal_bias()
+    model_info = load_model_info(True)
     full_biases = full_biases.merge(model_info, left_on='model', right_on='model_name')
-    cross_modal_results = cross_modal_results.merge(model_info, left_on='model', right_on='model_name')
+    # cross_modal_results = cross_modal_results.merge(model_info, left_on='model', right_on='model_name')
 
     full_biases.to_csv(os.path.join('results', 'data', 'unimodal_data_for_modeling.csv'), index=False)
-    cross_modal_results.to_csv(os.path.join('results', 'data', 'bimodal_data_for_modeling.csv'), index=False)
+    # cross_modal_results.to_csv(os.path.join('results', 'data', 'bimodal_data_for_modeling.csv'), index=False)
