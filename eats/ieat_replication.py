@@ -17,9 +17,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from eats.extract_clip import load_images, extract_images, extract_text
 from ieat.weat.weat.test import Test
-from eats.result_saving import test_already_run, save_test_results
+from eats.utils import test_already_run, save_test_results, cherti_et_al_ckpts, cherti_et_al_models
 
-from eats.load_cherti_model_names import cherti_et_al_models, cherti_et_al_ckpts
 from eats.download_ckpts import download_intermediate_ckpt
 
 def perform_test():

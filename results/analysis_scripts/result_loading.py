@@ -13,9 +13,9 @@ import open_clip
 import pandas as pd
 import numpy as np
 import os
-from eats.model_profiler import profile_model
 
-from eats.load_cherti_model_names import cherti_et_al_models
+from eats.utils import cherti_et_al_models, profile_model
+
 
 def load_seat_replication_results(models=None, openai_only=False):
     all_results = pd.read_csv(os.path.join('results','data','seat_replication.csv'))

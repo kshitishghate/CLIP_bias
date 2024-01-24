@@ -18,7 +18,7 @@ import os
 
 from eats.extract_clip import extract_images, extract_text, load_words_greenwald
 from eats.sc_weat import SCWEAT, WEAT
-from eats.result_saving import save_test_results
+from eats.utils import save_test_results
 
 
 def test_already_run(test, file_name):

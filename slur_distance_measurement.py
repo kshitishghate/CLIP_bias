@@ -10,7 +10,7 @@ from tqdm import tqdm
 import pickle
 import json
 import open_clip
-from eats.load_cherti_model_names import cherti_et_al_models
+from eats.utils import cherti_et_al_models
 
 
 def get_all_image_paths():

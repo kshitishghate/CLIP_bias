@@ -12,7 +12,7 @@ from tqdm import tqdm
 from PIL import Image
 import open_clip
 
-from eats.load_cherti_model_names import cherti_et_al_models
+from eats.utils import cherti_et_al_models
 from results.analysis_scripts.bundle_eat_data import load_model_info
 
 global completed_tests
@@ -244,7 +244,6 @@ def extract_attr_embd(model, tokenizer, model_name, device):
     save_attr_embeddings(attr, embeddings, model_name)
 
 def perform_test():
-
     results_fp = os.path.join('results', 'data', 'seat_replication.csv')
     models = cherti_et_al_models() + open_clip.list_pretrained()
     # Not using convnext_xxlarge because it is not supported by timm 0.6.12

@@ -123,7 +123,7 @@ def extract_images(model, preprocess, image_paths, device, model_name):
 
 def extract_text(model, preprocess, text, device, model_name):
     try:
-        # Sort for saving, as tests can potentially input the stimuli in differing orders
+        # Sort for caching, as tests can potentially input the stimuli in differing orders
         sorted_text = np.sort(text)
     except np.AxisError:
         pass

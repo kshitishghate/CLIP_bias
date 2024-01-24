@@ -21,14 +21,12 @@ import sys
 print(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-
-from eats.load_cherti_model_names import cherti_et_al_models, cherti_et_al_ckpts
 from eats.download_ckpts import download_intermediate_ckpt
 
 
 from eats.extract_clip import extract_images, extract_text, load_words_greenwald
 from eats.sc_weat import SCWEAT, WEAT
-from eats.result_saving import save_test_results
+from eats.utils import save_test_results, cherti_et_al_ckpts, cherti_et_al_models
 
 global prev
 prev = None

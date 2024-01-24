@@ -5,9 +5,8 @@ from results.analysis_scripts.result_loading import load_seat_replication_result
 from results.analysis_scripts.result_loading import load_ieat_replication_results
 from results.analysis_scripts.result_loading import load_cross_modal_results
 import os
-from eats.model_profiler import profile_model
 
-from eats.load_cherti_model_names import cherti_et_al_models
+from eats.utils import cherti_et_al_models, profile_model
 
 
 # may want to download other models from:
