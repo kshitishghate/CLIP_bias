@@ -123,15 +123,22 @@ def extract_images(model, preprocess, image_paths, device, model_name):
 
 def extract_text(model, preprocess, text, device, model_name):
     try:
-        text = np.sort(text)
+        # Sort for saving, as tests can potentially input the stimuli in differing orders
+        sorted_text = np.sort(text)
     except np.AxisError:
         pass
-    if (model_name, tuple(text)) not in text_embedding_dict.keys():
-        processed_text = preprocess(text).to(device)
+    if (model_name, tuple(sorted_text)) not in text_embedding_dict.keys():
+        processed_text = preprocess(sorted_text).to(device)
         with torch.no_grad():
            text_features = model.encode_text(processed_text).cpu().detach().numpy()
-        text_embedding_dict[(model_name, tuple(text))] = text_features
+        text_embedding_dict[(model_name, tuple(sorted_text))] = text_features
         clear_dict(text_embedding_dict, model_name)
     else:
         text_features = text_embedding_dict[(model_name, tuple(text))]
+
+    # Unsort
+    sort_order = np.argsort(text)
+    unsort_order = np.argsort(sort_order)
+    text_features = text_features[unsort_order]
+
     return text_features

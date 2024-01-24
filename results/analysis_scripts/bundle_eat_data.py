@@ -457,15 +457,15 @@ def find_correlations(models_to_withold):
     print(c)
 
 if __name__ == '__main__':
-    image_biases = load_image_bias_results()
-    text_biases = load_text_bias_results()
-    full_biases = pd.concat([image_biases, text_biases], axis=0)
+    # image_biases = load_image_bias_results()
+    # text_biases = load_text_bias_results()
+    # full_biases = pd.concat([image_biases, text_biases], axis=0)
     # drop na columns
-    full_biases = full_biases.dropna(axis=1)
-    full_biases = full_biases.drop(columns=['X','Y','A','B','nt','na', 'npermutations'])
+    # full_biases = full_biases.dropna(axis=1)
+    # full_biases = full_biases.drop(columns=['X','Y','A','B','nt','na', 'npermutations'])
 
     # cross_modal_results = load_cross_modal_bias()
-    model_info = load_model_info(True)
+    model_info = load_model_info(False)
     full_biases = full_biases.merge(model_info, left_on='model', right_on='model_name')
     # cross_modal_results = cross_modal_results.merge(model_info, left_on='model', right_on='model_name')
 

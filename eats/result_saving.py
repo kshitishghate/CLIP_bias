@@ -2,11 +2,17 @@ import os
 
 import pandas as pd
 
+global prev
+prev = None
 
-def test_already_run(model_name, test, file_name):
+def test_already_run(model_name, test, file_name, hard_reload=False):
     if not os.path.exists(file_name):
         return False
-    previous_results = pd.read_csv(file_name)
+    global prev
+    if prev == None or hard_reload:
+        previous_results = pd.read_csv(file_name)
+    else:
+        previous_results = prev
     relevant_results = previous_results[
         (previous_results['model'] == model_name)
         & (True if 'X' not in test.index else (previous_results['X'] == test['X']))
@@ -31,8 +37,17 @@ def save_test_results(result, file_name):
     if type(result) == pd.Series:
         result = pd.DataFrame(result).T
     if os.path.exists(file_name):
-        previous_results = pd.read_csv(file_name)
-        all_results = pd.concat([previous_results, result]).reset_index(drop=True)
+        # Read file header to make sure we can get the same column order
+        header = pd.read_csv(file_name, nrows=0).columns.tolist()
+
+        # If there are new columns, add them to the previous results
+        new_columns = [c for c in result.columns if c not in header]
+        if len(new_columns) > 0:
+            previous_results = pd.read_csv(file_name)
+            all_results = pd.concat([previous_results, result]).reset_index(drop=True)
+            all_results.to_csv(file_name, index=False)
+        else:
+            result[header].to_csv(file_name, index=False, mode='a', header=False)
     else:
-        all_results = result
-    all_results.to_csv(file_name, index=False)
+        result.to_csv(file_name, index=False)
+

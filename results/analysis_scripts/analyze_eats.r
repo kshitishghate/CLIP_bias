@@ -1,49 +1,63 @@
-library(mlmRev)
+# library(mlmRev)
 library(dplyr)
-library(caret)
-library(arm)
-library(stringr)
+# library(caret)
+# library(arm)
+# library(stringr)
 library(ggplot2)
 library(lme4)
-library(forcats)
-library(rstanarm)
+# library(forcats)
+# library(rstanarm)
 library(readr)
-library(effsize)
-library(tidyr)
-library(brms)
+# library(effsize)
+# library(tidyr)
+# library(brms)
 library(MuMIn)
-library(r2mlm)
+# library(r2mlm)
 library(sjPlot)
-library(lmerTest)
-library(multilevelTools)
-library("lme4")
-library("ggplot2")
-library("HLMdiag")
-library("DHARMa")
-library("car")
-library("Matrix")
+# library(lmerTest)
+# library(multilevelTools)
+# library("lme4")
+# library("ggplot2")
+# library("HLMdiag")
+# library("DHARMa")
+# library("car")
+# library("Matrix")
 library(latex2exp)
-
-
-options(mc.cores = parallel::detectCores())
 
 
 # https://github.com/marklhc/bootmlm
 
-
 # Read in data
 data = read_csv('results/data/unimodal_data_for_modeling.csv')
+data$total_compute = data$macs / 1e9 * data$samples_seen # GMACs * samples_seen
+data$total_params_trained = data$params / 1e9 * data$samples_seen # Gparams * samples_seen
+data$total_acts = data$acts / 1e6 * data$samples_seen # macts * samples_seen
+data$type_of_stimuli = paste(data$word_category, data$stimuli_type, sep='/')
+
+
+
+
+data$centered_samples_seen = log10(data$samples_seen) - min(log10(data$samples_seen))
+data$centered_total_compute = log10(data$total_compute) - quantile(log10(data$total_compute), 0.1)
+data$centered_total_params = log10(data$total_params_trained) - min(log10(data$total_params_trained))
+data$centered_total_acts = log10(data$total_acts) - min(log10(data$total_acts))
+data$centered_text_macs = log10(data$text_macs) - min(log10(data$text_macs))
+data$centered_text_acts = log10(data$acts) - min(log10(data$text_acts))
+data$centered_dataset_size = log10(data$dataset_size) - min(log10(data$dataset_size))
 data$centered_params = log10(data$params) - min(log10(data$params))
 data$centered_macs = log10(data$macs) - min(log10(data$macs))
 data$centered_image_macs = log10(data$image_macs) - min(log10(data$image_macs))
 data$centered_image_acts = log10(data$image_acts) - min(log10(data$image_acts))
 data$centered_acts = log10(data$acts) - min(log10(data$acts))
-data$total_compute = data$macs / 1e9 * data$samples_seen # GMACs * samples_seen
-data$centered_total_compute = log10(data$total_compute) - min(log10(data$total_compute))
-data$total_params_trained = data$params / 1e9 * data$samples_seen # Gparams * samples_seen
-data$total_acts = data$acts / 1e6 * data$samples_seen # macts * samples_seen
-data$centered_dataset_size = log10(data$dataset_size) - min(log10(data$dataset_size))
-data$type_of_stimuli = paste(data$word_category, data$stimuli_type, sep='/')
+data$centered_vtab = data$vtab - quantile(data$vtab, 0.1)
+
+data$efficiency = data$vtab / log10(data$total_compute)
+data$centered_efficiency = log10(data$efficiency) - min(log10(data$efficiency))
+data %>%
+  dplyr::select(effect_size,Test,overall_test_category,modality,model_family,
+                dataset,samples_seen,params,image_params,text_params,dataset_size,
+                `vtab+`, total_compute) %>%
+    write_csv('results/data/for_causal_learning.csv')
 
 # Rename dataset
 data$dataset = case_when(
@@ -122,11 +136,17 @@ BIC(lmer(effect_size ~ 1 + centered_total_compute + stimuli_type + (centered_tot
 BIC(lmer(effect_size ~ 1 + centered_total_compute + type_of_stimuli + (centered_total_compute | Test) + (1 | dataset), data=data))
 BIC(lmer(effect_size ~ 1 + centered_total_compute + modality +  (centered_total_compute | Test) + (1 | dataset), data=data))
 
-BIC(lmer(effect_size ~ 1 + centered_total_compute + I(centered_total_compute**2)  + (centered_total_compute + I(centered_total_compute**2) | Test) + (1 | dataset), data=data))
+BIC(lmer(effect_size ~ 1 + centered_total_compute  + (centered_total_compute | Test) + (1 | dataset), data=data))
+
 
 # Fit best model found
 best_mod = lmer(effect_size ~ 1 + centered_total_compute  + (centered_total_compute | Test) + (1 | dataset), data=data)
 r.squaredGLMM(best_mod)
+BIC(best_mod)
+
+vtab_mod = lmer(effect_size ~ 1  + centered_vtab + (centered_vtab | Test) + (1 | dataset), data=data)
+r.squaredGLMM(vtab_mod)
+BIC(vtab_mod)
 
 # Plot random effects
 plt = plot_model(best_mod, type = "re", ci.lvl = 0.95)
@@ -147,7 +167,7 @@ bias_tests = data %>%
 
 data_together = left_join(corr_plot_data, bias_tests)
 
-ggplot(data_together, aes(x=`(Intercept)`, y=centered_total_compute,
+ggplot(data_together, aes(x=`(Intercept)`, y=vtab,
                           # color=type_of_stimuli
 )) +
   xlab(TeX('$\\hat{\\alpha} + \\hat{\\beta}_{j[i]}$'))+
@@ -158,8 +178,8 @@ ggsave('results/plots/correlation_plot.pdf', width=4, height=2.8)
 
 
 ## Get bootstrap confidence intervals
-# set.seed(3962435)
-# boot_ci = confint(best_mod, method='boot', nsim=10000,oldNames=FALSE)
+set.seed(3962435)
+boot_ci = confint(best_mod, method='boot', nsim=10000,oldNames=FALSE)
 # saveRDS(best_ci, 'results/plots/eats_boot_ci.RDS')
 boot_ci = readRDS('results/plots/eats_boot_ci.RDS')
 
@@ -241,8 +261,8 @@ my_coefs <- function(.) {
 # https://cran.r-project.org/web/packages/lmeresampler/vignettes/lmeresampler-vignette.html
 
 library(lmeresampler)
-# bootstrap_models = bootstrap(best_mod, type='residual', B = 10000, .f=my_coefs)
-# saveRDS(bootstrap_models, 'results/plots/eats_bootstrap.RDS')
+bootstrap_models = bootstrap(best_mod, type='residual', B = 10000, .f=my_coefs)
+saveRDS(bootstrap_models, 'results/plots/eats_bootstrap.RDS')
 bootstrap_models = readRDS('results/plots/eats_bootstrap.RDS')
 
 

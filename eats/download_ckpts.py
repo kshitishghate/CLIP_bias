@@ -6,7 +6,14 @@ from huggingface_hub.utils._errors import EntryNotFoundError
 
 trained_models_info= pd.read_csv("scaling-laws-openclip/trained_models_info.csv")
 
-# Download epochs
+
+def download_intermediate_ckpt(epoch_filename):
+    hf_dir = os.path.dirname(epoch_filename)
+    epoch_num = int(epoch_filename.split('epoch_')[1].split('.pt')[0])
+    hf_hub_download("laion/scaling-laws-openclip", hf_dir + f'/epoch_{epoch_num}.pt',
+                    cache_dir="scaling-laws-openclip",
+                    force_filename=epoch_filename)
+
 def download_intermediate_ckpts(filename):
     # Make dirs
     hf_dir = 'full_checkpoints/' + filename.replace('.pt', '')
@@ -17,11 +24,9 @@ def download_intermediate_ckpts(filename):
                  and filename.replace('.pt', '') in f.path]
     print(f"{len(all_epoch_files_for_model)} epochs found for model {filename}")
 
-    # for epoch_filename in all_epoch_files_for_model:
-    #     epoch_num = int(epoch_filename.split('epoch_')[1].split('.pt')[0])
-    #     hf_hub_download("laion/scaling-laws-openclip", hf_dir + f'/epoch_{epoch_num}.pt',
-    #                     cache_dir="scaling-laws-openclip",
-    #                     force_filename=epoch_filename)
+    # Download epochs
+    for epoch_filename in all_epoch_files_for_model:
+        download_intermediate_ckpt(epoch_filename)
     return
 
 def download_model(model, samples_seen, dataset):

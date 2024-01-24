@@ -28,21 +28,29 @@ data$type_of_stimuli = paste(data$word_category, data$stimuli_type, sep='/')
 
 
 
+data$scaled_total_compute = log10(data$total_compute) - min(log10(data$total_compute))
 
-subset = data %>%
-  filter(model_source =='cherti')
-subset$centered_samples_seen = log10(subset$samples_seen) - min(log10(subset$samples_seen))
-subset$centered_total_compute = log10(subset$total_compute) - min(log10(subset$total_compute))
-subset$centered_total_params = log10(subset$total_params_trained) - min(log10(subset$total_params_trained))
-subset$centered_total_acts = log10(subset$total_acts) - min(log10(subset$total_acts))
-subset$centered_text_macs = log10(subset$text_macs) - min(log10(subset$text_macs))
-subset$centered_text_acts = log10(subset$acts) - min(log10(subset$text_acts))
-subset$centered_dataset_size = log10(subset$dataset_size) - min(log10(subset$dataset_size))
-subset$centered_params = log10(subset$params) - min(log10(subset$params))
-subset$centered_macs = log10(subset$macs) - min(log10(subset$macs))
-subset$centered_image_macs = log10(subset$image_macs) - min(log10(subset$image_macs))
-subset$centered_image_acts = log10(subset$image_acts) - min(log10(subset$image_acts))
-subset$centered_acts = log10(subset$acts) - min(log10(subset$acts))
+data$centered_samples_seen = log10(data$samples_seen) - min(log10(data$samples_seen))
+data$centered_total_compute = log10(data$total_compute) - min(log10(data$total_compute))
+data$centered_total_params = log10(data$total_params_trained) - min(log10(data$total_params_trained))
+data$centered_total_acts = log10(data$total_acts) - min(log10(data$total_acts))
+data$centered_text_macs = log10(data$text_macs) - min(log10(data$text_macs))
+data$centered_text_acts = log10(data$acts) - min(log10(data$text_acts))
+data$centered_dataset_size = log10(data$dataset_size) - min(log10(data$dataset_size))
+data$centered_params = log10(data$params) - min(log10(data$params))
+data$centered_macs = log10(data$macs) - min(log10(data$macs))
+data$centered_image_macs = log10(data$image_macs) - min(log10(data$image_macs))
+data$centered_image_acts = log10(data$image_acts) - min(log10(data$image_acts))
+data$centered_acts = log10(data$acts) - min(log10(data$acts))
+data$centered_vtab = (data$vtab - mean(data$vtab)) / sd(data$vtab)
+
+data = left_join(data, model_data)
+
+data_ranked_ctc = rank(data$centered_total_compute)
+data$efficiency = data$vtab / log10(data$total_compute)
+data$centered_efficiency = log10(data$efficiency) - min(log10(data$efficiency))
+
+
 
 
 c("model", "architecture", "model_family", "samples_seen", "model_name", "fine_tuned",
@@ -56,10 +64,46 @@ c("model", "architecture", "model_family", "samples_seen", "model_name", "fine_t
 
 
 # Filter out any columns with na values
-subset <- subset[,colSums(is.na(subset))==0]
+data <- data[,colSums(is.na(data))==0]
 
+without_vtab = lmer(effect_size ~ 1 + centered_total_params * centered_samples_seen  + (centered_total_params * centered_samples_seen | Test) + (1 | dataset), data=data)
 
-best_mod = lmer(effect_size ~ 1 + `acc5vtab+` + (`acc5vtab+` | Test) + (1 | dataset), data=subset)
+BIC(lmer(effect_size ~ 1  + (centered_total_compute | Test) + (1 | dataset), data=data))
+
+best_mod = lmer(effect_size ~ 1  + `vtab+` + (`vtab+` | Test) + (1 | dataset), data=data)
+
+corr_plot_data = coef(best_mod)$Test
+corr_plot_data$Test = row.names(corr_plot_data)
+corr_plot_data = corr_plot_data %>%
+  tibble
+bias_tests = data %>%
+  distinct(Test, test_category, overall_test_category,
+           modality, stimuli_type, word_category, type_of_stimuli)
+
+data_together = left_join(corr_plot_data, bias_tests)
+
+ctc_es_cor = list()
+vtab_es_cor = list()
+for (i in 1:nrow(data_together)) {
+  a = data %>%
+  filter(Test==data_together$Test[[i]]) %>%
+  dplyr::select(c(centered_total_compute, effect_size)) %>% cor()
+    ctc_es_cor[[i]] = a[2]
+    b = data %>%
+    filter(Test==data_together$Test[[i]]) %>% dplyr::select(c(`vtab+`, effect_size)) %>% cor()
+    vtab_es_cor[[i]] = b[2]
+}
+data_together = data_together %>%
+  mutate(ctc_es_cor = unlist(ctc_es_cor),
+         vtab_es_cor = unlist(vtab_es_cor))
+
+ggplot(data_together, aes(x=`(Intercept)`, y=vtab,
+                          # color=type_of_stimuli
+)) +
+  xlab(TeX('$\\hat{\\alpha} + \\hat{\\beta}_{j[i]}$'))+
+  ylab(TeX('$\\hat{\\gamma}_{j[i]}$')) +
+  geom_point()
+
 
 # Departure from normality
 ggplot(data.frame(y=residuals(best_mod)), aes(sample=y)) +
@@ -79,7 +123,7 @@ my_coefs <- function(.) {
   names(intercepts) = paste(row.names(coefs$Test), '_intercept_coef',sep='')
 
   performances = coefs$Test[[2]]
-  names(performances) = paste(row.names(coefs$Test), '_acc5vtab+_coef',sep='')
+  names(performances) = paste(row.names(coefs$Test), '_vtab_coef',sep='')
 
   datasets = coefs$dataset[[1]]
   names(datasets) = paste(row.names(coefs$dataset), '_intercept_coef',sep='')
@@ -112,3 +156,7 @@ my_coefs <- function(.) {
 
 
 }
+
+bootstrap_models = bootstrap(best_mod, type='residual', B = 10000, .f=my_coefs)
+# saveRDS(bootstrap_models, 'results/plots/eats_vtab_bootstrap.RDS')
+bootstrap_models = readRDS('results/plots/eats_vtab_bootstrap.RDS')

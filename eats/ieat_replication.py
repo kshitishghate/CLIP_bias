@@ -1,4 +1,5 @@
 import os
+import random
 
 import torch
 import nltk
@@ -9,19 +10,26 @@ from scipy.special import comb
 import open_clip
 from tqdm import tqdm
 
+# add main dir to path
+import sys
+print(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from eats.extract_clip import load_images, extract_images, extract_text
 from ieat.weat.weat.test import Test
 from eats.result_saving import test_already_run, save_test_results
 
-from eats.load_cherti_model_names import cherti_et_al_models
+from eats.load_cherti_model_names import cherti_et_al_models, cherti_et_al_ckpts
+from eats.download_ckpts import download_intermediate_ckpt
 
 def perform_test():
     all_tests = pd.read_csv(os.path.join('data', 'ieat_tests.csv'))
+    all_tests = all_tests.sample(frac=1, replace=False).reset_index(drop=True)
 
-    models = open_clip.list_pretrained() + cherti_et_al_models()
+    models = cherti_et_al_ckpts() +  open_clip.list_pretrained() + cherti_et_al_models()
     # Not using convnext_xxlarge because it is not supported by timm 0.6.12
     models = [m for m in models if m[0] != 'convnext_xxlarge']
+    models = random.sample(models, k = len(models))
     total = len(models) * len(all_tests)
 
     results_fp = os.path.join('results', 'data', 'ieat_replication.csv')
@@ -34,15 +42,26 @@ def perform_test():
         completed = 0
     remaining = total - completed
 
-    with tqdm(total=remaining) as pbar:
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+
+
+    with tqdm(total=remaining, smoothing=0) as pbar:
         for model_name in models:
-            device = "cuda" if torch.cuda.is_available() else "cpu"
-            # device =  "mps"
-            model, _, preprocess = open_clip.create_model_and_transforms(model_name[0], pretrained=model_name[1],
-                                                                         device=device)
+
+            model, preprocess = None, None
 
             for i, test in all_tests.iterrows():
                 if not test_already_run('_'.join(model_name).replace('/',''), test, results_fp):
+                    if model is None:
+                        # If the model is not in open_clip, download it
+                        if 'epoch_' in model_name[1]:
+                            download_intermediate_ckpt(model_name[1].replace('scaling-laws-openclip/', ''))
+
+                        # device =  "mps"
+                        model, _, preprocess = open_clip.create_model_and_transforms(model_name[0],
+                                                                                     pretrained=model_name[1],
+                                                                                     device=device)
+
                     np.random.seed(82804230)
 
                     attr_folder = test['Attribute'] if test['Attribute'] == 'Valence' else test['Target']
@@ -79,6 +98,13 @@ def perform_test():
 
                     save_test_results(pd.concat([test, test_result]), results_fp)
                     pbar.update()
+            # Delete epoch model to free up storage space:
+            test_already_run('_'.join(model_name).replace('/', ''), test, results_fp, hard_reload=True)
+            if 'epoch_' in model_name[1]:
+                try:
+                    os.remove(model_name[1].replace('scaling-laws-openclip/', ''))
+                except FileNotFoundError:
+                    pass
 
 if __name__ == '__main__':
     perform_test()

@@ -1,4 +1,5 @@
 import os
+import random
 
 import xml.etree.ElementTree as ET
 
@@ -12,26 +13,39 @@ from scipy.special import comb
 import open_clip
 from tqdm import tqdm
 from nltk.corpus import wordnet
-from pattern.text.en import pluralize
 
 import os
 
-from eats.load_cherti_model_names import cherti_et_al_models
+# add main dir to path
+import sys
+print(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+
+from eats.load_cherti_model_names import cherti_et_al_models, cherti_et_al_ckpts
+from eats.download_ckpts import download_intermediate_ckpt
 
 
 from eats.extract_clip import extract_images, extract_text, load_words_greenwald
 from eats.sc_weat import SCWEAT, WEAT
 from eats.result_saving import save_test_results
 
+global prev
+prev = None
 
-def test_already_run(test, file_name):
+def test_already_run(test, file_name, hard_reload=False):
     if not os.path.exists(file_name):
         return False
-    previous_results = pd.read_csv(file_name)
+    global prev
+    if prev is None or hard_reload:
+        previous_results = pd.read_csv(file_name)
+    else:
+        previous_results = prev
     relevant_results = previous_results[
         (previous_results['model'] == test['model'])
         & (previous_results['test_name'] == test['test_name'])
     ]
+    prev = previous_results
     return len(relevant_results) > 0
 
 
@@ -49,10 +63,13 @@ def perform_test(device):
     npermutations = 100000
 
     results_fp = os.path.join('results', 'data', 'seat_replication.csv')
-    models = cherti_et_al_models() + open_clip.list_pretrained()
+    models = cherti_et_al_ckpts() + open_clip.list_pretrained() + cherti_et_al_models()
     # Not using convnext_xxlarge because it is not supported by timm 0.6.12
     models = [m for m in models if m[0] != 'convnext_xxlarge']
+    models = random.sample(models, k = len(models))
+
     tests = [f for f in os.listdir(os.path.join('data','tests')) if f.split('.')[1] == 'jsonl']
+    tests = random.sample(tests, k = len(tests))
 
     # models.reverse()
     total = len(models) * len(tests)
@@ -68,12 +85,10 @@ def perform_test(device):
 
     remaining = total - completed
 
-    with tqdm(total=remaining) as pbar:
+    with tqdm(total=remaining, smoothing=0) as pbar:
         for model_name in models:
-            model, _, preprocess = open_clip.create_model_and_transforms(model_name[0], pretrained=model_name[1],
-                                                                         device=device,
-                                                                         cache_dir='scaling-laws-openclip' if '.pt' in model_name[1] else None)
-            tokenizer = open_clip.get_tokenizer(model_name[0])
+
+            model, tokenizer, preprocess = None, None, None
 
             for test_name in tests:
                 try:
@@ -98,6 +113,19 @@ def perform_test(device):
 
 
                 if not test_already_run(test, results_fp):
+
+                    if model is None:
+                        if 'epoch_' in model_name[1]:
+                            download_intermediate_ckpt(model_name[1].replace('scaling-laws-openclip/', ''))
+                        model, _, preprocess = open_clip.create_model_and_transforms(
+                            model_name[0],
+                            pretrained=model_name[1],
+                            device=device,
+                            cache_dir='scaling-laws-openclip' if '.pt' in
+                            model_name[1] else None)
+                        tokenizer = open_clip.get_tokenizer(model_name[0])
+
+
                     if not test['X'] is np.NaN:
                         np.random.seed(5718980)
 
@@ -122,6 +150,14 @@ def perform_test(device):
                         test_result = pd.Series({}, dtype=str)
                     save_test_results(pd.concat([pd.Series(test), test_result]), results_fp)
                     pbar.update()
+
+            # Delete epoch model to free up storage space:
+            test_already_run(test, results_fp, hard_reload=True)
+            if 'epoch_' in model_name[1]:
+                try:
+                    os.remove(model_name[1].replace('scaling-laws-openclip/', ''))
+                except FileNotFoundError:
+                    pass
 
 
 def load_seat(test: str):
