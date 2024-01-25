@@ -21,12 +21,12 @@ import sys
 print(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from embeddings.download_ckpts import download_intermediate_ckpt
+from measure_bias_and_performance.download_ckpts import download_intermediate_ckpt
 
 
-from embeddings.extract_clip import extract_images, extract_text, load_words_greenwald
-from embeddings.sc_weat import SCWEAT, WEAT
-from embeddings.utils import save_test_results, cherti_et_al_ckpts, cherti_et_al_models
+from measure_bias_and_performance.extract_clip import extract_images, extract_text, load_words_greenwald
+from measure_bias_and_performance.sc_weat import SCWEAT, WEAT
+from measure_bias_and_performance.utils import save_test_results, cherti_et_al_ckpts, cherti_et_al_models
 
 global prev
 prev = None

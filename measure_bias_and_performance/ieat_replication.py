@@ -15,11 +15,11 @@ import sys
 print(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from embeddings.extract_clip import load_images, extract_images, extract_text
+from measure_bias_and_performance.extract_clip import load_images, extract_images, extract_text
 from references.ieat.weat.weat.test import Test
-from embeddings.utils import test_already_run, save_test_results, cherti_et_al_ckpts, cherti_et_al_models
+from measure_bias_and_performance.utils import test_already_run, save_test_results, cherti_et_al_ckpts, cherti_et_al_models
 
-from embeddings.download_ckpts import download_intermediate_ckpt
+from measure_bias_and_performance.download_ckpts import download_intermediate_ckpt
 
 def perform_test():
     all_tests = pd.read_csv(os.path.join('data', 'ieat_tests.csv'))

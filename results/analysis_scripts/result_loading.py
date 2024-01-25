@@ -14,7 +14,7 @@ import pandas as pd
 import numpy as np
 import os
 
-from embeddings.utils import cherti_et_al_models, profile_model
+from measure_bias_and_performance.utils import cherti_et_al_models, profile_model
 
 
 def load_seat_replication_results(models=None, openai_only=False):

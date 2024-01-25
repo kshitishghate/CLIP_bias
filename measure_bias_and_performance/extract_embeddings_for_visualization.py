@@ -12,7 +12,7 @@ from tqdm import tqdm
 from PIL import Image
 from references import open_clip
 
-from embeddings.utils import cherti_et_al_models
+from measure_bias_and_performance.utils import cherti_et_al_models
 from results.analysis_scripts.bundle_eat_data import load_model_info
 
 global completed_tests
@@ -21,7 +21,7 @@ global attr_completed_tests
 attr_completed_tests = None
 
 
-from embeddings.extract_clip import load_images, extract_images, extract_text
+from measure_bias_and_performance.extract_clip import load_images, extract_images, extract_text
 
 
 def load_seat(test: str):

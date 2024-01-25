@@ -16,9 +16,9 @@ from pattern.text.en import pluralize
 import os
 
 
-from embeddings.extract_clip import extract_images, extract_text, load_words_greenwald
-from embeddings.sc_weat import SCWEAT, WEAT
-from embeddings.utils import save_test_results
+from measure_bias_and_performance.extract_clip import extract_images, extract_text, load_words_greenwald
+from measure_bias_and_performance.sc_weat import SCWEAT, WEAT
+from measure_bias_and_performance.utils import save_test_results
 
 
 def test_already_run(test, file_name):
