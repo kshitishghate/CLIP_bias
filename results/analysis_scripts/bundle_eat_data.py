@@ -6,7 +6,7 @@ from results.analysis_scripts.result_loading import load_ieat_replication_result
 from results.analysis_scripts.result_loading import load_cross_modal_results
 import os
 
-from eats.utils import cherti_et_al_models, profile_model
+from embeddings.utils import cherti_et_al_models, profile_model
 
 
 # may want to download other models from:

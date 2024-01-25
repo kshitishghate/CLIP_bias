@@ -7,12 +7,12 @@ import numpy as np
 import pandas as pd
 
 from scipy.special import comb
-from CLIP import clip
+from references.CLIP import clip
 from tqdm import tqdm
 from PIL import Image
-import open_clip
+from references import open_clip
 
-from eats.utils import cherti_et_al_models
+from embeddings.utils import cherti_et_al_models
 from results.analysis_scripts.bundle_eat_data import load_model_info
 
 global completed_tests
@@ -21,7 +21,7 @@ global attr_completed_tests
 attr_completed_tests = None
 
 
-from eats.extract_clip import load_images, extract_images, extract_text
+from embeddings.extract_clip import load_images, extract_images, extract_text
 
 
 def load_seat(test: str):
@@ -275,9 +275,9 @@ def perform_test():
 
             model, _, preprocess = open_clip.create_model_and_transforms(
                 model_name[0],
-                pretrained=os.path.join('scaling-laws-openclip', model_name[1]) if '.pt' in model_name[1] else model_name[1],
+                pretrained=os.path.join('references','scaling-laws-openclip', model_name[1]) if '.pt' in model_name[1] else model_name[1],
                 device=device,
-                cache_dir='scaling-laws-openclip' if '.pt' in model_name[1] else None)
+                cache_dir='references/scaling-laws-openclip' if '.pt' in model_name[1] else None)
             tokenizer = open_clip.get_tokenizer(model_name[0])
 
             for test_name in text_tests:

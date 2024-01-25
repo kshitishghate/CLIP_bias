@@ -1,12 +1,12 @@
-[submodule "CLIP"]
-	path = CLIP
-	url = https://github.com/openai/CLIP.git
-[submodule "ieat"]
-	path = ieat
+[submodule "references/CLIP"]
+	path = references/CLIP
+	url = https://github.com/openai/CLIP
+[submodule "references/ieat"]
+	path = references/ieat
 	url = https://github.com/ryansteed/ieat
-[submodule "scaling-laws-openclip"]
-	path = scaling-laws-openclip
-	url = https://github.com/LAION-AI/scaling-laws-openclip/
-[submodule "CLIP_benchmark"]
-	path = CLIP_benchmark
+[submodule "references/open_clip"]
+	path = references/open_clip
+	url = https://github.com/mlfoundations/open_clip
+[submodule "references/CLIP_benchmark"]
+	path = references/CLIP_benchmark
 	url = https://github.com/LAION-AI/CLIP_benchmark

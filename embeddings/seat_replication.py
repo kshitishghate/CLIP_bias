@@ -10,7 +10,7 @@ import pandas as pd
 import json
 
 from scipy.special import comb
-import open_clip
+from references import open_clip
 from tqdm import tqdm
 from nltk.corpus import wordnet
 
@@ -21,12 +21,12 @@ import sys
 print(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from eats.download_ckpts import download_intermediate_ckpt
+from embeddings.download_ckpts import download_intermediate_ckpt
 
 
-from eats.extract_clip import extract_images, extract_text, load_words_greenwald
-from eats.sc_weat import SCWEAT, WEAT
-from eats.utils import save_test_results, cherti_et_al_ckpts, cherti_et_al_models
+from embeddings.extract_clip import extract_images, extract_text, load_words_greenwald
+from embeddings.sc_weat import SCWEAT, WEAT
+from embeddings.utils import save_test_results, cherti_et_al_ckpts, cherti_et_al_models
 
 global prev
 prev = None
@@ -114,12 +114,12 @@ def perform_test(device):
 
                     if model is None:
                         if 'epoch_' in model_name[1]:
-                            download_intermediate_ckpt(model_name[1].replace('scaling-laws-openclip/', ''))
+                            download_intermediate_ckpt(model_name[1].replace('references/scaling-laws-openclip/', ''))
                         model, _, preprocess = open_clip.create_model_and_transforms(
                             model_name[0],
                             pretrained=model_name[1],
                             device=device,
-                            cache_dir='scaling-laws-openclip' if '.pt' in
+                            cache_dir='references/scaling-laws-openclip' if '.pt' in
                             model_name[1] else None)
                         tokenizer = open_clip.get_tokenizer(model_name[0])
 
@@ -153,7 +153,7 @@ def perform_test(device):
             test_already_run(test, results_fp, hard_reload=True)
             if 'epoch_' in model_name[1]:
                 try:
-                    os.remove(model_name[1].replace('scaling-laws-openclip/', ''))
+                    os.remove(model_name[1].replace('references/scaling-laws-openclip/', ''))
                 except FileNotFoundError:
                     pass
 

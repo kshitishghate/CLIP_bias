@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 
 from scipy.special import comb
-import open_clip
+from references import open_clip
 from tqdm import tqdm
 
 # add main dir to path
@@ -15,11 +15,11 @@ import sys
 print(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from eats.extract_clip import load_images, extract_images, extract_text
-from ieat.weat.weat.test import Test
-from eats.utils import test_already_run, save_test_results, cherti_et_al_ckpts, cherti_et_al_models
+from embeddings.extract_clip import load_images, extract_images, extract_text
+from references.ieat.weat.weat.test import Test
+from embeddings.utils import test_already_run, save_test_results, cherti_et_al_ckpts, cherti_et_al_models
 
-from eats.download_ckpts import download_intermediate_ckpt
+from embeddings.download_ckpts import download_intermediate_ckpt
 
 def perform_test():
     all_tests = pd.read_csv(os.path.join('data', 'ieat_tests.csv'))
@@ -54,7 +54,7 @@ def perform_test():
                     if model is None:
                         # If the model is not in open_clip, download it
                         if 'epoch_' in model_name[1]:
-                            download_intermediate_ckpt(model_name[1].replace('scaling-laws-openclip/', ''))
+                            download_intermediate_ckpt(model_name[1].replace('references/scaling-laws-openclip/', ''))
 
                         # device =  "mps"
                         model, _, preprocess = open_clip.create_model_and_transforms(model_name[0],
@@ -101,7 +101,7 @@ def perform_test():
             test_already_run('_'.join(model_name).replace('/', ''), test, results_fp, hard_reload=True)
             if 'epoch_' in model_name[1]:
                 try:
-                    os.remove(model_name[1].replace('scaling-laws-openclip/', ''))
+                    os.remove(model_name[1].replace('references/scaling-laws-openclip/', ''))
                 except FileNotFoundError:
                     pass
 

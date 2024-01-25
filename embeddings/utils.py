@@ -1,7 +1,7 @@
 import os
 import re
 
-import open_clip
+from references import open_clip
 import pandas as pd
 import torch
 from fvcore.nn import FlopCountAnalysis, ActivationCountAnalysis, flop_count_str
@@ -65,7 +65,7 @@ def cherti_et_al_ckpts():
     ckpts = []
     for f in all_epoch_files:
         model_name = (
-            'scaling-laws-openclip/'
+            'references/scaling-laws-openclip/'
             + re.sub('/epoch_\d+\.pt', '', f.replace('full_checkpoints/', ''))
             + '.pt'
         )
@@ -73,7 +73,7 @@ def cherti_et_al_ckpts():
         if len(base_model) != 1:
             print(f'ERROR: {model_name} not found in base models')
         else:
-            local_path = os.path.join('scaling-laws-openclip', os.path.normpath(f))
+            local_path = os.path.join('references/scaling-laws-openclip', os.path.normpath(f))
             ckpts.append((base_model[0][0], local_path))
     return ckpts
 
@@ -82,7 +82,7 @@ def cherti_et_al_models():
     """Get model names from Cherti et al. Adapted from scaling-laws-openclip/download_models.py"""
 
     # get model checkpoint names
-    trained_models_info = pd.read_csv('scaling-laws-openclip/trained_models_info.csv')
+    trained_models_info = pd.read_csv('references/scaling-laws-openclip/trained_models_info.csv')
 
     # Full info for models in paper
     all_samples_seen = ["3B", "13B", "34B"]
@@ -97,11 +97,11 @@ def cherti_et_al_models():
                     (trained_models_info.arch==model) & (trained_models_info.samples_seen_pretty==samples_seen) & (trained_models_info.data==dataset)
                 ]
                 if len(res) == 1:
-                    if not os.path.exists(os.path.join('scaling-laws-openclip', res['name'].iloc[0])):
+                    if not os.path.exists(os.path.join('references/scaling-laws-openclip', res['name'].iloc[0])):
                         print(
                             f'ERROR: model {samples_seen, dataset, model} not found in scaling-laws-clip folder. Please '
                             f'download it using scaling-laws-openclip/download_models.py')
-                    full_model_list.append((model, os.path.join('scaling-laws-openclip', res['name'].iloc[0])))
+                    full_model_list.append((model, os.path.join('references','scaling-laws-openclip', res['name'].iloc[0])))
 
                 elif len(res) > 1:
                     print('ERROR: more than one model found')

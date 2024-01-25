@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 
 from scipy.special import comb
-import open_clip
+from references import open_clip
 from tqdm import tqdm
 from nltk.corpus import wordnet
 from pattern.text.en import pluralize
@@ -16,9 +16,9 @@ from pattern.text.en import pluralize
 import os
 
 
-from eats.extract_clip import extract_images, extract_text, load_words_greenwald
-from eats.sc_weat import SCWEAT, WEAT
-from eats.utils import save_test_results
+from embeddings.extract_clip import extract_images, extract_text, load_words_greenwald
+from embeddings.sc_weat import SCWEAT, WEAT
+from embeddings.utils import save_test_results
 
 
 def test_already_run(test, file_name):
