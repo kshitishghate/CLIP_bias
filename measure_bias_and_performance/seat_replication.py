@@ -10,7 +10,7 @@ import pandas as pd
 import json
 
 from scipy.special import comb
-from references import open_clip
+import open_clip
 from tqdm import tqdm
 from nltk.corpus import wordnet
 

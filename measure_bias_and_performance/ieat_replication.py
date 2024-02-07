@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 
 from scipy.special import comb
-from references import open_clip
+import open_clip
 from tqdm import tqdm
 
 # add main dir to path
@@ -16,7 +16,7 @@ print(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from measure_bias_and_performance.extract_clip import load_images, extract_images, extract_text
-from references.ieat.weat.weat.test import Test
+from measure_bias_and_performance.sc_weat import WEAT
 from measure_bias_and_performance.utils import test_already_run, save_test_results, cherti_et_al_ckpts, cherti_et_al_models
 
 from measure_bias_and_performance.download_ckpts import download_intermediate_ckpt
@@ -87,7 +87,7 @@ def perform_test():
 
                     )
 
-                    test_result = Test(embeddings['X'], embeddings['Y'], embeddings['A'], embeddings['B'])
+                    test_result = WEAT(embeddings['X'], embeddings['Y'], embeddings['A'], embeddings['B'])
                     test_result = pd.Series({
                         'model':'_'.join(model_name).replace('/',''),
                         'pvalue':test_result.p(npermutations),
