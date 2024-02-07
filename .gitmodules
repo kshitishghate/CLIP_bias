@@ -10,3 +10,9 @@
 [submodule "references/CLIP_benchmark"]
 	path = references/CLIP_benchmark
 	url = https://github.com/LAION-AI/CLIP_benchmark
+[submodule "references/debias-vision-lang"]
+	path = references/debias-vision-lang
+	url = https://github.com/oxai/debias-vision-lang
+[submodule "references/scaling-laws-openclip"]
+	path = references/scaling-laws-openclip
+	url = https://github.com/LAION-AI/scaling-laws-openclip
