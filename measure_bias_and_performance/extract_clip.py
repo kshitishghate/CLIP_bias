@@ -134,7 +134,7 @@ def extract_text(model, preprocess, text, device, model_name):
         text_embedding_dict[(model_name, tuple(sorted_text))] = text_features
         clear_dict(text_embedding_dict, model_name)
     else:
-        text_features = text_embedding_dict[(model_name, tuple(text))]
+        text_features = text_embedding_dict[(model_name, tuple(sorted_text))]
 
     # Unsort
     sort_order = np.argsort(text)
