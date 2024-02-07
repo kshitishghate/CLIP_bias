@@ -41,7 +41,7 @@ def load_images(test, category, dataset='ieat'):
     if (test, category, dataset) in image_dict.keys():
         return image_dict[(test, category, dataset)]
     if dataset == 'ieat':
-        image_dir = os.path.join('ieat', 'data', 'experiments', test.lower(), category.lower())
+        image_dir = os.path.join('references', 'ieat', 'data', 'experiments', test.lower(), category.lower())
         image_paths = [os.path.join(image_dir, n) for n in os.listdir(image_dir)]
     elif dataset=='cfd':
         codebook = pd.read_excel(os.path.join('data','CFD Version 3.0','CFD 3.0 Norming Data and Codebook.xlsx'),
