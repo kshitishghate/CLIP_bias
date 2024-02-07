@@ -1,0 +1,19 @@
+#!/bin/bash
+#SBATCH --job-name=ndkl
+#SBATCH --cpus-per-task=3
+#SBATCH --mem=32G
+#SBATCH --account=stf
+#SBATCH --partition=ckpt
+#SBATCH --time=24:00:00
+#SBATCH --output=./slurm_and_shell_scripts/ndkl_maxskew%a.out
+#SBATCH --error=./slurm_and_shell_scripts/ndkl_maxskew%a.out
+#SBATCH --gres=gpu:1
+#SBATCH --array=0
+
+
+
+# Run the container
+apptainer run --fakeroot --nv -B $CLIP_ROOT \
+--overlay ./slurm_and_shell_scripts/conda-overlay.img:ro \
+./slurm_and_shell_scripts/hyak-container.sif \
+./slurm_and_shell_scripts/ndkl_maxskew.sh
