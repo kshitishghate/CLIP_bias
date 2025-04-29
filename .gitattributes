@@ -136,3 +136,4 @@
 /results/data/cfd_7b_scseat.csv filter=lfs diff=lfs merge=lfs -text
 /results/data/raw_distances.csv filter=lfs diff=lfs merge=lfs -text
 --above=100Kb !text !filter !merge !diff
+results/data/wna_scweat.csv filter=lfs diff=lfs merge=lfs -text
