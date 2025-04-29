@@ -1,10 +1,19 @@
+import os
+import sys
+
+file_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+print(1)
+print(file_dir)
+sys.path.append(file_dir)
+# sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import open_clip
 import pandas as pd
 import numpy as np
-from results.analysis_scripts.result_loading import load_seat_replication_results
-from results.analysis_scripts.result_loading import load_ieat_replication_results
-from results.analysis_scripts.result_loading import load_cross_modal_results
-import os
+# from result_loading import load_seat_replication_results
+# from result_loading import load_ieat_replication_results
+from result_loading import load_cross_modal_results
+
 
 from measure_bias_and_performance.utils import cherti_et_al_models, profile_model
 
@@ -18,40 +27,40 @@ def load_cross_modal_bias():
     _, cross_modal_results = load_cross_modal_results(openai_only=False)
     cross_modal_results = cross_modal_results.rename(columns={'X_x': 'X', 'Y_x': 'Y', 'A_x': 'A', 'B_x': 'B'})
 
-    cross_modal_results['test_category'] = cross_modal_results['Image_Test'].replace(regex=True, to_replace={
-        '.*EA ?- ?AA (Names|Terms) ?/ ?Valences? ?': 'EA-AA/Valence',
-        'Insect-Flower/Valence': 'Flowers-Insects/Valence',
-        'Gender/Science vs. Liberal-Arts': 'Science-Liberal Arts/Gender',
-        'Math/Gender': 'Math-Arts/Gender',
-        'Gender/Career vs. Family': 'Gender/Career',
-        '.*Age/Valence': 'Age/Valence',
-        'Native/US vs. World': 'Native/US-World',
-        'Asian/American vs. Foreign': 'Asian/US-Foreign',
-        'Arab-Muslim/Valence':'Arab-Non Arab/Valence',
-        'Disabled/Valence': 'Disability/Valence',
-        'Race/Tool vs. Weapon \(Modern\)': 'EA-AA/Modern Tool-Modern Weapon',
-        'Race/Tool vs. Weapon$': 'EA-AA/Tool-Weapon',
-        'Skin-Tone/Valence':'Skin Tone/Valence',
-        'Race/Valence': 'EA-AA/Valence',
-    })
-    cross_modal_results['overall_test_category'] = cross_modal_results['test_category'].replace(regex=True, to_replace={
-        'Age/Valence': 'Age',
-        'Arab-Non Arab/Valence': 'Race/Skin Tone',
-        'Asian/US-Foreign':'Race/Skin Tone',
-        'Disability/Valence': 'Health',
-        'Gender/Career': 'Gender',
-        'Gender/Science vs. Arts':'Gender',
-        'Science-Liberal Arts/Gender':'Gender',
-        'Flowers-Insects/Valence': 'Non-Human',
-        'Native/US-World':'Race/Skin Tone',
-        'EA-AA/Tool-Weapon':'Race/Skin Tone',
-        'EA-AA/Modern Tool-Modern Weapon':'Race/Skin Tone',
-        'EA-AA/Valence':'Race/Skin Tone',
-        'Religion/Valence':'Religion',
-        'Sexuality/Valence':'Sexuality',
-        'Skin Tone/Valence':'Race/Skin Tone',
-        'Weight/Valence': 'Health'
-    })
+    # cross_modal_results['test_category'] = cross_modal_results['Image_Test'].replace(regex=True, to_replace={
+    #     '.*EA ?- ?AA (Names|Terms) ?/ ?Valences? ?': 'EA-AA/Valence',
+    #     'Insect-Flower/Valence': 'Flowers-Insects/Valence',
+    #     'Gender/Science vs. Liberal-Arts': 'Science-Liberal Arts/Gender',
+    #     'Math/Gender': 'Math-Arts/Gender',
+    #     'Gender/Career vs. Family': 'Gender/Career',
+    #     '.*Age/Valence': 'Age/Valence',
+    #     'Native/US vs. World': 'Native/US-World',
+    #     'Asian/American vs. Foreign': 'Asian/US-Foreign',
+    #     'Arab-Muslim/Valence':'Arab-Non Arab/Valence',
+    #     'Disabled/Valence': 'Disability/Valence',
+    #     'Race/Tool vs. Weapon \(Modern\)': 'EA-AA/Modern Tool-Modern Weapon',
+    #     'Race/Tool vs. Weapon$': 'EA-AA/Tool-Weapon',
+    #     'Skin-Tone/Valence':'Skin Tone/Valence',
+    #     'Race/Valence': 'EA-AA/Valence',
+    # })
+    # cross_modal_results['overall_test_category'] = cross_modal_results['test_category'].replace(regex=True, to_replace={
+    #     'Age/Valence': 'Age',
+    #     'Arab-Non Arab/Valence': 'Race/Skin Tone',
+    #     'Asian/US-Foreign':'Race/Skin Tone',
+    #     'Disability/Valence': 'Health',
+    #     'Gender/Career': 'Gender',
+    #     'Gender/Science vs. Arts':'Gender',
+    #     'Science-Liberal Arts/Gender':'Gender',
+    #     'Flowers-Insects/Valence': 'Non-Human',
+    #     'Native/US-World':'Race/Skin Tone',
+    #     'EA-AA/Tool-Weapon':'Race/Skin Tone',
+    #     'EA-AA/Modern Tool-Modern Weapon':'Race/Skin Tone',
+    #     'EA-AA/Valence':'Race/Skin Tone',
+    #     'Religion/Valence':'Religion',
+    #     'Sexuality/Valence':'Sexuality',
+    #     'Skin Tone/Valence':'Race/Skin Tone',
+    #     'Weight/Valence': 'Health'
+    # })
     return cross_modal_results
 
 def load_image_bias_results():
@@ -463,10 +472,12 @@ if __name__ == '__main__':
     # full_biases = full_biases.dropna(axis=1)
     # full_biases = full_biases.drop(columns=['X','Y','A','B','nt','na', 'npermutations'])
 
-    # cross_modal_results = load_cross_modal_bias()
-    model_info = load_model_info(False)
-    full_biases = full_biases.merge(model_info, left_on='model', right_on='model_name')
-    # cross_modal_results = cross_modal_results.merge(model_info, left_on='model', right_on='model_name')
+    cross_modal_results = load_cross_modal_bias()
+    # model_info = load_model_info(True)
+    model_info = pd.read_csv(os.path.join('data','model_info.csv'))
+    # full_biases = full_biases.merge(model_info, left_on='model', right_on='model_name')
+    cross_modal_results = cross_modal_results.merge(model_info, left_on='model', right_on='model_name')
 
-    full_biases.to_csv(os.path.join('results', 'data', 'unimodal_data_for_modeling.csv'), index=False)
-    # cross_modal_results.to_csv(os.path.join('results', 'data', 'bimodal_data_for_modeling.csv'), index=False)
+    # model_info.to_csv(os.path.join('model_info.csv'), index=False)
+    # full_biases.to_csv(os.path.join('results', 'data', 'unimodal_data_for_modeling.csv'), index=False)
+    cross_modal_results.to_csv(os.path.join('results', 'data', 'bimodal_data_for_modeling_v0.csv'), index=False)

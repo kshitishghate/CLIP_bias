@@ -1,8 +1,8 @@
 import os
 import pandas as pd
 import argparse
-from huggingface_hub import hf_hub_download, list_files_info
-from huggingface_hub.utils._errors import EntryNotFoundError
+from huggingface_hub import hf_hub_download, get_paths_info
+# from huggingface_hub.utils._errors import EntryNotFoundError
 
 trained_models_info= pd.read_csv("references/scaling-laws-openclip/trained_models_info.csv")
 
@@ -18,7 +18,7 @@ def download_intermediate_ckpts(filename):
     # Make dirs
     hf_dir = 'full_checkpoints/' + filename.replace('.pt', '')
     os.makedirs(os.path.join('references','scaling-laws-openclip', os.path.normpath(hf_dir)), exist_ok=True)
-    all_epoch_files_for_model = [f.path for f in list_files_info("laion/scaling-laws-openclip")
+    all_epoch_files_for_model = [f.path for f in get_paths_info("laion/scaling-laws-openclip")
                  if f.path.endswith('.pt') and 'full_checkpoints' in f.path
                  and 'epoch_' in f.path and 'latest' not in f.path
                  and filename.replace('.pt', '') in f.path]
@@ -37,7 +37,7 @@ def download_model(model, samples_seen, dataset):
         filename = res.name.tolist()[0]
         hf_hub_download("laion/scaling-laws-openclip", filename, cache_dir="references/scaling-laws-openclip", force_filename=filename)
         print(f"'{filename}' downloaded.")
-        download_intermediate_ckpts(filename)
+        # download_intermediate_ckpts(filename)
         return filename
     else:
         print("The model is not available in the repository")

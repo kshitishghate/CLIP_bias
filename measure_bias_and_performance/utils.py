@@ -5,7 +5,7 @@ from references import open_clip
 import pandas as pd
 import torch
 from fvcore.nn import FlopCountAnalysis, ActivationCountAnalysis, flop_count_str
-from huggingface_hub import list_files_info
+# from huggingface_hub import list_files_info
 
 global prev
 prev = None
@@ -97,11 +97,13 @@ def cherti_et_al_models():
                     (trained_models_info.arch==model) & (trained_models_info.samples_seen_pretty==samples_seen) & (trained_models_info.data==dataset)
                 ]
                 if len(res) == 1:
-                    if not os.path.exists(os.path.join('references/scaling-laws-openclip', res['name'].iloc[0])):
-                        print(
-                            f'ERROR: model {samples_seen, dataset, model} not found in scaling-laws-clip folder. Please '
-                            f'download it using scaling-laws-openclip/download_models.py')
-                    full_model_list.append((model, os.path.join('references','scaling-laws-openclip', res['name'].iloc[0])))
+                    model_path = res['name'].iloc[0]
+                    full_path = os.path.join('references/scaling-laws-openclip', model_path)
+                    if not os.path.exists(full_path):
+                        os.makedirs(os.path.dirname(full_path), exist_ok=True)
+                        print(f"Created directory for model: {os.path.dirname(full_path)}")
+                        # print(f"Note: Model {samples_seen, dataset, model} not found. Please download it using scaling-laws-openclip/download_models.py")
+                    full_model_list.append((model, model_path))
 
                 elif len(res) > 1:
                     print('ERROR: more than one model found')

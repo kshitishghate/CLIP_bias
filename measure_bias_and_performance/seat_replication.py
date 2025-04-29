@@ -66,7 +66,7 @@ def perform_test(device):
     models = [m for m in models if m[0] != 'convnext_xxlarge']
     models = random.sample(models, k = len(models))
 
-    tests = [f for f in os.listdir(os.path.join('data','tests')) if f.split('.')[1] == 'jsonl']
+    tests = [f for f in os.listdir(os.path.join('data','tests_seat')) if f.split('.')[1] == 'jsonl']
     tests = random.sample(tests, k = len(tests))
 
     # models.reverse()
@@ -159,7 +159,7 @@ def perform_test(device):
 
 
 def load_seat(test: str):
-    with open(os.path.join('data', 'tests', test), 'r') as f:
+    with open(os.path.join('data', 'tests_seat', test), 'r') as f:
         stimuli = json.load(f)
 
     stimuli = {

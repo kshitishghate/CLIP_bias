@@ -19,19 +19,21 @@ from measure_bias_and_performance.extract_clip import load_images, extract_image
 from measure_bias_and_performance.sc_weat import WEAT
 from measure_bias_and_performance.utils import test_already_run, save_test_results, cherti_et_al_ckpts, cherti_et_al_models
 
-from measure_bias_and_performance.download_ckpts import download_intermediate_ckpt
+# from measure_bias_and_performance.download_ckpts import download_intermediate_ckpt
 
 def perform_test():
     all_tests = pd.read_csv(os.path.join('data', 'ieat_tests.csv'))
     all_tests = all_tests.sample(frac=1, replace=False).reset_index(drop=True)
 
-    models = cherti_et_al_ckpts() +  open_clip.list_pretrained() + cherti_et_al_models()
+    # models = cherti_et_al_ckpts() +  open_clip.list_pretrained() + cherti_et_al_models()
+    models = open_clip.list_pretrained()
+    
     # Not using convnext_xxlarge because it is not supported by timm 0.6.12
     models = [m for m in models if m[0] != 'convnext_xxlarge']
     models = random.sample(models, k = len(models))
     total = len(models) * len(all_tests)
 
-    results_fp = os.path.join('results', 'data', 'ieat_replication.csv')
+    results_fp = os.path.join('results', 'data', 'ieat_replication_new.csv')
     if os.path.exists(results_fp):
         model_name_strs = ['_'.join(m).replace('/', '') for m in models]
         completed = pd.read_csv(results_fp)
@@ -53,13 +55,13 @@ def perform_test():
                 if not test_already_run('_'.join(model_name).replace('/',''), test, results_fp):
                     if model is None:
                         # If the model is not in open_clip, download it
-                        if 'epoch_' in model_name[1]:
-                            download_intermediate_ckpt(model_name[1].replace('references/scaling-laws-openclip/', ''))
+                        # if 'epoch_' in model_name[1]:
+                        #     download_intermediate_ckpt(model_name[1].replace('references/scaling-laws-openclip/', ''))
 
                         # device =  "mps"
                         model, _, preprocess = open_clip.create_model_and_transforms(model_name[0],
                                                                                      pretrained=model_name[1],
-                                                                                     device=device)
+                                                                                     device=device, cache_dir = '/data/user_data/kghate/clip_bias')
 
                     np.random.seed(82804230)
 

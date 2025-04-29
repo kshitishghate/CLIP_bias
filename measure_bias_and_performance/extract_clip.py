@@ -4,6 +4,8 @@ import numpy as np
 import pandas as pd
 import torch
 from PIL import Image
+import logging as log
+log.basicConfig(format='%(asctime)s: %(message)s', datefmt='%m/%d %I:%M:%S %p', level=log.INFO)
 
 from pathlib import Path
 
@@ -41,7 +43,8 @@ def load_images(test, category, dataset='ieat'):
     if (test, category, dataset) in image_dict.keys():
         return image_dict[(test, category, dataset)]
     if dataset == 'ieat':
-        image_dir = os.path.join('references', 'ieat', 'data', 'experiments', test.lower(), category.lower())
+        log.info('experiments_oasis')
+        image_dir = os.path.join('references', 'ieat', 'data', 'experiments_oasis', test.lower(), category.lower())
         image_paths = [os.path.join(image_dir, n) for n in os.listdir(image_dir)]
     elif dataset=='cfd':
         codebook = pd.read_excel(os.path.join('data','CFD Version 3.0','CFD 3.0 Norming Data and Codebook.xlsx'),
@@ -104,7 +107,7 @@ def load_images(test, category, dataset='ieat'):
     return image_paths
 
 
-def extract_images(model, preprocess, image_paths, device, model_name):
+def extract_images(model, preprocess,tokeniser, image_paths, device, model_name):
     image_features = []
     if (model_name, tuple(image_paths)) not in image_embedding_dict.keys():
         for i in image_paths:
@@ -121,14 +124,14 @@ def extract_images(model, preprocess, image_paths, device, model_name):
     return image_features
 
 
-def extract_text(model, preprocess, text, device, model_name):
+def extract_text(model, preprocess,tokeniser, text, device, model_name):
     try:
         # Sort for caching, as tests can potentially input the stimuli in differing orders
         sorted_text = np.sort(text)
     except np.AxisError:
         pass
     if (model_name, tuple(sorted_text)) not in text_embedding_dict.keys():
-        processed_text = preprocess(sorted_text).to(device)
+        processed_text = tokeniser(sorted_text).to(device)
         with torch.no_grad():
            text_features = model.encode_text(processed_text).cpu().detach().numpy()
         text_embedding_dict[(model_name, tuple(sorted_text))] = text_features
